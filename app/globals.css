@@ -2,32 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.navbar-container{
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid #b22222;
+}
+.navbar-container p:hover{
+  /* color: rgb(167, 10, 10) */
+  color: #b22222;
+}
+.menu-items{
+  padding: 8px;
+}
+.menu-icon-wrapper{
+  display: none;
+}
+.main-body{
+  margin-top: 155px;
+}
+
+
+
+
+
+
+
+
+/****************Media Queries*************/
+@media (max-width: 900px){
+  .navbar{
+    justify-content: space-between;
+  }
+  .logo-image{
+    width: 80px;
+    /* height: auto; */
+  }
+  .navbar p{
+    display: none;
+  }
+  .menu-icon-wrapper, .hamburger-menu{
+    display: inline;
+  }
+  .main-body{
+    margin-top: 115px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (min-width: 898px){
+  .menu-items-wrapper{
+    display: none;
   }
 }

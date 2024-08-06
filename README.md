@@ -1,33 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Status of the App and improvements that need to be made
 
-## Getting Started
+## 06 Aug 2024 (02h26)
+1. Navbar
+    - Choose nice font that matches well with the design
+    - Need to show the active link item
+    - When screen size is small, toggled menu link-items must disappear once the user click on one of the link-items
+    - Other than these i think Navbar is fine
 
-First, run the development server:
+2. Home Page
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+3. About Page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Admissions Page
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+5. Gallery Page
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+6. News Page
 
-## Learn More
+7. Alumni Page
 
-To learn more about Next.js, take a look at the following resources:
+8. Contact Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+9. Sign In Page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Deploy on Vercel
 
