@@ -20,7 +20,7 @@
 
 6. News Page
 
-7. Alumni Page
+7. Staff Page
 
 8. Contact Page
 

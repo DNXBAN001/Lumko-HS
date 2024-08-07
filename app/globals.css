@@ -30,7 +30,6 @@ h1, h3{
 }
 .principal-welcome-wrapper{
   border-top: 1px solid #b22222;
-  /* border-bottom: 1px solid #b22222; */
 }
 .principal-welcome-wrapper .principal-image{
   border-radius: 10px;
@@ -41,15 +40,14 @@ h1, h3{
 .slideshow-section{
   background: #eee;
 }
-.slideshow-section h1{
-  /* width: 80%; */
-  border: #b22222;
+
+/***************About Us Page***************************/
+.about-wrapper{
+  border-top: 1px solid #b22222;
 }
-.slideshow-wrapper{
-
+.unordered-list{
+  list-style: disc;
 }
-
-
 
 
 
@@ -73,36 +71,68 @@ h1, h3{
   .menu-icon-wrapper, .hamburger-menu{
     display: inline;
   }
-  /*********Main Body - Welcome section*************/
+  /**********************/
   .principal-welcome-wrapper{
-    width: 100%;
+    width: 99%;
     flex-direction: column;
     margin: 0;
-    padding: 0;
+    padding: 5px;
+    /* padding-left: 5px;
+    padding-right: 5px; */
   }
   .welcome-message, .value-wrapper{
     width: 100%;
     padding-left: 5px;
-    padding-right: 5px;;
+    padding-right: 5px;
   }
+   /**********************/
   .values-wrapper{
     width: 100%;
     flex-direction: column;
     padding-left: 5px;
     padding-right: 5px;
   }
+   /**********************/
+   .about-container{
+    width: 100%;
+   }
+   .about-wrapper{
+    flex-direction: column;
+   }
+   .about-wrapper .about-content{
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+   }
+   .mision-vision-values-wrapper{
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 20px;
+   }
+   .mission-wrapper{
+    width: 100%;
+   }
+   .vision-mission-wrapper{
+    width: 100%;
+   }
+   .vision-wrapper{
+    margin-top: 20px;
+   }
+   .about-values-wrapper{
+    margin-top: 20px;
+   }
 }
 
 @media (min-width: 898px){
   .menu-items-wrapper{
     display: none;
   }
+}
 
-  @media (max-width: 500px){
-    .principal-welcome-wrapper{
-      margin: 0;
-      width: 100%;
-    }
+@media (max-width: 500px){
+  .principal-welcome-wrapper{
+    margin: 0;
+    width: 100%;
   }
-  
 }
