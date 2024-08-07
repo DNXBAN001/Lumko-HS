@@ -1,9 +1,17 @@
+import Image from "next/image";
 
 export default function Admissions() {
     
     return (
         <div className="main-body">
-            Admissions Page
+            <div>
+                <Image src="/banner-4-reduced.jpg"
+                    width={1910}
+                    height={600}
+                    priority={true}
+                    alt="banner-image"
+                />
+            </div>
         </div>
     )
 }

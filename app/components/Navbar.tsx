@@ -6,7 +6,7 @@ import Link from "next/link";
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 
-export function Navbar() {
+export default function Navbar() {
 
     const [toggleMenu, setToggleMenu] = React.useState(false)
 
@@ -25,14 +25,14 @@ export function Navbar() {
     const RightMenuContent = (
         <>
             <p className="menu-items"><Link href="/news">NEWS</Link></p>
-            <p className="menu-items"><Link href="/alumni">ALUMNI</Link></p>
+            <p className="menu-items"><Link href="/staff">STAFF</Link></p>
             <p className="menu-items"><Link href="/contact">CONTACT US</Link></p>
             <p className="menu-items"><Link href="/sign-in">SIGN IN</Link></p>
         </>
     )
 
     return (
-        <nav className="navbar-container bg-blue-950 p-5 fixed w-full top-0">
+        <nav className="navbar-container bg-blue-950 p-5 sticky w-full top-0">
             <div className="navbar flex justify-around items-center">
                 {LeftMenuContent}
                 <div>

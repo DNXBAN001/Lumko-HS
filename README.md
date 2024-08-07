@@ -7,7 +7,10 @@
     - When screen size is small, toggled menu link-items must disappear once the user click on one of the link-items
     - Other than these i think Navbar is fine
 
+## 07 Aug 2024 (03h53)
 2. Home Page
+    - What We Offer Section: 
+        - Implement the image slideshow
 
 3. About Page
 

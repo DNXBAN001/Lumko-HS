@@ -11,7 +11,7 @@ body{
 
 .navbar-container{
   color: rgb(255, 255, 255);
-  border-bottom: 2px solid #b22222;
+  /* border-bottom: 2px solid #b22222; */
 }
 .navbar-container p:hover{
   /* color: rgb(167, 10, 10) */
@@ -23,9 +23,33 @@ body{
 .menu-icon-wrapper{
   display: none;
 }
-.main-body{
-  margin-top: 155px;
+
+/*************Main body - Home****************/
+h1, h3{
+  color: #b22222;
 }
+.principal-welcome-wrapper{
+  border-top: 1px solid #b22222;
+  /* border-bottom: 1px solid #b22222; */
+}
+.principal-welcome-wrapper .principal-image{
+  border-radius: 10px;
+}
+.values-wrapper{
+  border-top: 1px solid #b22222;
+}
+.slideshow-section{
+  background: #eee;
+}
+.slideshow-section h1{
+  /* width: 80%; */
+  border: #b22222;
+}
+.slideshow-wrapper{
+
+}
+
+
 
 
 
@@ -49,8 +73,23 @@ body{
   .menu-icon-wrapper, .hamburger-menu{
     display: inline;
   }
-  .main-body{
-    margin-top: 115px;
+  /*********Main Body - Welcome section*************/
+  .principal-welcome-wrapper{
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  .welcome-message, .value-wrapper{
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;;
+  }
+  .values-wrapper{
+    width: 100%;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
@@ -58,4 +97,12 @@ body{
   .menu-items-wrapper{
     display: none;
   }
+
+  @media (max-width: 500px){
+    .principal-welcome-wrapper{
+      margin: 0;
+      width: 100%;
+    }
+  }
+  
 }
