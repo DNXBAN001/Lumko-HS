@@ -3,7 +3,9 @@ export default function SignIn() {
     
     return (
         <div className="main-body">
-            Sign in Page
+            <div className="auth-container">
+                ...
+            </div>
         </div>
     )
 }

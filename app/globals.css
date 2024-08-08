@@ -40,16 +40,31 @@ h1, h3{
 .slideshow-section{
   background: #eee;
 }
-
-/***************About Us Page***************************/
+.footer-section{
+  background-color: #b22222;
+}
+/***************About Us Page****************/
 .about-wrapper{
   border-top: 1px solid #b22222;
 }
 .unordered-list{
   list-style: disc;
 }
-
-
+/***************Contact Page************************/
+.contact{
+  border-top: 1px solid #b22222;
+}
+/****************Admissions***********************/
+.admissions-container .application-info{
+  border-top: 1px solid #b22222
+ }
+/***************Sign-in Page***********************/
+.auth-container{
+  height: 80vh;
+  background-image: url("/banner-2-reduced.jpg");
+  background-size: cover;
+  opacity: 0.5;
+}
 
 
 
@@ -121,7 +136,9 @@ h1, h3{
    }
    .about-values-wrapper{
     margin-top: 20px;
+    margin-bottom: 20px;
    }
+   /**********************/
 }
 
 @media (min-width: 898px){

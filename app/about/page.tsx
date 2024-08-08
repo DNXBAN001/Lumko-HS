@@ -35,7 +35,7 @@ export default function About() {
                             over the Eastern Cape and beyond, celebrating and embracing ethnic and cultural variety.</p>
                     </div>
                 </div>
-                <div className="mision-vision-values-wrapper mt-12 flex justify-around">
+                <div className="mision-vision-values-wrapper mt-12 flex justify-around pb-16">
                     <div className="mission-wrapper w-3/6">
                         <h3 className="text-xl">Mission</h3>
                         <ul className="unordered-list mt-3">
@@ -61,7 +61,7 @@ export default function About() {
                                 citizens that will contribute meaningfully in the advancement of their communities
                             </p>
                         </div>
-                        <div className="about-values-wrapper mt-12">
+                        <div className="about-values-wrapper mt-8">
                             <h3 className="text-xl">Values</h3>
                             <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 

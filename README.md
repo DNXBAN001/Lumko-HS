@@ -12,7 +12,9 @@
     - What We Offer Section: 
         - Implement the image slideshow
 
+## 07 Aug 2024 (23h48)
 3. About Page
+    - Update the Values content and remove the lorem ipsum
 
 4. Admissions Page
 
@@ -22,29 +24,12 @@
 
 7. Staff Page
 
+## 07 Aug 2024 (23h48)
 8. Contact Page
+    - Add Banking details to the page.
+    - Also ask for a feedback from the client if there's anything else they would like to add
 
 9. Sign In Page
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Deploy on Vercel
 
