@@ -16,7 +16,11 @@
 3. About Page
     - Update the Values content and remove the lorem ipsum
 
+## 08 Aug 2024 (03h58)
 4. Admissions Page
+    - Fix the layout of the steps and also make sure that the page is responsive
+    ## 08 Aug 2024 (16h48)
+    - Add the information about not accepting grade 9 to 11 applications
 
 5. Gallery Page
 
