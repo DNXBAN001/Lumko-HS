@@ -5,12 +5,7 @@ export default function Contact() {
     return (
         <div className="main-body">
             <div>
-                <Image src="/banner-3-reduced.jpg"
-                    width={1910}
-                    height={600}
-                    priority={true}
-                    alt="banner-image"
-                />
+                <Image src="/banner-3-reduced.jpg" width={1910} height={600} priority={true} alt="banner-image"/>
             </div>
             <div className="contact-container w-4/5 m-auto mt-12 pb-16">
                 <h1 className="text-3xl font-medium text-center">Contact us</h1>

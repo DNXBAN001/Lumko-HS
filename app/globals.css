@@ -58,6 +58,13 @@ h1, h3{
 .admissions-container .application-info{
   border-top: 1px solid #b22222
  }
+ /******************************************/
+ .staff-photos-container{
+  border-top: 1px solid #b22222;
+ }
+ .teacher-img{
+  border-radius: 10px;
+ }
 /***************Sign-in Page***********************/
 .auth-container{
   height: 80vh;
@@ -160,8 +167,10 @@ h1, h3{
     margin-top: 32px;
    }
    .admissions-container .track-status-step{
-    margin-left: 0
+    margin-left: 0;
    }
+   /*************************/
+
 }
 
 @media (min-width: 898px){

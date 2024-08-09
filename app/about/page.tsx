@@ -5,12 +5,7 @@ export default function About() {
     return (
         <div className="main-body">
             <div className="">
-                <Image src="/banner-2-reduced.jpg"
-                    width={1910}
-                    height={600}
-                    priority={true}
-                    alt="banner-image"
-                />
+                <Image src="/banner-2-reduced.jpg" width={1910} height={600}priority={true} alt="banner-image"/>
             </div>
             <div className="about-container w-4/5 m-auto mt-12">
                 <h1 className="text-3xl font-medium text-center">About us</h1>

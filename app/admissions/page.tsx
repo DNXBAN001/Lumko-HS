@@ -6,12 +6,7 @@ export default function Admissions() {
     return (
         <div className="main-body">
             <div>
-                <Image src="/banner-4-reduced.jpg"
-                    width={1910}
-                    height={600}
-                    priority={true}
-                    alt="banner-image"
-                />
+                <Image src="/banner-4-reduced.jpg" width={1910} height={600} priority={true} alt="banner-image"/>
             </div>
             <div className="admissions-container w-4/5 m-auto mt-12 mb-16">
                 <h1 className="text-3xl text-center">Application Information</h1>

@@ -18,7 +18,7 @@
 
 ## 08 Aug 2024 (03h58)
 4. Admissions Page
-    - Fix the layout of the steps and also make sure that the page is responsive
+    - Fix the layout of the steps and also make sure that the page is fully responsive
     ## 08 Aug 2024 (16h48)
     - Add the information about not accepting grade 9 to 11 applications
 
@@ -26,7 +26,9 @@
 
 6. News Page
 
+## 09 Aug 2024 (18h20)
 7. Staff Page
+    - Get staff images, once I have the images then I can create json placeholder data 
 
 ## 07 Aug 2024 (23h48)
 8. Contact Page
