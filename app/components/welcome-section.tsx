@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function WelcomeSection() {
   return (
     <section className="welcome-section">
-        <div className="welcome-heading-wrapper text-center pt-7 pb-7">
+        <div className="welcome-heading-wrapper text-center mt-12 ">
           <h1 className="welcome-heading text-3xl font-medium">Welcome to Lumko High School</h1>
         </div>
-        <div className="principal-welcome-wrapper w-4/5 flex m-auto justify-between items-center p-12">
+        <div className="principal-welcome-wrapper w-4/5 flex m-auto justify-between items-center mt-12 p-12">
           <div className="principal-image mb-3">
             <h3 className="text-xl text-center p-3">Principal</h3>
             <Image src="/principal.jpg"

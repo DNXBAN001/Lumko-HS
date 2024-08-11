@@ -18,17 +18,17 @@ export default function Admissions() {
                     <h3 className="how-to-apply text-xl mt-12 ml-16">How to apply?</h3>
                     <div className="steps-wrapper mt-10 flex justify-around pl-1">
                         <div className="step-wrapper w-2/5">
-                            <h3>Step 1: <span className="text-blue-700"><Link href="/sign-up">Create Account</Link></span></h3>
+                            <h3>Step 1: <Link href="/sign-up" className="text-blue-700">Create Account</Link></h3>
                             <p className="mt-2">Applicant needs to have an account in order to proceed with the application process.
                                 If you do not have an existing account: Click 
-                                <span className="text-blue-700 underline"><Link href="/sign-up"> here </Link></span>to create one
+                                <Link href="/sign-up" className="text-blue-700 underline"> here </Link>to create one
                             </p>
                         </div>
                         <div className="step-wrapper step-wrapper-even w-2/5">
-                            <h3>Step 2: <span className="text-blue-700"><Link href="/sign-in">Sign in</Link></span></h3>
+                            <h3>Step 2: <Link href="/sign-in" className="text-blue-700">Sign in</Link></h3>
                             <p className="mt-2">After signing up for an account you can then login to start with the application.
                                 If you already have an account, 
-                                <span className="text-blue-700 underline"><Link href="/sign-in"> sign-in here </Link></span>
+                                <Link href="/sign-in" className="text-blue-700"> sign-in here </Link>
                                 to start your application
                             </p>
                         </div>

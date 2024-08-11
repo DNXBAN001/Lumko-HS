@@ -22,13 +22,17 @@
     ## 08 Aug 2024 (16h48)
     - Add the information about not accepting grade 9 to 11 applications
 
+## 09 Aug (23h18)
 5. Gallery Page
+    - Download the gallery images , once I have the images then I can create json placeholder data
+    - Implement the filter functionality to filter images by year and category
 
 6. News Page
 
 ## 09 Aug 2024 (18h20)
 7. Staff Page
     - Get staff images, once I have the images then I can create json placeholder data 
+    - Make sure the page is responsive 
 
 ## 07 Aug 2024 (23h48)
 8. Contact Page

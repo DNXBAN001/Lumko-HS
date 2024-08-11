@@ -4,7 +4,7 @@ export default function News() {
     
     return (
         <div className="main-body">
-            News Page
+            News Page - Coming soon
         </div>
     )
 }
