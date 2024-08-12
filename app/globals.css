@@ -12,6 +12,7 @@ body{
 .navbar-container{
   color: rgb(255, 255, 255);
   /* border-bottom: 2px solid #b22222; */
+  z-index: 10;
 }
 .navbar-container p:hover{
   /* color: rgb(167, 10, 10) */
@@ -88,13 +89,13 @@ h1, h3{
   /* color: #000000; */
   
 }
-.email-field, .password-field{
+.firstName-field, .lastName-field, .email-field, .password-field, .phone-field{
   text-indent: 10px;
   border: 1px solid gray;
   background: rgb(238, 236, 236);
 }
 
-.submit-button{
+.submit-button, .signup-button{
   border: 1px solid gray;
   background: #a80404;
   color: #ffffff;
@@ -217,6 +218,16 @@ h1, h3{
 @media (max-width: 810px){
   .auth-container .form-wrapper{
     width: 60%;
+  }
+  .row-arranged{
+    flex-direction: column;
+  }
+  .row-arranged .firstName-container, 
+  .row-arranged .lastName-container,
+  .row-arranged .email-container,
+  .row-arranged .phone-container,
+  .row-arranged .password-container{
+    width: 100%;
   }
 }
 @media (max-width: 670px){

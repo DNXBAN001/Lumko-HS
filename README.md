@@ -39,10 +39,22 @@
     - Add Banking details to the page.
     - Also ask for a feedback from the client if there's anything else they would like to add
 
+## 12 Aug 2024 (02h53)
 9. Sign In Page
+    - Sign in Form UI is fine
+    - Need to implement Login functionality
 
-## Deploy on Vercel
+## 12 Aug 2024 (02h53)
+10. Signup Page
+    - Form input fields need to be responsive
+    - Read more link: to allow user to read privacy policy before signing up
+    - Need to implement Sign up functionality
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 12 Aug 2024 (02h53)
+11. Forgot Password Page
+    - Create the Forgot Password form
+    - Need to implement Forgot Password functionality
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 
+12. Application Form
+
