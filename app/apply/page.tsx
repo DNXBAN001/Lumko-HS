@@ -1,15 +1,39 @@
-// "use client"
+"use client"
 
 import React from 'react'
 import Image from "next/image"
-import { allowApplication } from './actions'
+// import { allowApplication } from './actions'
+// import { useFormStatus, useFormState } from 'react-dom'
+import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
+
+const initialState = {
+    message: ""
+  }
 
 export default function ApplyPage() {
 
-    // const [state, formAction] = React.useActionState(allowApplication, initialState)
-    
-    // console.log(state)
+    const [gradeApplyingFor, setGradeApplyingFor] = React.useState({
+        grade: "",
+    })
+    const router = useRouter()
+
+    function handleChange(event: any){
+        const {name, type, value, checked} = event.target
+        setGradeApplyingFor(prevState => ({
+            ...prevState,
+            [name]: type === "checkbox" ? checked: value
+        }
+        ))
+    }
+    function handleSubmit(event: any){
+        event.preventDefault()
+        if(gradeApplyingFor.grade === "8"){
+            console.log("Next button clicked, grade is: ",gradeApplyingFor.grade)
+            router.push("/apply/fill-form")
+        }
+    }
 
     return (
         <div className='main-body'> 
@@ -33,38 +57,55 @@ export default function ApplyPage() {
                 </ol>
                 <p className="mt-12">Also, it is important to note that any Information provided in this application 
                     which is found<br/> to be false or incorrect, may lead to the cancellation of the application</p>
-                <form action={allowApplication}><div className="mt-12">
-                    <p>Select the grade you are applying for below:</p>
-                    <div className="mt-4">
-                        <input type="radio" name="grade" id="grade-8" required
-                        className='grade-input' value="8"
-                        />
-                        <label htmlFor="grade-8">Grade 8</label>
+                <form onSubmit={handleSubmit}>
+                    <div className="mt-12">
+                        <p>Select the grade you are applying for below:</p>
+                        <div className="mt-4">
+                            <input type="radio" name="grade" id="grade-8" required 
+                            className='grade-input' value="8" checked={gradeApplyingFor.grade === "8"} onChange={handleChange}
+                            />
+                            <label htmlFor="grade-8">Grade 8</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="grade" id="grade-9" required
+                            className='grade-input' value="9" checked={gradeApplyingFor.grade === "9"} onChange={handleChange}
+                            />
+                            <label htmlFor="grade-9">Grade 9</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="grade" id="grade-10" required 
+                            className='grade-input' value="10" checked={gradeApplyingFor.grade === "10"} onChange={handleChange}
+                            />
+                            <label htmlFor="grade-10">Grade 10</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="grade" id="grade-11" required
+                            className='grade-input' value="11" checked={gradeApplyingFor.grade === "11"} onChange={handleChange}
+                            />
+                            <label htmlFor="grade-11">Grade 11</label>
+                        </div>
+                        {gradeApplyingFor.grade !== "8" && gradeApplyingFor.grade !== "" ? 
+                        (<p aria-live="polite" className="not-sr-only">
+                            Sorry, our school is currently not accepting any Grade {gradeApplyingFor.grade} applications
+                        </p>): <p></p>}
                     </div>
-                    <div>
-                        <input type="radio" name="grade" id="grade-9" required
-                        className='grade-input' value="9"
-                        />
-                        <label htmlFor="grade-9">Grade 9</label>
+                    <div className="my-12">
+                        <button type="submit" className="bg-red-800 text-white px-12 py-2">Next</button>
                     </div>
-                    <div>
-                        <input type="radio" name="grade" id="grade-10" required
-                        className='grade-input' value="10"
-                        />
-                        <label htmlFor="grade-10">Grade 10</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="grade" id="grade-11" required
-                        className='grade-input' value="11"
-                        />
-                        <label htmlFor="grade-11">Grade 11</label>
-                    </div>
-                </div>
-                <div className="my-12">
-                    <button type="submit" className="bg-red-800 text-white px-12 py-2">Next</button>
-                </div>
                 </form>
             </div>
         </div>
     )
 }
+// const [state, formAction] = useFormState(allowApplication, initialState)
+// <p aria-live="polite" className="not-sr-only">{state?.message}</p>
+
+// function SubmitButton() {
+//     const { pending } = useFormStatus()
+  
+//     return (
+//       <button type="submit" disabled={pending}>
+//         {pending ? 'Submitting...' : 'Submit'}
+//       </button>
+//     )
+//   }

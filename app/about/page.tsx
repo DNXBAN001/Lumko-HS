@@ -14,7 +14,7 @@ export default function About() {
                         <Image src="/logo-large.png" width={300} height={250} alt="logo-img" /> 
                     </div>
                     <div className="about-content w-3/5">
-                        <p>
+                        <p className="">
                             Lumko High School is a public secondary school located at 2A Longacre Rd, 
                             Amalinda, East London, 5247 in Eastern Cape Province. The school offers Grade 8-12 
                             education and has approximately 1059 students. 

@@ -1,15 +1,17 @@
 import Link from "next/link";
+import { createUser } from "./actions";
 
-export default function SignIn() {
+export default function Signup() {
+
     
     return (
         <div className="main-body">
-            <div className="auth-container pb-12">
+            <div className="auth-container signup-container pb-12">
                 <div className="empty-div w-2/5 m-auto pt-12"><p>.</p></div>
                 <div className="form-wrapper m-auto px-10 py-12">
                     <div className="text-center text-xl"><h3>Are you new here?</h3></div>
                     <div className="text-center mt-6"><p>Let us help you sign up. This will be quick.</p></div>
-                    <form className="">
+                    <form className="" action={createUser}>
                         <div className="row-arranged mt-12 flex justify-around">
                             <div className="firstName-container w-5/12">
                                 <label htmlFor="firstName-field" >First Name</label>
@@ -52,7 +54,7 @@ export default function SignIn() {
                             </div>
                             <div className="password-container w-5/12">
                                 <label htmlFor="password-field" >Confirm Password</label>
-                                <input type="password" name="password" required id="password-field"
+                                <input type="password" name="confirmPassword" required id="confirm-password-field"
                                     className="password-field w-full h-10 italic"
                                     placeholder="Confirm password"
                                 />
@@ -68,13 +70,13 @@ export default function SignIn() {
                             </p>
                         </div>
                         <div className="signup-button-wrapper mt-4 text-center w-full">
-                            <input type="submit" name="sign-up" value="Sign up"
+                            <input type="submit" name="signup" value="Sign up"
                                 className="signup-button px-12 py-1"
                             />
                         </div>
                     </form> 
                     <div className="w-4/5 m-auto mt-6 text-center">
-                        <p>Aleady have an account? <Link href="/sign-up" className="text-blue-600">Login here</Link></p>
+                        <p>Aleady have an account? <Link href="/sign-in" className="text-blue-600">Login here</Link></p>
                     </div>
                 </div>
             </div>

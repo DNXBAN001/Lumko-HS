@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
@@ -9,32 +10,41 @@ import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 export default function Navbar() {
 
     const [toggleMenu, setToggleMenu] = React.useState(false)
+    const pathname = usePathname()
 
     React.useEffect(()=> {
         console.log(toggleMenu)
     }, [toggleMenu])
 
-    const LeftMenuContent = (
+    const LeftMenuLinks = (
         <>
-            <p className="menu-items"><Link href="/">HOME</Link></p>
-            <p className="menu-items"><Link href="/about">ABOUT</Link></p>
-            <p className="menu-items"><Link href="/admissions">ADMISSIONS</Link></p>
-            <p className="menu-items"><Link href="/gallery">GALLERY</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">HOME</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/about' ? 'active' : ''}`} href="/about">ABOUT</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/admissions' ? 'active' : ''}`} href="/admissions">ADMISSIONS</Link></p>
+            <p className="menu-items">
+                <Link  className={`link ${pathname === '/gallery' ? 'active' : ''}`} href="/gallery">GALLERY</Link></p>
         </>
     )
-    const RightMenuContent = (
+    const RightMenuLinks = (
         <>
-            <p className="menu-items"><Link href="/news">NEWS</Link></p>
-            <p className="menu-items"><Link href="/staff">STAFF</Link></p>
-            <p className="menu-items"><Link href="/contact">CONTACT US</Link></p>
-            <p className="menu-items"><Link href="/sign-in">SIGN IN</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/news' ? 'active' : ''}`} href="/news">NEWS</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/staff' ? 'active' : ''}`} href="/staff">STAFF</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/contact' ? 'active' : ''}`} href="/contact">CONTACT US</Link></p>
+            <p className="menu-items">
+                <Link className={`link ${pathname === '/sign-in' ? 'active' : ''}`} href="/sign-in">SIGN IN</Link></p>
         </>
     )
 
     return (
         <nav className="navbar-container bg-blue-950 p-5 sticky w-full top-0">
             <div className="navbar flex justify-around items-center">
-                {LeftMenuContent}
+                {LeftMenuLinks}
                 <div>
                     <Link href="/">
                         <Image src="/logo-small.png"
@@ -46,7 +56,7 @@ export default function Navbar() {
                         />
                     </Link>
                 </div>
-                {RightMenuContent}
+                {RightMenuLinks}
 
                 {toggleMenu ? (<div className="menu-icon-wrapper" onClick={() => setToggleMenu(prevState => !prevState)}>
                     <CloseMenu className="hamburger-menu" size={40}/>
@@ -57,8 +67,8 @@ export default function Navbar() {
             </div>
             {toggleMenu ? (
                 <div className="menu-items-wrapper mt-8 flex flex-col items-center">
-                    {LeftMenuContent}
-                    {RightMenuContent}
+                    {LeftMenuLinks}
+                    {RightMenuLinks}
                 </div>
             ): <></>}
         </nav>

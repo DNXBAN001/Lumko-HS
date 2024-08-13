@@ -18,6 +18,12 @@ body{
   /* color: rgb(167, 10, 10) */
   color: #b22222;
 }
+.link:active {
+  color: #34D399;
+}
+.link:focus{
+  color: #b22222;
+}
 .menu-items{
   padding: 8px;
 }
@@ -76,7 +82,7 @@ h1, h3{
 }
 /***************Sign-in Page***********************/
 .auth-container{
-  height: 80%;
+  height: 90vh;
   background-image: url("/banner-2-reduced.jpg");
   background-size: cover;
   opacity: 0.75;
@@ -94,12 +100,23 @@ h1, h3{
   border: 1px solid gray;
   background: rgb(238, 236, 236);
 }
-
+.signup-container{
+  height: 90%;
+}
 .submit-button, .signup-button{
   border: 1px solid gray;
   background: #a80404;
   color: #ffffff;
   border-radius: 8px;
+}
+.forgot-password-container{
+  height: 100vh;
+}
+.forgot-password-container .submit-button-container{
+  border: 1px solid gray;
+  border-radius: 8px;
+  background: #a80404;
+  color: #ffffff;
 }
 
 
@@ -111,10 +128,16 @@ h1, h3{
 /****************Media Queries*************/
 @media (max-width: 1150px){
   .auth-container{
+    height: 90vh;
+  }
+  .signup-container{
     height: 100%;
   }
   .auth-container .form-wrapper{
     width: 50%;
+  }
+  .forgot-password-container{
+    height: 100vh;
   }
 }
 
@@ -203,7 +226,11 @@ h1, h3{
     margin-left: 0;
    }
    /*************************/
-   .principal-welcome-wrapper, .admissions-container, .gallery-container, .staff-wrapper, .contact-container{
+   .principal-welcome-wrapper, 
+   .admissions-container, 
+   .gallery-container, 
+   .staff-wrapper, 
+   .contact-container{
     width: 100%;
     padding-left: 5px;
     padding-right: 5px;

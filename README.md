@@ -3,7 +3,6 @@
 ## 06 Aug 2024 (02h26)
 1. Navbar
     - Choose nice font that matches well with the design
-    - Need to show the active link item
     - When screen size is small, toggled menu link-items must disappear once the user click on one of the link-items
     - Other than these i think Navbar is fine
 
@@ -41,20 +40,23 @@
 
 ## 12 Aug 2024 (02h53)
 9. Sign In Page
-    - Sign in Form UI is fine
     - Need to implement Login functionality
 
 ## 12 Aug 2024 (02h53)
 10. Signup Page
-    - Form input fields need to be responsive
     - Read more link: to allow user to read privacy policy before signing up
     - Need to implement Sign up functionality
 
 ## 12 Aug 2024 (02h53)
 11. Forgot Password Page
-    - Create the Forgot Password form
     - Need to implement Forgot Password functionality
 
-## 
-12. Application Form
+## 13 Aug 2024 (04h05)
+12. Application Page
+    - Need to protect the /apply/fill-form route with a middleware so that user can first 
+        get through /apply before they can have access to /apply/fill-form
+    - Create the application form
+
+##
+13. Admin Dashboard
 
