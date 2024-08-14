@@ -59,37 +59,37 @@ export default function ApplyPage() {
                     which is found<br/> to be false or incorrect, may lead to the cancellation of the application</p>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-12">
-                        <p>Select the grade you are applying for below:</p>
+                        <p className="font-bold">Select the grade you are applying for below:</p>
                         <div className="mt-4">
                             <input type="radio" name="grade" id="grade-8" required 
                             className='grade-input' value="8" checked={gradeApplyingFor.grade === "8"} onChange={handleChange}
                             />
-                            <label htmlFor="grade-8">Grade 8</label>
+                            <label htmlFor="grade-8" className="ml-2">Grade 8</label>
                         </div>
-                        <div>
+                        <div className="mt-2">
                             <input type="radio" name="grade" id="grade-9" required
                             className='grade-input' value="9" checked={gradeApplyingFor.grade === "9"} onChange={handleChange}
                             />
-                            <label htmlFor="grade-9">Grade 9</label>
+                            <label htmlFor="grade-9" className="ml-2">Grade 9</label>
                         </div>
-                        <div>
+                        <div className="mt-2">
                             <input type="radio" name="grade" id="grade-10" required 
                             className='grade-input' value="10" checked={gradeApplyingFor.grade === "10"} onChange={handleChange}
                             />
-                            <label htmlFor="grade-10">Grade 10</label>
+                            <label htmlFor="grade-10" className="ml-2">Grade 10</label>
                         </div>
-                        <div>
+                        <div className="mt-2">
                             <input type="radio" name="grade" id="grade-11" required
                             className='grade-input' value="11" checked={gradeApplyingFor.grade === "11"} onChange={handleChange}
                             />
-                            <label htmlFor="grade-11">Grade 11</label>
+                            <label htmlFor="grade-11" className="ml-2">Grade 11</label>
                         </div>
                         {gradeApplyingFor.grade !== "8" && gradeApplyingFor.grade !== "" ? 
-                        (<p aria-live="polite" className="not-sr-only">
+                        (<p aria-live="polite" className="not-sr-only font-bold bg-red-400 mt-8 w-2/5">
                             Sorry, our school is currently not accepting any Grade {gradeApplyingFor.grade} applications
                         </p>): <p></p>}
                     </div>
-                    <div className="my-12">
+                    <div className="next-button my-12 active">
                         <button type="submit" className="bg-red-800 text-white px-12 py-2">Next</button>
                     </div>
                 </form>
