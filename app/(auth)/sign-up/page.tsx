@@ -12,7 +12,7 @@ export default function Signup() {
                     <div className="text-center text-xl"><h3>Are you new here?</h3></div>
                     <div className="text-center mt-6"><p>Let us help you sign up. This will be quick.</p></div>
                     <form className="" action={createUser}>
-                        <div className="row-arranged mt-12 flex justify-around">
+                        <div className="row-arranged fullName-wrapper mt-12 flex justify-around">
                             <div className="firstName-container w-5/12">
                                 <label htmlFor="firstName-field" >First Name</label>
                                 <input type="text" name="firstName" required id="firstName-field"
@@ -28,7 +28,7 @@ export default function Signup() {
                                 />
                             </div>
                         </div>
-                        <div className="row-arranged mt-6 flex justify-around">
+                        <div className="row-arranged contacts-wrapper mt-6 flex justify-around">
                             <div className="email-container w-5/12">
                                 <label htmlFor="email-field" >Email</label>
                                 <input type="email" name="email" required id="email-field"
@@ -44,7 +44,7 @@ export default function Signup() {
                                 />
                             </div>
                         </div>
-                        <div className="row-arranged mt-6 flex justify-around">
+                        <div className="row-arranged passwords-wrapper mt-6 flex justify-around">
                             <div className="password-container w-5/12">
                                 <label htmlFor="password-field" >Password</label>
                                 <input type="password" name="password" required id="password-field"
@@ -52,7 +52,7 @@ export default function Signup() {
                                     placeholder="Enter password"
                                 />
                             </div>
-                            <div className="password-container w-5/12">
+                            <div className="confirmPassword-container w-5/12">
                                 <label htmlFor="password-field" >Confirm Password</label>
                                 <input type="password" name="confirmPassword" required id="confirm-password-field"
                                     className="password-field w-full h-10 italic"

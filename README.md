@@ -23,7 +23,6 @@
 
 ## 09 Aug (23h18)
 5. Gallery Page
-    - banner image need to be renamed
     - Download the gallery images , once I have the images then I can create json placeholder data
     - Implement the filter functionality to filter images by year and category
 

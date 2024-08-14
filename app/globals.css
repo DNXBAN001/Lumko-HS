@@ -82,7 +82,7 @@ h1, h3{
 }
 /***************Sign-in Page***********************/
 .auth-container{
-  height: 90vh;
+  min-height: 100vh;
   background-image: url("/banner-2-reduced.jpg");
   background-size: cover;
   opacity: 0.75;
@@ -253,8 +253,15 @@ h1, h3{
   .row-arranged .lastName-container,
   .row-arranged .email-container,
   .row-arranged .phone-container,
-  .row-arranged .password-container{
+  .row-arranged .password-container, .confirmPassword-container{
     width: 100%;
+  }
+  .lastName-container,
+  .contacts-wrapper, 
+  .passwords-wrapper,  
+  .phone-container, 
+  .confirmPassword-container{
+    margin-top: 10px;
   }
 }
 @media (max-width: 670px){
@@ -269,7 +276,7 @@ h1, h3{
 }
 @media (max-width: 480px){
   .auth-container .form-wrapper{
-    width: 90%;
+    width: 98%;
     padding-left: 10px;
     padding-right: 10px
   }
