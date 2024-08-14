@@ -37,7 +37,7 @@ export default function ApplyPage() {
 
     return (
         <div className='main-body'> 
-            <div className="mt-12 w-4/5 m-auto flex">
+            <div className="apply-wrapper mt-12 w-4/5 m-auto flex">
                 <div>
                     <Image src="/logo-large.png" width={100} height={100} alt="logo-img" />
                 </div>
@@ -45,7 +45,7 @@ export default function ApplyPage() {
                     <h1 className="text-3xl">Lumko High School</h1>
                 </div>
             </div>
-            <div className='mt-12 w-4/5 m-auto'>
+            <div className="apply-wrapper mt-12 w-4/5 m-auto">
                 <p>Before you click on the Next button, make sure you have the following documents on your computer<br/>
                      or mobile phone:</p>
                 <ol className="mt-8 ml-12 list-decimal ">
@@ -85,7 +85,7 @@ export default function ApplyPage() {
                             <label htmlFor="grade-11" className="ml-2">Grade 11</label>
                         </div>
                         {gradeApplyingFor.grade !== "8" && gradeApplyingFor.grade !== "" ? 
-                        (<p aria-live="polite" className="not-sr-only font-bold bg-red-400 mt-8 w-2/5">
+                        (<p aria-live="polite" className="notAllowed-message not-sr-only font-bold bg-red-400 mt-8 w-auto md:w-2/5 ">
                             Sorry, our school is currently not accepting any Grade {gradeApplyingFor.grade} applications
                         </p>): <p></p>}
                     </div>

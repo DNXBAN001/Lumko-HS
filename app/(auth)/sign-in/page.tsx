@@ -9,7 +9,7 @@ export default function SignIn() {
                 <div className="form-wrapper m-auto p-12">
                     <div className="text-center text-xl"><h3>Hi there... Let us get started</h3></div>
                     <div className="text-center mt-6"><p>Sign in to continue with your application</p></div>
-                    <form className="">
+                    <form className="form-container">
                         <div className="email-container w-4/5 m-auto mt-8">
                             <label htmlFor="email-field" >Email</label>
                             <input type="email" name="email" required id="email-field"

@@ -268,17 +268,13 @@ h1, h3{
   .auth-container .form-wrapper{
     width: 70%;
   }
+  .form-container div{
+    width: 95%
+  }
 }
 @media (max-width: 580px){
   .auth-container .form-wrapper{
     width: 80%;
-  }
-}
-@media (max-width: 480px){
-  .auth-container .form-wrapper{
-    width: 98%;
-    padding-left: 10px;
-    padding-right: 10px
   }
 }
 
@@ -288,4 +284,17 @@ h1, h3{
     padding-right: 5px;
   }
   
+}
+@media (max-width: 480px){
+  .auth-container .form-wrapper{
+    width: 98%;
+    padding-left: 10px;
+    padding-right: 10px
+  }
+  /***************/
+  .apply-wrapper{
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px
+  }
 }
