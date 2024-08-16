@@ -45,7 +45,10 @@
 ## 12 Aug 2024 (02h53)
 10. Signup Page
     - Read more link: to allow user to read privacy policy before signing up
-    - Need to implement Sign up functionality
+    ## 16 Aug (02h28)
+    - Show message when the user is trying to signup with an email that is already in us (email must be unique)
+    - Compare password and confirmPassword, show message if they do not match
+    - Fix the isLoading implementation for the signup button
 
 ## 12 Aug 2024 (02h53)
 11. Forgot Password Page

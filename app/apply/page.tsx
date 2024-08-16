@@ -89,8 +89,8 @@ export default function ApplyPage() {
                             Sorry, our school is currently not accepting any Grade {gradeApplyingFor.grade} applications
                         </p>): <p></p>}
                     </div>
-                    <div className="next-button my-12 active">
-                        <button type="submit" className="bg-red-800 text-white px-12 py-2">Next</button>
+                    <div className="next-button my-12">
+                        <button type="submit" className="bg-red-800 text-white px-12 py-2 active">Next</button>
                     </div>
                 </form>
             </div>
