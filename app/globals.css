@@ -80,7 +80,7 @@ h1, h3{
   border: 1px solid #000000;
   border-radius: 10px;
 }
-/***************Sign-in Page***********************/
+/***************Auth Pages***********************/
 .auth-container{
   min-height: 100vh;
   background-image: url("/banner-2-reduced.jpg");
@@ -92,8 +92,9 @@ h1, h3{
   background: #ffffff;
   border: 1px solid grey;
   border-radius: 20px;
-  /* color: #000000; */
-  
+}
+.login-button:active{
+  padding: 3.5px 15px;
 }
 .firstName-field, .lastName-field, .email-field, .password-field, .phone-field{
   text-indent: 10px;
@@ -118,6 +119,10 @@ h1, h3{
   background: #a80404;
   color: #ffffff;
 }
+.forgot-password-submit-button:active{
+  border-radius: 7px;
+  padding: 7px 0px;
+}
 .signup-button:active{
   padding: 3.5px 47.5px;
 }
@@ -125,8 +130,14 @@ h1, h3{
   border-radius: 5px;
   padding: 7.5px 47.5px;
 }
-
-
+/***************Application Form**************************/
+.subject-mark{
+  border: 1px solid gray
+}
+.next-button:active{
+  border-radius: 5px;
+  font-size: 15px;
+}
 
 
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function News() {
     
     return (
-        <div className="main-body">
+        <div className="main-body h-screen">
             News Page - Coming soon
         </div>
     )

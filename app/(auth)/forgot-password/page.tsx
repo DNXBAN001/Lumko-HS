@@ -20,7 +20,7 @@ export default function ForgotPassword() {
                         </div>
                         <div className='submit-button-container w-4/5 m-auto mt-8 text-center'>
                             <input type="submit" name="forgot-password" value="Submit" 
-                                className="forgot-password-submit-button py-2"
+                                className="forgot-password-submit-button py-2 active"
                             />
                         </div>
                     </form> 

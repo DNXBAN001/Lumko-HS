@@ -24,7 +24,7 @@ export default function Staff() {
                             <p>Staff Name</p>
                         </div>
                     </div>
-                    <div className="cards-wrapper flex justify-between mt-12">
+                    {/* <div className="cards-wrapper flex justify-between mt-12">
                         <div className="staff-card">
                             <Image src="/staff-photo.jpg" width={300} height={300} className="teacher-img" alt="staff-photo" />
                             <p>Staff Name</p>
@@ -37,7 +37,7 @@ export default function Staff() {
                             <Image src="/staff-photo.jpg" width={300} height={300} className="teacher-img" alt="staff-photo" />
                             <p>Staff Name</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -23,15 +23,12 @@ export async function createUser(/*prevState: any,*/ formData: FormData) {
     }
 
     try{
-        console.log("test 1")
         const hashedPassword = await bcrypt.hash(JSON.stringify(password), 10)
         console.log(hashedPassword)
         await sql`
             INSERT INTO Users (firstName, lastName, email, phone, password) 
             VALUES (${JSON.stringify(firstName)}, ${JSON.stringify(lastName)}, 
             ${JSON.stringify(email)}, ${JSON.stringify(phone)}, ${JSON.stringify(hashedPassword)});`;
-
-        console.log("test 2")
     }catch(err){
         return {
             message: 'Database Error: Failed to Create User.',

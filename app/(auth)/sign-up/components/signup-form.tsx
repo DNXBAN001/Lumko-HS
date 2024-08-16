@@ -9,6 +9,10 @@ export default function SignupForm(props: any) {
     // const [isPending, formAction] = React.useActionState(createUser, undefined)
     const [isLoading, setIsLoading] = React.useState(false)
 
+    React.useEffect(() => {
+        console.log("Is loading has chaged to: ", isLoading)
+    }, [isLoading])
+
     function handleSignupButton(){
         setIsLoading(true)
         setTimeout(() => {

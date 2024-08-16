@@ -49,6 +49,9 @@
     - Show message when the user is trying to signup with an email that is already in us (email must be unique)
     - Compare password and confirmPassword, show message if they do not match
     - Fix the isLoading implementation for the signup button
+    - Add on the action the functionality for first creating the table if it doesn't exist, creating the table,
+     then inserting the users follow
+    - Fix the userRole, ansure the first user to signup is "admin", then "applicant" 
 
 ## 12 Aug 2024 (02h53)
 11. Forgot Password Page
@@ -59,6 +62,9 @@
     - Need to protect the /apply/fill-form route with a middleware so that user can first 
         get through /apply before they can have access to /apply/fill-form
     - Create the application form
+    ## 16 Aug 2024 (02h41)
+    - On the /apply page, make the decision of whther or not the user must be redirected to the /apply/fill-form
+    based on the numbers you got from the DB
 
 ##
 13. Admin Dashboard

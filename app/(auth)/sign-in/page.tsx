@@ -24,9 +24,9 @@ export default function SignIn() {
                                 placeholder="Enter password here"
                             />
                         </div>
-                        <div className="submit-button-wrapper w-4/5 m-auto mt-8 flex justify-between">
+                        <div className="login-button-wrapper w-4/5 m-auto mt-8 flex justify-between">
                             <input type="submit" name="sign-in-button" value="Sign in" 
-                                className="submit-button py-1 px-4"
+                                className="login-button submit-button py-1 px-4 active"
                             />
                             <p><Link href="/forgot-password" className="text-blue-600">Forgot password?</Link></p>
                         </div>
