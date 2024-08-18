@@ -58,7 +58,7 @@ export default function FatherInfo() {
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="fatherLastName" required onChange={handleChange}
-                        className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="father surname"
+                        className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Father surname"
                     />
                 </div>
             </div>

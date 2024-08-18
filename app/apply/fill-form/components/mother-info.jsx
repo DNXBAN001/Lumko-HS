@@ -46,7 +46,6 @@ export default function MotherInfo() {
                     <option value="">--Choose Title--</option>
                     <option value="Ms.">Ms</option>
                     <option value="Mrs.">Mrs</option>
-                    <option value="Mr.">Mr</option>
                     <option value="Dr.">Dr</option>
                     <option value="Adv">Adv</option>
                     <option value="Prof.">Prof</option>
