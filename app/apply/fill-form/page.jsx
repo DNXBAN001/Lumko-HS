@@ -1,8 +1,9 @@
 "use client"
 
 import React from 'react';
-import Applicantinfo from "./components/applicant-info.jsx";
-import ParentsInfo from "./components/parents-info.jsx";
+import ApplicantInfo from "./components/applicant-info.jsx";
+import MotherInfo from "./components/mother-info.jsx";
+import FatherInfo from "./components/father-info.jsx";
 import { BsArrowLeft,  BsArrowRight} from 'react-icons/bs'
 
 export default function ApplicationForm() {
@@ -31,10 +32,9 @@ export default function ApplicationForm() {
     <div className='main-body min-h-screen'>
       <div className="w-full px-2 sm:w-4/5 m-auto">
         <div className="mt-12"><h1 className="text-3xl">You are signed in as: {user.firstName}</h1></div>
-        {
-          step === 1 ? (<Applicantinfo />):
-          (<ParentsInfo />)
-        }
+        { step === 1 && <ApplicantInfo /> }
+        { step === 2 && <MotherInfo /> }
+        { step === 3 && <FatherInfo /> }
         <div className={step === 1 ? "": 'flex justify-between md:justify-around'}>
                 {step > 1 &&<div className="mt-10 mb-12" onClick={handlePrevious}>
                     <button className="next-button bg-red-700 text-white w-28 px-2 py-2 flex justify-around items-center active">
