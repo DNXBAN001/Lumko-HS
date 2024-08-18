@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { subjects } from "@/utils/subjects";
-import { BsArrowRight } from 'react-icons/bs';
 
 export default function ApplicantInfo() {
 
@@ -66,7 +64,7 @@ export default function ApplicantInfo() {
             </div>
             <div className="input-wrapper w-full">
               <input type="text" name="previousSchoolsYear" required 
-                className="bg-gray-100 w-4/6 px-3 p-2" placeholder="Year of attended previous school"
+                className="bg-gray-100 w-4/6 px-3 p-2" placeholder="Year attended previous school"
                 />
             </div>
           </div>
@@ -84,12 +82,12 @@ export default function ApplicantInfo() {
           </div>
           <div className="address-achievements mt-4 flex">
             <div className="input-wrapper w-full">
-              <textarea name="physicalAddress" rows={7} required 
+              <textarea name="physicalAddress" rows={5} required 
                 className="bg-gray-100 w-4/5 px-3 p-2" placeholder="Physical Address"
-                />
+              />
             </div>
             <div className="input-wrapper w-full">
-              <textarea name="otherAchievements" rows={7} required 
+              <textarea name="otherAchievements" rows={5}
                 className="bg-gray-100 w-4/5 px-3 p-2" placeholder="Sports and Cultural Highlights Achieved"
                 />
             </div>
@@ -97,11 +95,6 @@ export default function ApplicantInfo() {
           <div className='mt-6'>
             <h3 className="text-black font-semibold mb-10">Latest report marks</h3>
             {subjectsContent}
-          </div>
-          <div className="mt-10 mb-12">
-            <button className="next-button bg-red-700 text-white w-28 px-2 py-2 flex justify-around items-center active">
-                <div>Next</div> <BsArrowRight classname=""/>
-            </button>
           </div>
         </div>
     )

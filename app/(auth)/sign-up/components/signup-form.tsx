@@ -82,7 +82,7 @@ export default function SignupForm(props: any) {
             </div>
             <div className="signup-button-wrapper mt-4 text-center w-full" onClick={handleSignupButton}>
                 <input type="submit" name="signup" value={isLoading ? "submitting...": "Sign up"} disabled={isLoading}
-                    className="signup-button px-12 py-1 active"
+                    className="signup-button px-12 py-1"
                 />
             </div>
         </form>

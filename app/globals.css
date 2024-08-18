@@ -18,12 +18,13 @@ body{
   /* color: rgb(167, 10, 10) */
   color: #b22222;
 }
-.link:active {
-  color: #34D399;
-}
 .link:focus{
   color: #b22222;
 }
+.link:active {
+  color: #34D399;
+}
+
 .menu-items{
   padding: 8px;
 }
@@ -137,6 +138,10 @@ h1, h3{
 .next-button:active{
   border-radius: 5px;
   font-size: 15px;
+}
+
+.input-wrapper{
+  /* border: 1px solid blue; */
 }
 
 
