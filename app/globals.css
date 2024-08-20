@@ -139,9 +139,34 @@ h1, h3{
   border-radius: 5px;
   font-size: 15px;
 }
-
-.input-wrapper{
-  /* border: 1px solid blue; */
+/*************Admin Dashboard**************************/
+.admin-header-container{
+  border-bottom: 1px solid gray;
+  position: fixed;
+  width: 98%;
+  top: 16px;
+  z-index: 3;
+  left: 16px;
+  /* right: 32px; */
+}
+.category:focus{
+  /* background: #b22222; */
+}
+.main-admin-view{
+  border: 1px solid red;
+  margin-left: 310px;
+  margin-top: 114px;
+}
+.left-sidebar{
+  width: 305px;
+  position: fixed;
+  top: 160px;
+  z-index: 2;
+}
+.logout-button{
+  position: fixed;
+  /* top: 300px; */
+  bottom: 20px;
 }
 
 

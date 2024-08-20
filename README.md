@@ -38,20 +38,20 @@
     - Add Banking details to the page.
     - Also ask for a feedback from the client if there's anything else they would like to add
 
-## 12 Aug 2024 (02h53)
+## 19 Aug 2024 (23h11)
 9. Sign In Page
-    - Need to implement Login functionality
+    - User can be authenticated, need to send error messages to display on the Client
+    for when the account does not exist, or password is wrong
+    - Also consider converting input values to all lowerCase
 
 ## 12 Aug 2024 (02h53)
 10. Signup Page
     - Read more link: to allow user to read privacy policy before signing up
-    ## 16 Aug (02h28)
+    ## 19 Aug (23h15)
     - Show message when the user is trying to signup with an email that is already in us (email must be unique)
     - Compare password and confirmPassword, show message if they do not match
-    - Fix the isLoading implementation for the signup button
     - Add on the action the functionality for first creating the table if it doesn't exist, creating the table,
      then inserting the users follow
-    - Fix the userRole, ansure the first user to signup is "admin", then "applicant" 
 
 ## 12 Aug 2024 (02h53)
 11. Forgot Password Page
@@ -61,9 +61,8 @@
 12. Application Page
     - Need to protect the /apply/fill-form route with a middleware so that user can first 
         get through /apply before they can have access to /apply/fill-form
-    - Create the application form
     ## 16 Aug 2024 (02h41)
-    - On the /apply page, make the decision of whther or not the user must be redirected to the /apply/fill-form
+    - On the /apply page, make the decision of whether or not the user must be redirected to the /apply/fill-form
     based on the numbers you got from the DB
 
 ##
