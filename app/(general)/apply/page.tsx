@@ -90,7 +90,7 @@ export default function ApplyPage() {
                         </p>): <p></p>}
                     </div>
                     <div className="next-button my-12">
-                        <button type="submit" className="bg-red-800 text-white px-12 py-2 active">Next</button>
+                        <button type="submit" className="bg-red-900 text-white px-12 py-2 active">Next</button>
                     </div>
                 </form>
             </div>
@@ -99,13 +99,3 @@ export default function ApplyPage() {
 }
 // const [state, formAction] = useFormState(allowApplication, initialState)
 // <p aria-live="polite" className="not-sr-only">{state?.message}</p>
-
-// function SubmitButton() {
-//     const { pending } = useFormStatus()
-  
-//     return (
-//       <button type="submit" disabled={pending}>
-//         {pending ? 'Submitting...' : 'Submit'}
-//       </button>
-//     )
-//   }

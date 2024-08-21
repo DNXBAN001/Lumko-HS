@@ -39,12 +39,12 @@ export default function ApplicationForm() {
         { step === 4 && <FatherInfo /> }
         <div className={step === 1 ? "": 'flex justify-between md:justify-around'}>
                 {step > 1 &&<div className="mt-10 mb-12" onClick={handlePrevious}>
-                    <button className="next-button bg-red-700 text-white w-28 px-2 py-2 flex justify-around items-center active">
+                    <button className="next-button bg-red-900 text-white w-28 px-2 py-2 flex justify-around items-center active">
                         <BsArrowLeft className=""/><div>Previous</div> 
                     </button>
                 </div>}
                 <div className="mt-10 mb-12" onClick={handleNext}>
-                    <button className="next-button bg-red-700 text-white w-28 px-2 py-2 flex justify-around items-center active">
+                    <button className="next-button bg-red-900 text-white w-28 px-2 py-2 flex justify-around items-center active">
                         <div>Next</div> <BsArrowRight className=""/>
                     </button>
                 </div>

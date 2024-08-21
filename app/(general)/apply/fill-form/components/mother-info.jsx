@@ -33,7 +33,8 @@ export default function MotherInfo() {
 
     return (
         <div className="mt-12">
-            <h3>Parents Information</h3>
+            <h3 className="font-semibold">Parents Information</h3>
+            <h3 className="mt-4 text-black font-semibold">Mother/Guardian Info</h3>
             <div className="mt-5">
                 <select 
                     id="motherTitle"

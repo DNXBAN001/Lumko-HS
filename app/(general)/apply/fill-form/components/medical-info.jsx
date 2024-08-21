@@ -32,7 +32,7 @@ export default function FatherInfo() {
 
     return (
         <div className="mt-12">
-            <h3>Learner Medical Information</h3>
+            <h3 className="font-semibold">Learner Medical Information</h3>
             <div className="mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="medicalAidNumber" required onChange={handleChange}

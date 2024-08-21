@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "../(general)/components/Navbar";
+import Footer from "../(general)/components/Footer";
 
 
 export const metadata: Metadata = {
-  title: "Lumko High School",
-  description: "General Page",
+  title: "Lumko High School - Auth",
+  description: "Login",
 };
 
 export default function Layout({

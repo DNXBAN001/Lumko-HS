@@ -1,7 +1,7 @@
 import Image from "next/image";
-import WelcomeSection from "./(general)/components/welcome-section";
-import ValuesSection from "./(general)/components/values-section";
-import SlideshowSection from "./(general)/components/slideshow-section";
+import WelcomeSection from "./components/welcome-section";
+import ValuesSection from "./components/values-section";
+import SlideshowSection from "./components/slideshow-section";
 
 export default function Home() {
 

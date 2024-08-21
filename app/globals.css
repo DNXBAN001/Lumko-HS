@@ -34,48 +34,49 @@ body{
 
 /*************Main body - Home****************/
 h1, h3{
-  color: #b22222;
+  /* color: #b22222; */
+  color: #7f1d1d;
 }
 .principal-welcome-wrapper{
-  border-top: 1px solid #b22222;
+  border-top: 1px solid #7f1d1d;
 }
 .principal-welcome-wrapper .principal-image{
   border-radius: 10px;
 }
 .values-wrapper{
-  border-top: 1px solid #b22222;
+  border-top: 1px solid #7f1d1d;
 }
 .slideshow-section{
   background: #eee;
 }
 .footer-section{
-  background-color: #b22222;
+  background-color: #7f1d1d;
 }
 /***************About Us Page****************/
 .about-wrapper{
-  border-top: 1px solid #b22222;
+  border-top: 1px solid #7f1d1d;
 }
 .unordered-list{
   list-style: disc;
 }
 /***************Contact Page************************/
 .contact{
-  border-top: 1px solid #b22222;
+  border-top: 1px solid #7f1d1d;
 }
 /****************Admissions***********************/
 .admissions-container .application-info{
-  border-top: 1px solid #b22222
+  border-top: 1px solid #7f1d1d;
  }
  /******************************************/
  .staff-photos-container{
-  border-top: 1px solid #b22222;
+  border-top: 1px solid #7f1d1d;
  }
  .teacher-img{
   border-radius: 10px;
  }
  /********************************************/
  .gallery-year-filters{
-  border-top: 1px solid #b22222;
+  border-top: 1px solid #7f1d1d;
  }
 .filter-wrapper{
   border: 1px solid #000000;
@@ -122,7 +123,8 @@ h1, h3{
 }
 .forgot-password-submit-button:active{
   border-radius: 7px;
-  padding: 7px 0px;
+  /* padding: 7px 0px; */
+  padding: 3.5px 15px;
 }
 .signup-button:active{
   padding: 3.5px 47.5px;
@@ -147,15 +149,6 @@ h1, h3{
   top: 16px;
   z-index: 3;
   left: 16px;
-  /* right: 32px; */
-}
-.category:focus{
-  /* background: #b22222; */
-}
-.main-admin-view{
-  border: 1px solid red;
-  margin-left: 310px;
-  margin-top: 114px;
 }
 .left-sidebar{
   width: 305px;
@@ -163,11 +156,30 @@ h1, h3{
   top: 160px;
   z-index: 2;
 }
+.admin-view:focus{
+  color: #7f1d1d;
+}
+.main-admin-view{
+  margin-left: 310px;
+  margin-top: 114px;
+}
 .logout-button{
   position: fixed;
-  /* top: 300px; */
   bottom: 20px;
 }
+.applications-by-school-table{
+  border: 1px solid #000000;
+  border-collapse: collapse;/*borders should be collapsed into a single border*/
+}
+th{
+  background-color: #a5a3a3;
+  border: 1px solid #000000;
+}
+td{
+  border: 1px solid #000000;
+}
+
+
 
 
 
