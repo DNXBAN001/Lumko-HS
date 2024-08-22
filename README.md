@@ -65,6 +65,19 @@
     - On the /apply page, make the decision of whether or not the user must be redirected to the /apply/fill-form
     based on the numbers you got from the DB
 
-##
+## 21 Aug 2024 (09h52)
 13. Admin Dashboard
+    - On Overview, count applications by school from the mock data
+    - On View Applications: - Sort applications list by descending average mark (from highest to lowest)
+                            - Implement the accept and reject functionality, update the status and class fields
+                            - Ensure that when the admin wants to view application by email you check either the learner's or mother's
+                            email
+    - On /admin/dashboard/view-applications/email
+        - Display applicant's full application info, including the uploaded documents
+        - Can verify the and update the application, accept or reject
+    - On Settings: - Admin must be able to choose the opening and closing date of applications
+                   - Admin must be able to specify how many applications the school is expecting
+                   for each grade, and how many classes are there per grade
 
+
+## Add the Past Papers page

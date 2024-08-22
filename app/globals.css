@@ -146,7 +146,7 @@ h1, h3{
   border-bottom: 1px solid gray;
   position: fixed;
   width: 98%;
-  top: 16px;
+  top: 0px;
   z-index: 3;
   left: 16px;
 }

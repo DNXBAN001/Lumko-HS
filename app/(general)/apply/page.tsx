@@ -2,15 +2,8 @@
 
 import React from 'react'
 import Image from "next/image"
-// import { allowApplication } from './actions'
-// import { useFormStatus, useFormState } from 'react-dom'
-// import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
-
-const initialState = {
-    message: ""
-  }
 
 export default function ApplyPage() {
 

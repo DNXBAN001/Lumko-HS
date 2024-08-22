@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function AdminHeader() {
     return (
-        <div className="admin-header-container bg-white flex justify-between items-center pb-4">
+        <div className="admin-header-container bg-white flex justify-between items-center py-4">
             <div className="flex items-center">
                 <Image src="/logo-large.png" width={100} height={100} alt="logo-img" />
                 <h1 className="text-3xl font-semibold ml-12">Admin / Dashboard</h1>
