@@ -7,14 +7,6 @@ import bcrypt from "bcrypt"
 
 export async function createUser(formData) {
  
-    // const rawFormData = {
-    //   firstName: formData.get("firstName")
-    //   , lastName: formData.get("lastName")
-    //   , email: formData.get("email")
-    //   , phone:formData.get("password")
-    //   , password: formData.get("password")
-    //   , confirmPassword: formData.get("confirmPassword")
-    // }
     const rawFormData = Object.fromEntries(formData)
     const { firstName, lastName, email, phone, password, confirmPassword } = rawFormData
     console.log(firstName)
@@ -26,14 +18,14 @@ export async function createUser(formData) {
     }
 
     try{
-      // await sql`CREATE TABLE users IF NOT EXISTS (
-      //             email varchar(255) NOT NULL PRIMARY KEY,
-      //             firstName varchar(255) NOT NULL,
-      //             lastName varchar(255) NOT NULL,
-      //             phone varchar(255) NOT NULL,
-      //             role varchar(10) NOT NULL,
-      //             password varchar(255) NOT NULL
-      //           );`
+      await sql`CREATE TABLE IF NOT EXISTS users (
+                  email varchar(255) NOT NULL PRIMARY KEY,
+                  firstName varchar(255) NOT NULL,
+                  lastName varchar(255) NOT NULL,
+                  phone varchar(255) NOT NULL,
+                  role varchar(20) NOT NULL,
+                  password varchar(255) NOT NULL
+                );`
       const result = await sql`SELECT email, password FROM users`
       //First user to signup is "admin", everyone else is "applicant"
       if(result.rows.length === 0) {
@@ -44,10 +36,8 @@ export async function createUser(formData) {
         console.log("User role was set to: ", role)
       }
       //Check if the email is not already in use
-      const userExist = result.rows.filter(ele => {
-        return ele.email === email
-      })
-      console.log(userExist)
+      const userExist = result.rows.filter(ele => ele.email === email)
+      // console.log(userExist)//when the user already exist, this will display the user obj
       if(userExist.length > 0){
         console.log("Email is already in use")
         return { message: "Email is already in use" }

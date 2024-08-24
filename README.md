@@ -81,3 +81,10 @@
 
 
 ## Add the Past Papers page
+
+
+
+
+"next": "14.3.0-canary.59",
+"react": "19.0.0-beta-4508873393-20240430",
+"react-dom": "19.0.0-beta-4508873393-20240430",
