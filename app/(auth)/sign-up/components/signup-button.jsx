@@ -2,7 +2,7 @@
 
 // import { useFormStatus } from 'react-dom';
 
-export default function LoginButton({pending}) {
+export default function SignupButton({pending}) {
     
     // const { pending, data } = useFormStatus()
 
@@ -10,7 +10,7 @@ export default function LoginButton({pending}) {
         <>
             <button type="submit" name="sign-in-button" disabled={pending}
                 className="login-button submit-button py-1 px-4 active"
-            >{pending ? "Signing in...": "Sign in"}</button>
+            >{pending ? "Signing up...": "Sign up"}</button>
         </>
     )
 }

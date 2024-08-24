@@ -2,43 +2,73 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useFormStatus } from 'react-dom';
-import { createUser } from '../actions';
-import { useCallback } from "react";
+import SignupButton from "./signup-button";
+import { useGlobalContext } from '@/utils/context';
+import { useRouter } from 'next/navigation';
 
 export default function SignupForm() {
 
-    const { pending, action, data, method } = useFormStatus();
-    const [errMsg, setErrMsg] = React.useState("")
+    const { setUser, isLoading, setIsLoading } = useGlobalContext();
+    const [resMsg, setResMsg] = React.useState("")
+    const router = useRouter()
+    const [formData, setFormData] = React.useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        password: ""
+    })
 
-    // const validateFormErrors = useCallback(async () => {
+    function handleChange(event){
+        const {name, value, type, checked} = event.target
+        setFormData(prevFormData => ({ 
+                ...prevFormData, 
+                [name]: type === "checkbox" ? checked: value
+            }
+        ))
 
-    //     try{
-    //         // console.log("test 1")
-    //         const { message } = await createUser()
-    //         // console.log("test 2")
-    //         setErrMsg(message)
-    //         console.log(message)
-    //     }catch(err){
-    //         console.log("Error from Client")
-    //     }
-    // })
-    // console.log(method)
+    }
+
+    async function handleSubmit(event){
+        event.preventDefault()
+        setIsLoading(true)
+        try{
+            const res = await fetch("/api/sign-up", {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            }).then(result => result.json())
+            setIsLoading(false)
+            console.log(res)
+            if(res.status === 201){
+                setResMsg(res.message)
+                if(res.user.role === "admin"){
+                    router.push("/admin/dashboard")
+                }else if(res.user.role === "applicant"){
+                    router.push("/apply")
+                }
+
+            }else{
+                setResMsg(res.message)
+            }
+        }catch(err){
+            alert("Unexpected error: "+err)
+        }
+    }
 
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <div className="row-arranged fullName-wrapper mt-12 flex justify-around">
                 <div className="firstName-container w-5/12">
                     <label htmlFor="firstName" >First Name</label>
                     <input type="text" name="firstName" required id="firstName"
-                        className="firstName-field w-full h-10 italic"
+                        className="firstName-field w-full h-10 italic" onChange={handleChange}
                         placeholder="Enter name"
                     />
                 </div>
                 <div className="lastName-container w-5/12">
                     <label htmlFor="lastName" >Last Name</label>
                     <input type="text" name="lastName" required id="lastName"
-                        className="lastName-field w-full h-10 italic"
+                        className="lastName-field w-full h-10 italic" onChange={handleChange}
                         placeholder="Enter last name"
                     />
                 </div>
@@ -47,14 +77,14 @@ export default function SignupForm() {
                 <div className="email-container w-5/12">
                     <label htmlFor="email" >Email</label>
                     <input type="email" name="email" required id="email"
-                        className="email-field w-full h-10 italic"
+                        className="email-field w-full h-10 italic" onChange={handleChange}
                         placeholder="Enter email"
                     />
                 </div>
                 <div className="phone-container w-5/12">
                     <label htmlFor="phone" >Phone</label>
                     <input type="text" name="phone" required id="phone"
-                        className="phone-field w-full h-10 italic"
+                        className="phone-field w-full h-10 italic" onChange={handleChange}
                         placeholder="Enter cell number"
                     />
                 </div>
@@ -63,21 +93,21 @@ export default function SignupForm() {
                 <div className="password-container w-5/12">
                     <label htmlFor="password" >Password</label>
                     <input type="password" name="password" required id="password"
-                        className="password-field w-full h-10 italic"
+                        className="password-field w-full h-10 italic" onChange={handleChange}
                         placeholder="Enter password"
                     />
                 </div>
                 <div className="confirmPassword-container w-5/12">
                     <label htmlFor="confirmPassword" >Confirm Password</label>
                     <input type="password" name="confirmPassword" required id="confirmPassword"
-                        className="password-field w-full h-10 italic"
+                        className="password-field w-full h-10 italic" onChange={handleChange}
                         placeholder="Confirm password"
                     />
                 </div>
             </div>
             <div className="privacy-policy-wrapper flex mt-8 ">
                 <input type="checkbox" name="privacy-policy" required
-                    className="checkbox-privacy-policy ml-1"
+                    className="checkbox-privacy-policy ml-1" onChange={handleChange}
                 />
                 <p className="ml-3">
                     I have read and agree to Lumko High School Privacy Policy.
@@ -85,11 +115,9 @@ export default function SignupForm() {
                 </p>
             </div>
             <div className="signup-button-wrapper mt-4 text-center w-full " >
-                <button type="submit" name="signup" disabled={pending} /*onClick={validateFormErrors}*/
-                    className="signup-button px-12 py-1"
-                >{pending ? "Submitting...": "Sign up"}</button>
+                <SignupButton pending={isLoading}/>
             </div>
-            {/* {errMsg && (<div className="mt-4"><p>{errMsg}</p></div>)} */}
-        </>
+            {resMsg && (<div className="mt-4 text-red-500 text-center"><p>{resMsg}</p></div>)}
+        </form>
     )
 }
