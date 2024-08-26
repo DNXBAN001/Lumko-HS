@@ -1,7 +1,8 @@
+
 import type { Metadata } from "next";
 import AdminHeader from "./components/admin-header"
 import LeftSidebar from "./components/left-sidebar"
-
+import { useRouter } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Lumko High School",
@@ -13,6 +14,7 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
     return (
         <div className="mt-4 mx-4">
             <AdminHeader />

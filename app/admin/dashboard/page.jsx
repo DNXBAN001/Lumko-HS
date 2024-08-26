@@ -1,3 +1,4 @@
+
 import { elPrimarySchools } from "@/utils/lib/primary-schools-el";
 import { applications } from "@/utils/lib/placeholder-data";
 

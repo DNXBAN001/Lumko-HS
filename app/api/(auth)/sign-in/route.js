@@ -4,6 +4,10 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken";
 import { revalidatePath } from "next/cache"
 import { v4 as uuidv4 } from 'uuid';
+import { serialize } from "cookie";
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { SignJWT, jwtVerify } from "jose";
 
 // const schema = z.object({
 //     email: z.string({
@@ -36,12 +40,26 @@ export async function POST(req){
         //if user is not found return a message "User does not exist"
         if(result.rows.length === 0){
             console.log("Invalid email")
-            return Response.json({message: "Invalid email!", status: 404})//user not found
+            return Response.json({success: false, message: "Invalid email!", status: 404})//user not found
         }
         const userFromDB = result.rows[0]
-        console.log(userFromDB)
+        // console.log(userFromDB)
         if(await bcrypt.compare(formData.password, userFromDB.password)){
             const user ={ userId: userFromDB.id, email: userFromDB.email, role: userFromDB.role }
+            console.log("Hi there")
+            // const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "50m"})//expires in 50 mins
+            const accessToken = await new SignJWT(user)
+                                                .setProtectedHeader({ alg: "HS256" })
+                                                .setIssuedAt()
+                                                .setExpirationTime("50 min from now")
+                                                .sign(process.env.ACCESS_TOKEN_SECRET);
+            console.log(accessToken)
+            cookies().set("accessToken", accessToken, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "strict",
+                maxAge: new Date(Date.now() + 1000 * 60 * 50)
+            })
             // Check if there's any existing refresh token for the user on the DB
             // if(existingToken){
             //     console.log("User already has an existingToken...")
@@ -59,18 +77,28 @@ export async function POST(req){
             //     })
             //     await token.save()
             // }
-            // const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30m"})
+            console.log(user)
             console.log("Login was successful")
-            return Response.json({user, message: "Login was successful - redirecting...",  status: 200})
+            // return new NextResponse("",{
+            //     headers: {
+            //         "Set-Cookie": serializedCookie
+            //     }
+            // })
+            return NextResponse.json({success: true, user, message: "Login was successful - redirecting...",  status: 200})
         }else{
             console.log("Wrong password")
-            return Response.json({ message: "Wrong password!", status: 401 })//401 - unauthorized
+            return Response.json({success: false, message: "Wrong password!", status: 401 })//401 - unauthorized
         }
     }catch(err){
-        return Response.json({message: `Database error: ${err}`})
+        return Response.json({success: false, message: "Error: Try checking your network connection"})
     }
 }
 
+//logout
+export async function GET() {
+    // Destroy the session
+    cookies().set("accessToken", "", { expires: new Date(0) });
+  }
 
 /*
 import { db } from '@vercel/postgres';

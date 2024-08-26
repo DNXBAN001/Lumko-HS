@@ -14,7 +14,7 @@ export default function LoginForm() {
         email: "",
         password: ""
     })
-    const { setUser, isLoading, setIsLoading } = useGlobalContext()
+    const { user, setUser, isLoading, setIsLoading } = useGlobalContext()
     const cookies = new Cookies()
 
     const [resMsg, setResMsg] = React.useState("")
@@ -25,7 +25,6 @@ export default function LoginForm() {
         setFormData(prevFormData => (
             { ...prevFormData, [name]: value}
         ))
-
     }
     async function handleSubmit(event){
         event.preventDefault()
@@ -36,15 +35,19 @@ export default function LoginForm() {
                     body: JSON.stringify(formData),
                 }).then(result => result.json())
             setIsLoading(false)
+            console.log("Test 1")
             console.log(res)
-            if(res.status === 200){
+            // console.log(res.success)
+            if(res.success){
                 setResMsg(res.message)
-                // saveTokenInCookies(res.accessToken)
-                // const { userId, userRole } = jwtDecode(cookies.get("accessToken"))//decode token to extract user payload
-                // setUser({ userId, userRole })
-                if(res.user.role === "admin"){
+                const { userId, email, role} = res.user
+                setUser({ userId, email, role})
+                console.log(user)
+                if(user.role === "admin"){
+                    console.log("Going to admin dashboard...")
                     router.push("/admin/dashboard")
-                }else if(res.user.role === "applicant"){
+                }else if(user.role === "applicant"){
+                    console.log("Going to applicant page...")
                     router.push("/apply")
                 }
 

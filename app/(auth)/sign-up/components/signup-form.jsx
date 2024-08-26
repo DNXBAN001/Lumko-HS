@@ -39,14 +39,9 @@ export default function SignupForm() {
             }).then(result => result.json())
             setIsLoading(false)
             console.log(res)
-            if(res.status === 201){
+            if(res.success){
                 setResMsg(res.message)
-                if(res.user.role === "admin"){
-                    router.push("/admin/dashboard")
-                }else if(res.user.role === "applicant"){
-                    router.push("/apply")
-                }
-
+                router.push("/sign-in")
             }else{
                 setResMsg(res.message)
             }

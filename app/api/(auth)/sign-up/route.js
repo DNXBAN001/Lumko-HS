@@ -49,7 +49,7 @@ export async function POST(req) {
         // console.log(userExist)//when the user already exist, this will display the user obj
         if(userExist.length > 0){
             console.log("Email is already in use")
-            return Response.json({ message: "Email is already in use", status:  409})// 409 Conflict - Account with the email already exist
+            return Response.json({ success: false, message: "Email is already in use", status:  409})// 409 Conflict - Account with the email already exist
         }
 
         //Hash user password before saving it to the DB
@@ -61,10 +61,10 @@ export async function POST(req) {
             ${phone}, ${user.role}, ${hashedPassword});`
         user.email = email
     }catch(err){
-        return Response.json({message: "Database Error: Could not register account"})
+        return Response.json({success: false, message: "Database Error: Could not register account"})
     }
     console.log("Account was created successfully")
-    return Response.json({user, message: "Account was created successfully", status: 201})// 201 - Created
+    return Response.json({success: true, user, message: "Account was created successfully", status: 201})// 201 - Created
     // Revalidate the cache for the apply page and redirect the user.
     // revalidatePath('/apply');
     //redirect("/apply")
