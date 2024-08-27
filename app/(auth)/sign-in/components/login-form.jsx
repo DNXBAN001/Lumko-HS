@@ -40,9 +40,11 @@ export default function LoginForm() {
             // console.log(res.success)
             if(res.success){
                 setResMsg(res.message)
-                const { userId, email, role} = res.user
-                setUser({ userId, email, role})
-                console.log(user)
+                const { userId, role} = res.user
+                setUser({ userId, role})
+                setTimeout(() => {
+                    console.log(user)
+                }, 5000)
                 if(user.role === "admin"){
                     console.log("Going to admin dashboard...")
                     router.push("/admin/dashboard")
