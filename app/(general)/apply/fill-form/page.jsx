@@ -5,6 +5,7 @@ import ApplicantInfo from "./components/applicant-info.jsx";
 import MedicalInfo from "./components/medical-info.jsx"
 import MotherInfo from "./components/mother-info.jsx";
 import FatherInfo from "./components/father-info.jsx";
+import DocumentsUpload from "./components/documents-upload.jsx"
 import { BsArrowLeft,  BsArrowRight} from 'react-icons/bs'
 import { useGlobalContext } from '@/utils/context.js';
 import { useRouter } from 'next/navigation.js';
@@ -18,7 +19,7 @@ export default function ApplicationForm() {
 
   React.useEffect(() => {
     console.log(applicationInfo)
-    console.log("Global user: ",user)
+    console.log("Step: ", step)
   }, [step, applicationInfo])
  
   function handleNext(){
@@ -56,20 +57,21 @@ export default function ApplicationForm() {
         { step === 2 && <MedicalInfo />}
         { step === 3 && <MotherInfo /> }
         { step === 4 && <FatherInfo /> }
+        { step === 5 && <DocumentsUpload /> }
         <div className={step === 1 ? "": 'flex justify-between md:justify-around'}>
                 {step > 1 &&<div className="mt-10 mb-12" onClick={handlePrevious}>
-                    <button className="next-button bg-red-900 text-white w-28 px-2 py-2 flex justify-around items-center active">
+                    <button className="next-button rounded-md bg-red-900 text-white w-28 px-2 py-2 flex justify-around items-center active">
                         <BsArrowLeft className=""/><div>Previous</div> 
                     </button>
                 </div>}
                 {step < 5 && (<div className="mt-10 mb-12" onClick={handleNext}>
-                    <button className="next-button bg-red-900 text-white w-28 px-2 py-2 flex justify-around items-center active">
+                    <button className="next-button rounded-md bg-red-900 text-white w-28 px-2 py-2 flex justify-around items-center active">
                         <div>Next</div> <BsArrowRight className=""/>
                     </button>
                 </div>)}
                 {step === 5 && ( <div className="mt-10 mb-12">
                   <button type="submit" onClick={handleSubmit} /*disabled={isLoading}*/
-                    className="next-button bg-red-900 text-white w-auto px-2 py-2 flex justify-around items-center active">
+                    className="next-button rounded-md bg-red-900 text-white w-auto px-2 py-2 flex justify-around items-center active">
                         {isLoading ? "Submitting...": "Submit"}
                   </button>
                   </div>)}

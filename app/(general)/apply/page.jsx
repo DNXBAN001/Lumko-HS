@@ -2,16 +2,20 @@ import React from 'react'
 import Image from "next/image"
 import GradeChooser from "./components/grade-chooser"
 import { getSession } from '@/utils/lib/session'
+import Link from "next/link"
 
 export default async function ApplyPage() {
 
     const user = await getSession()
     if(!user){
-        return <h1>Loading...</h1>
+        return (<h1 className="mt-12 text-center min-h-screen">
+                Not authorized to access this page...<Link href="/sign-in" className="text-blue-500">Try login</Link>
+                </h1>
+            )
     }
     
     return (
-        <div className='main-body'> 
+        <div className='main-body min-h-screen'> 
             <div className="apply-wrapper mt-12 w-4/5 m-auto flex">
                 <div>
                     <Image src="/logo-large.png" width={100} height={100} alt="logo-img" />

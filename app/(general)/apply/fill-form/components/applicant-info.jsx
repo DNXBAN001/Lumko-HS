@@ -46,14 +46,14 @@ export default function ApplicantInfo() {
       &&learnerInfo.physicalAddress){
       setApplicationInfo(prevState => ({
         ...prevState, 
-        learnerInfo: learnerInfo//verify if this works
+        learnerInfo: learnerInfo
       }))
     }
     if(marks.english&&(marks.afrikaans||marks.isixhosa)&&marks.mathematics&&marks.LO
     &&marks.ns&&marks.ems&&marks.ss&&marks.tech){
       setApplicationInfo(prevState => ({
         ...prevState,
-        marks: marks//verify if this works
+        marks: marks
       }))
     }
   }

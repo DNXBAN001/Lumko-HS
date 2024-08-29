@@ -18,13 +18,6 @@ export async function middleware(req){
     const accessToken = req.cookies.get('accessToken')?.value
     const decodedUser = await decrypt(accessToken)//verify token and return decoded payload
     console.log("Decoded user: ", decodedUser)
-    
-    // if(path.startsWith('/')){
-    //     url.pathname = '/redirect';
-    //     const response = NextResponse.rewrite(url);
-    //     response.headers.set(`x-middleware-cache`, `no-cache`);
-    //     return response;
-    // }
 
     // 5. Redirect to /login if the user is not authenticated
     if (isProtectedRoute && !decodedUser?.userId) {
@@ -32,7 +25,7 @@ export async function middleware(req){
     }
 
     // 6. Redirect to /admin/dashboard or /apply if the user is authenticated, based on their role
-    // Block user from accessing admin dashboard if their role is not admin, and block applicant from attempting admin dashboard
+    // Block user from accessing admin dashboard if their role is not 'admin', and block 'applicant' from attempting admin dashboard
     if (/*isPublicRoute && decodedUser?.user.userId || */req.nextUrl.pathname.startsWith('/admin/dashboard')&&decodedUser?.role!=="admin"
     ) {
         // console.log("Decoded user: ", decodedUser.userId, decodedUser.role)
@@ -47,13 +40,13 @@ export async function middleware(req){
 }
 
 // Routes Middleware should not run on
-export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
-}
+// export const config = {
+//     matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+// }
 
 // Specify the list of protected paths
-// export const config = {
-//     matcher: ["/apply", "/apply/fill-form", "/apply/my-status", "/admin/dashboard", "/admin/dashboard/view-applications",
-//         "/admin/dashboard/view-applications/:id*"
-//     ]
-// }
+export const config = {
+    matcher: [/*"/apply", "/apply/fill-form", "/apply/my-status",*/ "/admin/dashboard", "/admin/dashboard/view-applications",
+        "/admin/dashboard/view-applications/:id*"
+    ]
+}
