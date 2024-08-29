@@ -17,7 +17,6 @@ import { createSession } from "@/utils/lib/session";
 export async function POST(req){
 
     const formData = await req.json()
-    // console.log(formData)
 
     // const validatedFields = schema.safeParse({
     //     email: formData.get('name'),
@@ -32,34 +31,34 @@ export async function POST(req){
 
     try{
         //Find the user by email
-        const result = await sql`SELECT id, email, password, role FROM users WHERE email = ${formData.email}`
+        const result = await sql`SELECT id, firstName, lastName, email, password, role FROM users WHERE email = ${formData.email}`
         //if user is not found return a message "User does not exist"
         if(result.rows.length === 0){
             console.log("Invalid email")
-            return Response.json({success: false, message: "Invalid email!", status: 404})//user not found
+            return NextResponse.json({success: false, message: "Invalid email!", status: 404})//user not found
         }
         const userFromDB = result.rows[0]
         // console.log(userFromDB)
         if(await bcrypt.compare(formData.password, userFromDB.password)){
-            const user ={ userId: userFromDB.id, role: userFromDB.role }
-            await createSession(user.userId, user.role) 
-            console.log(user)
+            const user ={ userId: userFromDB.id, firstName: userFromDB.firstname, lastName: userFromDB.lastname, role: userFromDB.role }
+            await createSession(user) 
+            // console.log(user)
             console.log("Login was successful")
             return NextResponse.json({success: true, user, message: "Login was successful - redirecting..."})
         }else{
             console.log("Wrong password")
-            return Response.json({success: false, message: "Wrong password!", status: 401 })//401 - unauthorized
+            return NextResponse.json({success: false, message: "Wrong password!", status: 401 })//401 - unauthorized
         }
     }catch(err){
-        return Response.json({success: false, message: "Error: Server error"})
+        return NextResponse.json({success: false, message: "Error: Server error"})
     }
 }
 
 //logout
-export async function GET() {
-    // Destroy the session
-    cookies().set("accessToken", "", { expires: new Date(0) });
-  }
+// export async function GET() {
+//     // Destroy the session
+//     cookies().set("accessToken", "", { expires: new Date(0) });
+//   }
 
 /*
 import { db } from '@vercel/postgres';

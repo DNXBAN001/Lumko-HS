@@ -1,19 +1,21 @@
-import 'server-only'
+// import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
+
  
 const secretKey = process.env.ACCESS_TOKEN_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
  
-export async function encrypt(payload: any) {
+export async function encrypt(payload, expiry) {
+  // console.log("Received payload to be signed is: ", payload)
   return new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime('50m')
+    .setExpirationTime(expiry)
     .sign(encodedKey)
 }
- 
-export async function decrypt(accessToken: string | undefined = '') {
+
+export async function decrypt(accessToken) {
   try {
     const { payload } = await jwtVerify(accessToken, encodedKey, {
       algorithms: ['HS256'],
@@ -26,12 +28,11 @@ export async function decrypt(accessToken: string | undefined = '') {
 
 /**
  * Sign userId and role, attach the accessToken as a session cookie
- * @param userId 
- * @param role 
+ * @param User 
  */ 
-export async function createSession(userId: string, role: string) {
+export async function createSession(user) {
   const expiresAt = new Date(Date.now() + 50 * 60 * 1000)
-  const accessToken = await encrypt({ userId, role, expiresAt })
+  const accessToken = await encrypt(user, expiresAt)
  
   cookies().set('accessToken', accessToken, {
     httpOnly: true,// Prevent client-side JavaScript from accessing the cookie.
@@ -40,6 +41,18 @@ export async function createSession(userId: string, role: string) {
     sameSite: 'lax',// Specify whether the cookie can be sent with cross-site requests
     path: '/',
   })
+}
+
+/**
+ * 
+ * @returns decodedUser
+ */
+export async function getSession(){
+    const accessToken = cookies().get("accessToken")?.value
+    if(!accessToken){
+        return null
+    }
+    return await decrypt(accessToken)
 }
 
 /**

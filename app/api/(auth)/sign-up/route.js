@@ -1,24 +1,26 @@
 
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import bcrypt from "bcrypt"
+import { NextResponse } from "next/server";
+import { createSession } from "@/utils/lib/session";
 
 export async function POST(req) {
  
     const rawFormData = await req.json()
-    const { firstName, lastName, email, phone, password } = rawFormData
+    const { firstName, lastName, email, phone, password, confirmPassword } = rawFormData
     console.log(firstName)
     let user = {
         userId: "",
-        email: "",
+        firstName: "",
+        lastName: "",
         role: ""
     }
 
-    // if(password !== confirmPassword){
-    //   console.log("Passwords do not match")
-    //   return {message: "Passwords do not match!"}
-    // }
+    if(password !== confirmPassword){
+      console.log("Passwords do not match")
+      return NextResponse.json({success: false, message: "Passwords do not match!"})
+    }
 
     try{
         await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`
@@ -39,17 +41,15 @@ export async function POST(req) {
             user.role = "admin"
             console.log("User role was set to: ", user.role)
         }else{
-            console.log("test 1")
             user.role = "applicant"
-            console.log("test 2")
             console.log("User role was set to: ", user.role)
         }
         //Check if the email is not already in use
-        const userExist = result.rows.filter(ele => ele.email === email)
+        const userExist = result.rows.filter(rec => rec.email === email)
         // console.log(userExist)//when the user already exist, this will display the user obj
         if(userExist.length > 0){
             console.log("Email is already in use")
-            return Response.json({ success: false, message: "Email is already in use", status:  409})// 409 Conflict - Account with the email already exist
+            return NextResponse.json({ success: false, message: "Email is already in use", status:  409})// 409 Conflict - Account with the email already exist
         }
 
         //Hash user password before saving it to the DB
@@ -59,12 +59,22 @@ export async function POST(req) {
             INSERT INTO users (firstName, lastName, email, phone, role, password) 
             VALUES (${firstName}, ${lastName}, ${email}, 
             ${phone}, ${user.role}, ${hashedPassword});`
-        user.email = email
+        console.log("Account was created successfully")
+        //Get user id from DB since the user is registering for the first time
+        const { rows } = await sql`SELECT id FROM users WHERE email=${email}`
+        console.log("User with the email: ",rows)
+        console.log("Email from : ",email)
+        user.userId = rows[0].id
+        user.firstName = firstName
+        user.lastName = lastName
+        console.log(user)
+        await createSession(user)
+        console.log("test 1")
     }catch(err){
-        return Response.json({success: false, message: "Database Error: Could not register account"})
+        return NextResponse.json({success: false, message: "Server Error: Could not register account"})
     }
-    console.log("Account was created successfully")
-    return Response.json({success: true, user, message: "Account was created successfully", status: 201})// 201 - Created
+    
+    return NextResponse.json({success: true, user, message: "Account was created successfully", status: 201})// 201 - Created
     // Revalidate the cache for the apply page and redirect the user.
     // revalidatePath('/apply');
     //redirect("/apply")

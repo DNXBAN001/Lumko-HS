@@ -16,7 +16,8 @@ export default function SignupForm() {
         lastName: "",
         email: "",
         phone: "",
-        password: ""
+        password: "",
+        confirmPassword: ""
     })
 
     function handleChange(event){
@@ -37,13 +38,14 @@ export default function SignupForm() {
                 method: 'POST',
                 body: JSON.stringify(formData)
             }).then(result => result.json())
+            setResMsg(res.message)
             setIsLoading(false)
-            console.log(res)
             if(res.success){
-                setResMsg(res.message)
-                router.push("/sign-in")
-            }else{
-                setResMsg(res.message)
+                if(res.user.role === "admin"){
+                    router.push("/admin/dashboard")
+                }else if(res.user.role === "applicant"){
+                    router.push("/apply")
+                }
             }
         }catch(err){
             alert("Unexpected error: "+err)

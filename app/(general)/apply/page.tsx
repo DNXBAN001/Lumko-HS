@@ -7,6 +7,12 @@ import { useRouter } from 'next/navigation'
 
 export default function ApplyPage() {
 
+    const user = {
+        firstName: "Bandile",
+        lastName: "Danxa",
+        role: "applicant"
+      }
+
     const [gradeApplyingFor, setGradeApplyingFor] = React.useState({
         grade: "",
     })
@@ -35,9 +41,10 @@ export default function ApplyPage() {
                     <Image src="/logo-large.png" width={100} height={100} alt="logo-img" />
                 </div>
                 <div className="ml-12">
-                    <h1 className="text-3xl">Lumko High School</h1>
+                    <h1 className="text-3xl font-semibold">Lumko High School</h1>
                 </div>
             </div>
+            <div className="mt-12 w-4/5 m-auto"><h1 className="text-2xl italic">You are signed in as: {user.firstName}</h1></div>
             <div className="apply-wrapper mt-12 w-4/5 m-auto">
                 <p>Before you click on the Next button, make sure you have the following documents on your computer<br/>
                      or mobile phone:</p>
@@ -90,5 +97,3 @@ export default function ApplyPage() {
         </div>
     )
 }
-// const [state, formAction] = useFormState(allowApplication, initialState)
-// <p aria-live="polite" className="not-sr-only">{state?.message}</p>

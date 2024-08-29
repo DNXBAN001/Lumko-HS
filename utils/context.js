@@ -7,30 +7,27 @@ const AppContext = React.createContext()
 
 export function ContextProvider({ children }){
 
-    const [isLoading, setIsLoading] = React.useState(false)
     const [user, setUser] = React.useState(null)
-    const accessToken = new Cookies().get("accessToken")
-
-    // async function logoutUser(){
-    //     try{
-    //         await axios.delete("http://localhost:5000/logout", {
-    //             headers: {
-    //                 "Authorization": "Bearer "+ accessToken
-    //             }
-    //         })
-    //     }catch(err){
-    //         alert("Error while logging out user...")
-    //     }
-    // }
+    const [isLoading, setIsLoading] = React.useState(false)
+    const [applicationInfo, setApplicationInfo] = React.useState({
+        learnerInfo: "",
+        marks: "",
+        medicalInfo: "",
+        motherInfo: "",
+        fatherInfo: "",
+        // documents: "" 
+    })
+    
 
     return(
         <AppContext.Provider
             value={{
-                user, 
+                user,
                 setUser,
                 isLoading, 
                 setIsLoading, 
-                /*logoutUser*/
+                applicationInfo,
+                setApplicationInfo
             }
         }>
             {children}

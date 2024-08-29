@@ -1,33 +1,37 @@
 "use client"
 
 import React from 'react'
+import { useGlobalContext } from '@/utils/context'
 
 export default function MedicalInfo() {
 
+    const { setApplicationInfo } = useGlobalContext()
+
     const [formData, setFormData] = React.useState({
-        medicalAidNumber: "",
-        medicalAidName: "",
-        medicalAidMainMember: "",
-        nameOfDoctor: "",
-        doctorContactNumber: "",
-        medicalCondition: "",
-        specialProblems: "",
-        receivingSocialGrant: "",
-        dexterityOfLearner: ""
+        medicalAidNumber: "", medicalAidName: "", medicalAidMainMember: "", nameOfDoctor: "", 
+        doctorContactNumber: "", medicalCondition: "", specialProblems: "",
+        receivingSocialGrant: "", dexterityOfLearner: ""
     })
 
     React.useEffect(() => {
-        console.log(formData)
+        saveFormData()
     }, [formData])
 
     function handleChange(event){
         const {name, type, value, checked} = event.target
-        setFormData(prevFormData => (
-            {
+        setFormData(prevFormData => ({
               ...prevFormData,
               [name]: type === "checkbox" ? checked: value
             }) 
-          )
+        )
+    }
+    function saveFormData(){
+        if(formData.receivingSocialGrant&&formData.dexterityOfLearner){
+            setApplicationInfo(prevState => ({
+                ...prevState,
+                medicalInfo: formData
+            }))
+        }
     }
 
     return (
@@ -35,24 +39,24 @@ export default function MedicalInfo() {
             <h3 className="text-black font-semibold">Learner Medical Information</h3>
             <div className="mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="medicalAidNumber" required onChange={handleChange}
+                    <input type="text" name="medicalAidNumber" onChange={handleChange}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Aid Number"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="medicalAidName" required onChange={handleChange}
+                    <input type="text" name="medicalAidName" onChange={handleChange}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Aid Name"
                     />
                 </div>
             </div>
             <div className="lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="medicalAidMainMember" required onChange={handleChange}
+                    <input type="text" name="medicalAidMainMember" onChange={handleChange}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Aid Main Member"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="nameOfDoctor" required onChange={handleChange}
+                    <input type="text" name="nameOfDoctor" onChange={handleChange}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Doctor's Name"
                     />
                 </div>
@@ -64,7 +68,7 @@ export default function MedicalInfo() {
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="medicalCondition" required onChange={handleChange}
+                    <input type="text" name="medicalCondition" onChange={handleChange}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Condition"
                     />
                 </div>

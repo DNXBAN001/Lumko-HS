@@ -35,20 +35,13 @@ export default function LoginForm() {
                     body: JSON.stringify(formData),
                 }).then(result => result.json())
             setIsLoading(false)
-            console.log("Test 1")
-            console.log(res)
-            // console.log(res.success)
             if(res.success){
                 setResMsg(res.message)
-                const { userId, role} = res.user
-                setUser({ userId, role})
-                setTimeout(() => {
-                    console.log(user)
-                }, 5000)
-                if(user.role === "admin"){
+                setUser(res.user)//set global user for client components
+                if(res.user.role === "admin"){
                     console.log("Going to admin dashboard...")
                     router.push("/admin/dashboard")
-                }else if(user.role === "applicant"){
+                }else if(res.user.role === "applicant"){
                     console.log("Going to applicant page...")
                     router.push("/apply")
                 }

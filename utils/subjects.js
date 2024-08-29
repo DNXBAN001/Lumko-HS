@@ -1,31 +1,31 @@
 export const subjects =[{
-    id: "101",
+    id: "english",
     name: "English"
 }, {
-    id: "102",
+    id: "isixhosa",
     name: "IsiXhosa"
 }, {
-    id: "103",
+    id: "afrikaans",
     name: "Afrikaans"
 }, {
-    id: "104",
+    id: "mathematics",
     name: "Mathematics"
 }, {
-    id: "105",
+    id: "LO",
     name: "Life Orientation"
 }, {
-    id: "106",
+    id: "ns",
     name: "Natural Sciences"
 }, {
-    id: "108",
+    id: "creativeArts",
     name: "Creative Arts"
 }, {
-    id: "109",
+    id: "ems",
     name: "Economic Management Sciences"
 }, {
-    id: "111",
+    id: "ss",
     name: "Social Sciences"
 }, {
-    id: "112",
+    id: "tech",
     name: "Technology"
 }]
