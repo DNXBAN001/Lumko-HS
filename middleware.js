@@ -1,6 +1,6 @@
 // import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
-import { decrypt} from "@/utils/lib/session"
+import { decrypt, updateSession} from "@/utils/lib/session"
 
 // 1. Specify protected and public routes
 const protectedRoutes = ['/admin/dashboard', 'admin/dashboard/view-applications', 
@@ -15,7 +15,7 @@ export async function middleware(req){
     const isPublicRoute = publicRoutes.includes(path)
 
     // 3. Decrypt the session from the cookie
-    const accessToken = req.cookies.get('accessToken')?.value
+    const accessToken = req.cookies.get('accessToken')/*?.value*/
     const decodedUser = await decrypt(accessToken)//verify token and return decoded payload
     console.log("Decoded user: ", decodedUser)
     // const redirectResponse = NextResponse.redirect('URL_HERE');

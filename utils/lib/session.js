@@ -1,4 +1,4 @@
-// import 'server-only'
+import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 
@@ -7,7 +7,6 @@ const secretKey = process.env.ACCESS_TOKEN_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
  
 export async function encrypt(payload, expiry) {
-  // console.log("Received payload to be signed is: ", payload)
   return new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
