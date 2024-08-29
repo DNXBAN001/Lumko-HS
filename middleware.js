@@ -1,4 +1,4 @@
-import { cookies } from "next/headers"
+// import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
 import { decrypt} from "@/utils/lib/session"
 
@@ -15,9 +15,12 @@ export async function middleware(req){
     const isPublicRoute = publicRoutes.includes(path)
 
     // 3. Decrypt the session from the cookie
-    const accessToken = cookies().get('accessToken')?.value
+    const accessToken = req.cookies.get('accessToken')?.value
     const decodedUser = await decrypt(accessToken)//verify token and return decoded payload
     console.log("Decoded user: ", decodedUser)
+    // const redirectResponse = NextResponse.redirect('URL_HERE');
+    // redirectResponse.headers.set('x-middleware-cache', 'no-cache'); // ! FIX: Disable caching
+    // return redirectResponse;
 
     // 5. Redirect to /login if the user is not authenticated
     if (isProtectedRoute && !decodedUser?.userId) {
@@ -36,7 +39,7 @@ export async function middleware(req){
         return NextResponse.redirect(new URL('/admin/dashboard', req.nextUrl))
     }
 
-    // return await updateSession(request);
+    return await updateSession(req);
 }
 
 // Routes Middleware should not run on
