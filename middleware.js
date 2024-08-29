@@ -15,12 +15,16 @@ export async function middleware(req){
     const isPublicRoute = publicRoutes.includes(path)
 
     // 3. Decrypt the session from the cookie
-    const accessToken = req.cookies.get('accessToken')/*?.value*/
+    const accessToken = req.cookies.get('accessToken')?.value
     const decodedUser = await decrypt(accessToken)//verify token and return decoded payload
     console.log("Decoded user: ", decodedUser)
-    // const redirectResponse = NextResponse.redirect('URL_HERE');
-    // redirectResponse.headers.set('x-middleware-cache', 'no-cache'); // ! FIX: Disable caching
-    // return redirectResponse;
+    
+    // if(path.startsWith('/')){
+    //     url.pathname = '/redirect';
+    //     const response = NextResponse.rewrite(url);
+    //     response.headers.set(`x-middleware-cache`, `no-cache`);
+    //     return response;
+    // }
 
     // 5. Redirect to /login if the user is not authenticated
     if (isProtectedRoute && !decodedUser?.userId) {
@@ -39,7 +43,7 @@ export async function middleware(req){
         return NextResponse.redirect(new URL('/admin/dashboard', req.nextUrl))
     }
 
-    return await updateSession(req);
+    // return await updateSession(req);
 }
 
 // Routes Middleware should not run on
