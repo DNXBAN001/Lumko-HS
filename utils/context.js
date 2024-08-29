@@ -15,8 +15,12 @@ export function ContextProvider({ children }){
         medicalInfo: "",
         motherInfo: "",
         fatherInfo: "",
-        // documents: "" 
+        documents: "" 
     })
+
+    React.useEffect(() => {
+        console.log("Global user was updated...",user)
+    }, [user])
     
 
     return(

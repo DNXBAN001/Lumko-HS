@@ -11,14 +11,14 @@ import { useRouter } from 'next/navigation.js';
 
 export default function ApplicationForm() {
 
-  const { applicationInfo, isLoading, setIsLoading } = useGlobalContext()
+  const { user, setUser, applicationInfo, isLoading, setIsLoading } = useGlobalContext()
 
   const [step, setStep] = React.useState(1)
   const router = useRouter()
 
   React.useEffect(() => {
-
     console.log(applicationInfo)
+    console.log("Global user: ",user)
   }, [step, applicationInfo])
  
   function handleNext(){
@@ -51,7 +51,7 @@ export default function ApplicationForm() {
   return (
     <div className='main-body min-h-screen'>
       <div className="w-full px-2 sm:w-4/5 m-auto">
-        <div className="mt-12"><h1 className="text-2xl italic">You are signed in as: {user.firstName}</h1></div>
+        <div className="mt-12"><h1 className="text-2xl italic">You are signed in as: {user?.firstName}</h1></div>
         { step === 1 && <ApplicantInfo /> }
         { step === 2 && <MedicalInfo />}
         { step === 3 && <MotherInfo /> }

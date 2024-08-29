@@ -5,8 +5,6 @@ import Link from "next/link";
 import LoginButton from "./login-button"
 import { useRouter } from 'next/navigation';
 import { useGlobalContext } from '@/utils/context';
-import Cookies from "universal-cookie";
-import { jwtDecode } from "jwt-decode";
 
 export default function LoginForm() {
 
@@ -15,7 +13,6 @@ export default function LoginForm() {
         password: ""
     })
     const { user, setUser, isLoading, setIsLoading } = useGlobalContext()
-    const cookies = new Cookies()
 
     const [resMsg, setResMsg] = React.useState("")
     const router = useRouter()
@@ -52,12 +49,6 @@ export default function LoginForm() {
         }catch(err){
             alert("Unexpected error: ", err)
         }
-    }
-
-    function saveTokenInCookies(accessToken){
-        cookies.set("accessToken", accessToken, {
-            expires: new Date(Date.now() + 1000*60*30)//expire in 30mins
-        })
     }
 
     return (
