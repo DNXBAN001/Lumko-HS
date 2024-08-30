@@ -36,7 +36,7 @@ export default function LeftSidebar() {
                     <p className="text-lg font-semibold">View Applications</p>
                 </div>
             </Link>
-            <Link href="#" className="admin-view">
+            <Link href="/admin/dashboard/admissions-info" className="admin-view">
                 <div className="category mx-3 p-3 hover:bg-red-900 hover:text-white">
                     <p className="text-lg font-semibold">Settings</p>
                 </div>

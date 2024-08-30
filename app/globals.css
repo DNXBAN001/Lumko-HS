@@ -178,7 +178,9 @@ th{
 td{
   border: 1px solid #000000;
 }
-
+.opening-closing-date{
+  border: 1px solid red;
+}
 
 
 
