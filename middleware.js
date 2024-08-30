@@ -40,13 +40,13 @@ export async function middleware(req){
 }
 
 // Routes Middleware should not run on
-// export const config = {
-//     matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
-// }
+export const config = {
+    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+}
 
 // Specify the list of protected paths
-export const config = {
-    matcher: ["/apply", "/apply/fill-form", "/apply/my-status", /*"/admin/dashboard", "/admin/dashboard/view-applications",
-        "/admin/dashboard/view-applications/:id*"*/
-    ]
-}
+// export const config = {
+//     matcher: ["/apply", "/apply/fill-form", "/apply/my-status", /*"/admin/dashboard", "/admin/dashboard/view-applications",
+//         "/admin/dashboard/view-applications/:id*"*/
+//     ]
+// }

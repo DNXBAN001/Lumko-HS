@@ -22,7 +22,7 @@ export default function AdminOverview() {
              <div>
                 <h1 className="text-2xl font-semibold">Applications / Overview</h1>
             </div>
-            <div className="flex">
+            <div className="lg:flex">
                 <div className="mt-12">
                     <div className="bg-gray-100 w-80 h-52 rounded-lg flex flex-col justify-between text-end p-12">
                         <h3 className="text-2xl text-red-900 font-semibold">Total Applications</h3>
@@ -78,7 +78,7 @@ export default function AdminOverview() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-gray-100 mt-12 w-3/5 ml-12 p-12 rounded-lg ">
+                <div className="bg-gray-100 mt-12 lg:ml-12 p-12 rounded-lg ">
                     <div>
                         <h3 className="text-2xl text-red-900 font-semibold">Applications by Schools</h3>
                     </div>
