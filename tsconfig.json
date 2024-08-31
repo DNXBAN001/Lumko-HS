@@ -24,6 +24,6 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/apply/fill-form/page.jsx", 
   "app/(auth)/sign-up/page.jsx", "app/(auth)/sign-up/components/signup-form.jsx", "app/(auth)/sign-up/actions.js", 
   "utils/lib/placeholder-data.js", "app/admin/dashboard/view-applications/[email]/page.jsx", "app/api/(auth)/sign-in/route.js", "utils/lib/session.js", 
-  "app/(general)/apply/page.jsx", "app/admin/dashboard/admissions-info/page.jsx", ],
+  "app/(general)/apply/page.jsx", "app/admin/dashboard/admissions-info/page.jsx", "app/admin/dashboard/view-applications/page.jsx", ],
   "exclude": ["node_modules"]
 }

@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { applications } from '@/utils/lib/placeholder-data'
 
-export default function ApplicationsTable() {
+export default function ApplicationsTable(props) {
     const initialApplicationData = applications.sort((obj1, obj2) => Number(obj2.learnerInfo.averageMark) - Number(obj1.learnerInfo.averageMark))
     const [applicationsData, setApplicationsData] = React.useState(initialApplicationData)
     

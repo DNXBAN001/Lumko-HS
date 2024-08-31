@@ -58,12 +58,12 @@ export default function AdmissionsInfo(){
                     <div className="ml-8">
                         <input id="yes" name="is_applications_open" type="radio"
                         value="yes" checked={admissionsInfo?.is_applications_open === "yes"} onChange={handleChange} />
-                        <label htmlFor="yes" className="ml-2">Yes</label>
+                        <label htmlFor="yes" className="pl-1">Yes</label>
                     </div>
                     <div className="ml-4">
                         <input id="no" name="is_applications_open" type="radio"
                         value="no" checked={admissionsInfo?.is_applications_open === "no"} onChange={handleChange}/>
-                        <label htmlFor="no" className="ml-2">No</label>
+                        <label htmlFor="no" className="pl-1">No</label>
                     </div>
                 </div>
                 <div className="mt-8 lg:flex">
