@@ -40,7 +40,8 @@ export async function POST(req){
         const userFromDB = result.rows[0]
         // console.log(userFromDB)
         if(await bcrypt.compare(formData.password, userFromDB.password)){
-            const user ={ userId: userFromDB.id, firstName: userFromDB.firstname, lastName: userFromDB.lastname, role: userFromDB.role }
+            const user ={ userId: userFromDB.id, firstName: userFromDB.firstname, 
+                lastName: userFromDB.lastname, email: userFromDB.email, role: userFromDB.role }
             await createSession(user) 
             // console.log(user)
             console.log("Login was successful")

@@ -14,6 +14,7 @@ export async function POST(req) {
         userId: "",
         firstName: "",
         lastName: "",
+        email: "",
         role: ""
     }
 
@@ -35,7 +36,7 @@ export async function POST(req) {
                   created_at timestamp DEFAULT now() NOT NULL
                 );`
         const result = await sql`SELECT email FROM users`
-        console.log(result.rows.length)
+        // console.log(result.rows.length)
         //First user to signup is "admin", everyone else is "applicant"
         if(result.rows.length === 0) {
             user.role = "admin"
@@ -63,11 +64,10 @@ export async function POST(req) {
         //Get user id from DB since the user is registering for the first time
         const { rows } = await sql`SELECT id FROM users WHERE email=${email}`
         console.log("User with the email: ",rows)
-        console.log("Email from : ",email)
         user.userId = rows[0].id
         user.firstName = firstName
         user.lastName = lastName
-        console.log(user)
+        user.email = email
         await createSession(user)
         console.log("test 1")
     }catch(err){

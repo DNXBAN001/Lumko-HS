@@ -1,16 +1,18 @@
 import { getSession } from '@/utils/lib/session'
+import { sql } from '@vercel/postgres'
 
+async function getApplicationStatus(user){
+    "use server"
+    const { rows } = await sql`Select status from learner_info where userId=${user.userId}`
+    return (rows.length >0 ? rows[0]: "No status")
+}
 
 export default async function MyStatus() {
 
-    // const [applicationStatus, setApplicationStatus] = React.useState(null)
+    const {userId, firstName, lastName, email} = await getSession()
+    const applicationStatus = await getApplicationStatus(userId)
 
-    const {firstName, lastName} = await getSession()
-    // const user = {
-    //     firstName: "Bandile",
-    //     lastName: "Danxa",
-    //     role: "applicant"
-    // }
+    
 
     return (
         <div className="mt-12 min-h-screen md:w-4/5 m-auto">
@@ -28,9 +30,9 @@ export default async function MyStatus() {
                     <tbody>
                         <tr className="text-center">
                             <td className="px-3 py-2">{firstName+" "+lastName}</td>
-                            <td className="px-3 py-2">barnez76@gmail.com</td>
-                            <td className="px-3 py-2">accepted</td>
-                            <td className="px-3 py-2 hidden sm:block">Reached max intake</td>
+                            <td className="px-3 py-2">{email}</td>
+                            <td className="px-3 py-2">{applicationStatus}</td>
+                            <td className="px-3 py-2 hidden sm:block">...</td>
                         </tr>
                     </tbody>
                 </table>
