@@ -129,17 +129,9 @@ h1, h3{
 .signup-button:active{
   padding: 3.5px 47.5px;
 }
-.next-button button:active{
-  border-radius: 5px;
-  padding: 7.5px 47.5px;
-}
 /***************Application Form**************************/
 .subject-mark{
   border: 1px solid gray
-}
-.next-button:active{
-  border-radius: 5px;
-  font-size: 15px;
 }
 /*************Admin Dashboard**************************/
 .admin-header-container{
@@ -178,9 +170,7 @@ th{
 td{
   border: 1px solid #000000;
 }
-.opening-closing-date{
-  /* border: 1px solid red; */
-}
+
 
 
 
