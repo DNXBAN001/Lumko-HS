@@ -1,28 +1,29 @@
+"use server"
 import { sql } from "@vercel/postgres"
 
 export async function createLearnerInfoTable(){
     await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`
     await sql`CREATE TABLE IF NOT EXISTS learnerInfo (
-                id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-                firstName varchar(255) NOT NULL,
-                lastName varchar(255) NOT NULL,
-                id_number varchar(255) NOT NULL,
-                dob varchar(255) NOT NULL,
-                email varchar(255),
-                phone varchar(255) NOT NULL,
-                present_school varchar(255) NOT NULL,
-                previous_schools varchar(255),
-                year_of_previous_schools varchar(255),
-                home_language varchar(255) NOT NULL, 
-                religion varchar(255) NOT NULL, 
-                physical_address varchar(255) NOT NULL, 
-                other_achievements varchar(255),
-                grade_applying_for varchar(255) NOT NULL,
-                class varchar(255),
-                status varchar(255) DEFAULT 'pending',
-                userId varchar(255) NOT NULL,
-                created_at timestamp DEFAULT now() NOT NULL
-            );`
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        firstName varchar(255) NOT NULL,
+        lastName varchar(255) NOT NULL,
+        id_number varchar(255) NOT NULL,
+        dob varchar(255) NOT NULL,
+        email varchar(255),
+        phone varchar(255) NOT NULL,
+        present_school varchar(255) NOT NULL,
+        previous_schools varchar(255),
+        year_of_previous_schools varchar(255),
+        home_language varchar(255) NOT NULL, 
+        religion varchar(255) NOT NULL, 
+        physical_address varchar(255) NOT NULL, 
+        other_achievements varchar(255),
+        grade_applying_for varchar(255) NOT NULL,
+        class varchar(255),
+        status varchar(255) DEFAULT 'pending',
+        userId varchar(255) NOT NULL,
+        created_at timestamp DEFAULT now() NOT NULL
+    );`
 }
 
 export async function createMarksTable(){
@@ -96,47 +97,64 @@ export async function createFatherInfoTable(){
     );`
 }
 
-export async function createAdmissionsInfoTable(){
-    await sql`CREATE TABLE IF NOT EXISTS admissions_info (
+/**
+ * Table containing the opening and closing date for applications
+ */
+export async function createAdmissionDatesTable(){
+    await sql`CREATE TABLE IF NOT EXISTS admission_dates (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         is_applications_open varchar(255) DEFAULT 'no',
         opening_date varchar(255) NOT NULL,
         closing_date varchar(255) NOT NULL,
-        max_grade_8 int NOT NULL,
-        grade_8_classes int NOT NULL,
-        max_grade_9 int NOT NULL,
-        grade_9_classes int NOT NULL,
-        max_grade_10a int NOT NULL,
-        max_grade_10b int NOT NULL,
-        max_grade_10c int NOT NULL,
-        max_grade_10d int NOT NULL,
-        max_grade_11a int NOT NULL,
-        max_grade_11b int NOT NULL,
-        max_grade_11c int NOT NULL,
-        max_grade_11d int NOT NULL
-    )`
-}
-
-export async function insertIntoAdmissionsInfo(){
-    await sql`INSERT INTO admissions_info ( is_applications_open, opening_date, closing_date,
-                max_grade_8, grade_8_classes, max_grade_9, grade_9_classes,
-                max_grade_10a, max_grade_10b, max_grade_10c, max_grade_10d,
-                max_grade_11a, max_grade_11b, max_grade_11c, max_grade_11d
-            ) VALUES ( 'no', '01/03/2024', '01/06/2024', 250, 5, 30, 5,
-            10, 10, 10, 10, 5, 5, 5, 5
+        created_at timestamp DEFAULT now() NOT NULL
         )`
 }
-
-export async function updateAdmissionsInfo(formData: any){
-    await sql`UPDATE admissions_info
-            SET is_applications_open=${formData.is_applications_open}, opening_date=${formData.opening_date}, 
-                closing_date=${formData.closing_date}, max_grade_8=${formData.max_grade_8}, 
-                grade_8_classes=${formData.grade_8_classes}, max_grade_9=${formData.max_grade_9}, 
-                grade_9_classes=${formData.grade_9_classes}, max_grade_10a=${formData.max_grade_10a}, 
-                max_grade_10b=${formData.max_grade_10b}, max_grade_10c=${formData.max_grade_10c},
-                max_grade_10d=${formData.max_grade_10d}, max_grade_11a=${formData.max_grade_11a}, 
-                max_grade_11b=${formData.max_grade_11b}, max_grade_11c=${formData.max_grade_11c}, 
-                max_grade_11d=${formData.max_grade_11d}
-            WHERE id='85bd3148-cf28-40f3-8013-eba39a61c2c5'
+export async function insertIntoAdmissionDates(){
+    await sql`INSERT INTO admission_dates ( is_applications_open, opening_date, closing_date ) 
+        VALUES ( 'no', '01/03/2024', '01/06/2024')`
+}
+export async function getAdmissionDates(){
+    const {rows} = await sql`SELECT is_applications_open, opening_date, closing_date FROM admission_dates`
+    return (rows.length > 0 ? rows[0]: "")
+}
+export async function updateAdmissionDates(formData: any){
+    const response = await sql`UPDATE admission_dates
+        SET is_applications_open=${formData?.is_applications_open}, opening_date=${formData?.opening_date},
+            closing_date=${formData?.closing_date}
+        WHERE id='eef3d510-b679-4a71-994b-c5d4c9178451'
     `
+    return response.rows
+    //id depends on the id assigned when the record was first inserted
+}
+
+/**
+ * Table containing max intake for each grade and class
+ */
+export async function createAdmissionByClassTable(){
+    await sql`CREATE TABLE IF NOT EXISTS admission_by_class (
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        class_grade varchar(255) NOT NULL,
+        max_intake int NOT NULL,
+        total_classes int,
+        created_at timestamp DEFAULT now() NOT NULL
+    )`
+}
+export async function insertIntoAdmissionByClass(){
+    await sql`INSERT INTO admission_by_class ( class_grade, max_intake, total_classes
+            ) VALUES ( 'grade8', 250, 5), ( 'grade9', 50, 5), ( 'grade10A', 10, null), ( 'grade10B', 10, null),
+             ( 'grade10C', 10, null), ( 'grade10D', 10, null), ( 'grade11A', 5, null), ( 'grade11B', 5, null), ( 'grade11C', 5, null), 
+              ( 'grade11D', 5, null)
+             `
+}
+export async function getAdmissionByClass(){
+    const { rows } = await sql`SELECT class_grade, max_intake, total_classes FROM admission_by_class`
+    return (rows.length > 0 ? rows: "")
+}
+export async function updateAdmissionByClass(formData: any){
+    const response = await sql`UPDATE admission_by_class
+            SET max_intake=${formData?.max_intake}, 
+                total_classes=${formData?.total_classes}
+            WHERE class_grade=${formData?.class_grade}
+    `
+    return response.rows
 }

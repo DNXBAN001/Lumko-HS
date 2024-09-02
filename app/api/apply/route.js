@@ -69,3 +69,8 @@ export async function POST(req){
 
     return NextResponse.json({success: true, message: "Application was submitted successfully..."})
 }
+
+export async function GET(req){
+    const gradeSelected = await req.json()
+    // const res = await sql`SELECT `
+}

@@ -16,6 +16,7 @@ export async function PUT(req){
             return NextResponse.json({success: false, message: "Make sure to not leave any fields blank"})
     }
     //send query to db
+    await updateAdmissionDates(formData)
     await updateAdmissionsInfo(formData)
     return NextResponse.json({success: true, message: "Admissions info updated successfully..."})
 }

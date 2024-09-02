@@ -10,7 +10,9 @@ export function ContextProvider({ children }){
     const [user, setUser] = React.useState(null)
     const [isLoading, setIsLoading] = React.useState(false)
     const [applicationInfo, setApplicationInfo] = React.useState({
-        learnerInfo: "",
+        learnerInfo: {
+            gradeApplyingFor: "",
+        },
         marks: "",
         medicalInfo: "",
         motherInfo: "",
