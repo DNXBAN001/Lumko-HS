@@ -124,7 +124,6 @@ export async function updateAdmissionDates(formData: any){
         WHERE id='eef3d510-b679-4a71-994b-c5d4c9178451'
     `
     return response.rows
-    //id depends on the id assigned when the record was first inserted
 }
 
 /**

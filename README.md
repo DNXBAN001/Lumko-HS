@@ -32,7 +32,7 @@
     - Also ask for a feedback from the client if there's anything else they would like to add or done diffently
 
 ## 9. Sign In Page - 19 Aug 2024 (23h11)
-    - Consider converting input values to all lowerCase
+    - Consider converting input email to all lowerCase
 
 ## 10. Signup Page - 12 Aug 2024 (02h53)
     - Consider converting email to lowerCase when registering, save the lowercase version
@@ -58,9 +58,7 @@
     - On /admin/dashboard/view-applications/email
         - Display applicant's full application info, including the uploaded documents
         - Can verify and update the application, accept or reject
-    - On Settings: - Admin must be able to choose the opening and closing date of applications
-                   - Admin must be able to specify how many applications the school is expecting
-                   for each grade, and how many classes are there per grade
+    - On Settings: - Admission by class is only saving updates after the second click of the Save button: fix the state issue
 
 ## 14. Add the Past Papers page
 
