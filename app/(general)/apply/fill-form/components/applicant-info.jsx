@@ -6,22 +6,25 @@ import { useGlobalContext } from '@/utils/context';
 
 export default function ApplicantInfo() {
 
-  const { applicationInfo, setApplicationInfo } = useGlobalContext()
+  const { applicationInfo, gradeApplyingFor, setApplicationInfo } = useGlobalContext()
 
   const [learnerInfo, setLearnerInfo] = React.useState({
-    firstName: "", lastName: "", idNumber: "", dateOfBirth: "", email: "", phone: "",
-    presentSchool: "", previousSchools: "", yearOfPreviousSchools: "",
-    homeLanguage: "", religion: "", physicalAddress: "", otherAchievements: "", 
-    gradeApplyingFor: applicationInfo.learnerInfo.gradeApplyingFor
+    firstName: "", lastName: "", idNumber: "", dateOfBirth: "", email: null, phone: "",
+    presentSchool: "", previousSchools: null, yearOfPreviousSchools: null,
+    homeLanguage: "", religion: "", physicalAddress: "", otherAchievements: null, 
+    gradeApplyingFor: gradeApplyingFor, class: null
   })
   const [marks, setMarks] = React.useState({
-    english: "", afrikaans: "", isixhosa: "", mathematics: "", LO: "",
+    english: "", afrikaans: null, isixhosa: null, mathematics: "", LO: "",
     ns: "", creativeArts: "", ems: "", ss: "", tech: "", averageMark: 0
   })
 
   React.useEffect(() => {
     saveLearnerInfo()
   }, [learnerInfo, marks])
+  // React.useEffect(() => {
+  //   saveLearnerInfo()
+  // }, [marks])
 
   function handleLearnerInfo(event){
     const { name, value } = event.target
@@ -58,17 +61,6 @@ export default function ApplicantInfo() {
       }))
     }
   }
-  // function getAverage(marks){
-  //   let result = 0
-  //   if(!marks.afrikaans){
-  //     result = (marks.english+marks.isixhosa+marks.mathematics+marks.LO+
-  //       marks.ns+marks.creativeArts+marks.ems+marks.ss+marks.tech)/9
-  //   }else if(!marks.isixhosa){
-  //     result = (marks.english+marks.isixhosa+marks.mathematics+marks.LO+
-  //       marks.ns+marks.creativeArts+marks.ems+marks.ss+marks.tech)/9
-  //   }
-  //   return result
-  // }
 
   const subjectsContent = (
       subjects.map(subject => (

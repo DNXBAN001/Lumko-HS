@@ -8,9 +8,9 @@ export default function MedicalInfo() {
     const { setApplicationInfo } = useGlobalContext()
 
     const [formData, setFormData] = React.useState({
-        medicalAidNumber: "", medicalAidName: "", medicalAidMainMember: "", nameOfDoctor: "", 
-        doctorContactNumber: "", medicalCondition: "", specialProblems: "",
-        receivingSocialGrant: "", dexterityOfLearner: ""
+        medicalAidNumber: null, medicalAidName: null, medicalAidMainMember: null, nameOfDoctor: null, 
+        doctorContactNumber: null, medicalCondition: null, specialProblems: null,
+        receivingSocialGrant: null, dexterityOfLearner: null
     })
 
     React.useEffect(() => {

@@ -10,15 +10,9 @@ export function ContextProvider({ children }){
     const [user, setUser] = React.useState(null)
     const [isLoading, setIsLoading] = React.useState(false)
     const [applicationInfo, setApplicationInfo] = React.useState({
-        learnerInfo: {
-            gradeApplyingFor: "",
-        },
-        marks: "",
-        medicalInfo: "",
-        motherInfo: "",
-        fatherInfo: "",
-        documents: "" 
+        learnerInfo: "", marks: "", medicalInfo: "", motherInfo: "", fatherInfo: "", documents: "" 
     })
+    const [gradeApplyingFor, setGradeApplyingFor] = React.useState("")
 
     React.useEffect(() => {
         console.log("Global user was updated...",user)
@@ -28,12 +22,10 @@ export function ContextProvider({ children }){
     return(
         <AppContext.Provider
             value={{
-                user,
-                setUser,
-                isLoading, 
-                setIsLoading, 
-                applicationInfo,
-                setApplicationInfo
+                user, setUser,
+                isLoading, setIsLoading, 
+                applicationInfo, setApplicationInfo,
+                gradeApplyingFor, setGradeApplyingFor
             }
         }>
             {children}

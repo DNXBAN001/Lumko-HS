@@ -42,12 +42,12 @@
     - Need to implement Forgot Password functionality
 
 ## 12. Application Page - 13 Aug 2024 (04h05)
-    16 Aug 2024 (02h41)
-    - On the /apply page, make the decision of whether or not the user must be redirected to the /apply/fill-form
-    based on the numbers you got from the DB
-    - Need a way to track this gradeapplying For value
-    27 Aug 2024
-    - Redirect user to /apply if the grade they are applying for is not currently being accepted 
+    - Calculate average creates an infinite loop on the frontend, try calculating it on the backend
+    - Redirect user to /apply if the grade they are applying for is not currently being accepted say they 
+    somehow manage to skip to /apply/fill-form
+    - If the user has already applied, redirect them to /apply/my-status after login
+    - Implement document uploads
+    - Verify form fields and give hints on the required form data
 
 ## 13. Admin Dashboard - 21 Aug 2024 (09h52)
     - On Overview, count applications by school from the mock data

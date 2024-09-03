@@ -6,11 +6,10 @@ import { getAdmissionDates, getAdmissionByClass } from '@/utils/lib/db-queries'
 
 export default function GradeChooser() {
 
-    const { applicationInfo, setApplicationInfo } = useGlobalContext()
+    const { gradeApplyingFor, setGradeApplyingFor } = useGlobalContext()
     const [admissionDates, setAdmissionDates] = React.useState()
     const [classAdmissions, setClassAdmissions] = React.useState([])
     const [classAdmissionInfo, setClassAdmissionInfo] = React.useState()
-    const [gradeApplyingFor, setGradeApplyingFor] = React.useState("")
     const [applicationNotAllowed, setApplicationNotAllowed] = React.useState(false)
 
 

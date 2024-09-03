@@ -65,6 +65,7 @@ export async function createMedicalInfoTable(){
 export async function createMotherInfoTable(){
     await sql`CREATE TABLE IF NOT EXISTS mother_info (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        title varchar(255) NOT NULL,
         firstName varchar(255) NOT NULL,
         lastName varchar(255) NOT NULL,
         id_number varchar(255) NOT NULL,
@@ -82,6 +83,7 @@ export async function createMotherInfoTable(){
 export async function createFatherInfoTable(){
     await sql`CREATE TABLE IF NOT EXISTS father_info (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        title varchar(255),
         firstName varchar(255),
         lastName varchar(255),
         id_number varchar(255),

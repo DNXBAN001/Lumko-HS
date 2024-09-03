@@ -8,8 +8,8 @@ export default function MotherInfo() {
     const { setApplicationInfo } = useGlobalContext()
 
     const [formData, setFormData] = React.useState({
-        title: "", firstName: "", lastName: "", idNumber: "", maritalStatus: "",email: "", 
-        phone: "", occupation: "", employer: "", physicalAddress: "", postalAddress: ""
+        title: null, firstName: null, lastName: null, idNumber: null, maritalStatus: null,email: null, 
+        phone: null, occupation: null, employer: null, physicalAddress: null, postalAddress: null
     })
 
     React.useEffect(() => {
