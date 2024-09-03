@@ -1,8 +1,10 @@
 import React from 'react'
-import Image from "next/image"
-import GradeChooser from "./components/grade-chooser"
-import { getSession } from '@/utils/lib/session'
-import Link from "next/link"
+import Image from "next/image";
+import GradeChooser from "./components/grade-chooser";
+import { getSession } from '@/utils/lib/session';
+import Link from "next/link";
+import { applicationExist } from "@/utils/lib/db-queries";
+import { redirect } from 'next/navigation';
 
 export default async function ApplyPage() {
 
@@ -12,6 +14,12 @@ export default async function ApplyPage() {
                 Not authorized to access this page...<Link href="/sign-in" className="text-blue-500">Try login</Link>
                 </h1>
             )
+    }
+    // console.log(user)
+    const isApllicationExist = await applicationExist(user.userId)
+    console.log("Application exists? ", isApllicationExist)
+    if(isApllicationExist){
+        redirect("/apply/my-status")
     }
     
     return (

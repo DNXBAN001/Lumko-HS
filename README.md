@@ -42,10 +42,8 @@
     - Need to implement Forgot Password functionality
 
 ## 12. Application Page - 13 Aug 2024 (04h05)
-    - Calculate average creates an infinite loop on the frontend, try calculating it on the backend
     - Redirect user to /apply if the grade they are applying for is not currently being accepted say they 
     somehow manage to skip to /apply/fill-form
-    - If the user has already applied, redirect them to /apply/my-status after login
     - Implement document uploads
     - Verify form fields and give hints on the required form data
 

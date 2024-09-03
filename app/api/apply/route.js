@@ -7,8 +7,8 @@ export async function POST(req){
     const formData = await req.json()
 
     //Get userId from getSession() to pass it along with the inserted data as a foreign key
-    // const { userId } = getSession()
-    const userId = "2ed018a9-fac4-4594-8909-6b3c9c01910a"
+    const { userId } = await getSession()
+    // const userId = "b8edeb11-89f6-429c-9cb7-a81d9870a77f"
     if(!userId){
         return NextResponse.json({success: false, message: "User session has expired..."})
     }
@@ -73,9 +73,4 @@ export async function POST(req){
     }
 
     return NextResponse.json({success: true, message: "Application was submitted successfully..."})
-}
-
-export async function GET(req){
-    const gradeSelected = await req.json()
-    // const res = await sql`SELECT `
 }

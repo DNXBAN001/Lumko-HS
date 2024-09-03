@@ -6,7 +6,7 @@ import { sql } from "@vercel/postgres";
 
 async function getApplicationDates(){
     "use server"
-    const { rows } = await sql`SELECT opening_date, closing_date FROM admissions_info`
+    const { rows } = await sql`SELECT opening_date, closing_date FROM admission_dates`
 
     return rows[0]
 }
@@ -25,7 +25,7 @@ export default async function Admissions() {
                 <div className="application-info mt-12">
                     <div className="xy mt-12 ml-16">
                         <h3 className="how-to-apply text-xl">Grade 8:</h3>
-                        <p>Applications for Grade 8 2025 open on <span className="font-semibold italic">{applicationDates.opening_date} </span>
+                        <p>Applications for Grade 8 2026 open on <span className="font-semibold italic">{applicationDates.opening_date} </span>
                             and the closing date is <span className="font-semibold italic">{applicationDates.closing_date}</span></p>
                     </div>
                     <h3 className="how-to-apply text-xl mt-12 ml-16">How to apply?</h3>

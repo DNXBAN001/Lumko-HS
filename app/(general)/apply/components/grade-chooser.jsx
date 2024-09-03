@@ -12,7 +12,6 @@ export default function GradeChooser() {
     const [classAdmissionInfo, setClassAdmissionInfo] = React.useState()
     const [applicationNotAllowed, setApplicationNotAllowed] = React.useState(false)
 
-
     const router = useRouter()
 
     React.useEffect(() => {
@@ -66,10 +65,10 @@ export default function GradeChooser() {
         const {value} = event.target
         setGradeApplyingFor(value)
     }
-    function handleSubmit(event){
+    function handleNext(event){
         event.preventDefault()
         if(applicationNotAllowed){
-            alert("Application is not allowed!")
+            alert("Sorry, you are not allowed to proceed with the application!")
         }else{
             console.log("Next button clicked, grade is: ",gradeApplyingFor)
             router.push("/apply/fill-form")
@@ -77,7 +76,7 @@ export default function GradeChooser() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div className="">
             <div className="mt-12">
                 <p className="font-bold">Select the grade you are applying for below:</p>
                 <div className="mt-4">
@@ -146,8 +145,8 @@ export default function GradeChooser() {
                 </p>): <p></p>}
             </div>
             <div className="next-button my-12">
-                <button type="submit" className="bg-red-900 text-white px-12 py-2 active:text-sm rounded-md">Next</button>
+                <button type="submit" onClick={handleNext} className="bg-red-900 text-white px-12 py-2 active:text-sm rounded-md">Next</button>
             </div>
-        </form>
+        </div>
     )
 }

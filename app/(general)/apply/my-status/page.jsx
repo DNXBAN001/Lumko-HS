@@ -1,18 +1,23 @@
-import { getSession } from '@/utils/lib/session'
 import { sql } from '@vercel/postgres'
+import { getSession } from '@/utils/lib/session'
 
-async function getApplicationStatus(user){
+
+async function getApplicationStatus(userId){
     "use server"
-    const { rows } = await sql`Select status from learner_info where userId=${user.userId}`
-    return (rows.length >0 ? rows[0]: "No status")
+    const { rows } = await sql`SELECT status FROM learner_info WHERE userId=${userId}`
+    if(rows.length >0){
+        return rows[0].status
+    }
+    return "No status"
 }
 
 export default async function MyStatus() {
 
     const {userId, firstName, lastName, email} = await getSession()
+    console.log(userId)
     const applicationStatus = await getApplicationStatus(userId)
 
-    
+    console.log(applicationStatus)
 
     return (
         <div className="mt-12 min-h-screen md:w-4/5 m-auto">

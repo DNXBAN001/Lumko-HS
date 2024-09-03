@@ -6,7 +6,7 @@ import { useGlobalContext } from '@/utils/context';
 
 export default function ApplicantInfo() {
 
-  const { applicationInfo, gradeApplyingFor, setApplicationInfo } = useGlobalContext()
+  const { gradeApplyingFor, setApplicationInfo } = useGlobalContext()
 
   const [learnerInfo, setLearnerInfo] = React.useState({
     firstName: "", lastName: "", idNumber: "", dateOfBirth: "", email: null, phone: "",
@@ -22,9 +22,6 @@ export default function ApplicantInfo() {
   React.useEffect(() => {
     saveLearnerInfo()
   }, [learnerInfo, marks])
-  // React.useEffect(() => {
-  //   saveLearnerInfo()
-  // }, [marks])
 
   function handleLearnerInfo(event){
     const { name, value } = event.target
@@ -41,10 +38,6 @@ export default function ApplicantInfo() {
     }))
   }
   function saveLearnerInfo(){
-    // setMarks(prevState => ({
-    //   ...prevState,
-    //   averageMark: getAverage(marks)
-    // }))
     if(learnerInfo.firstName&&learnerInfo.lastName&&learnerInfo.idNumber&&learnerInfo.dateOfBirth
       &&learnerInfo.phone&&learnerInfo.presentSchool&&learnerInfo.homeLanguage&&learnerInfo.religion
       &&learnerInfo.physicalAddress){

@@ -159,3 +159,15 @@ export async function updateAdmissionByClass(formData: any){
     `
     return response.rows
 }
+
+/**
+ * Get application if exists
+ */
+export async function applicationExist(userId: string){
+    const {rows} = await sql`SELECT status FROM learner_info WHERE userId=${userId}` 
+    console.log(rows)
+    if(rows.length > 0){
+        return true
+    }
+    return false
+}
