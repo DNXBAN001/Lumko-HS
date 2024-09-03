@@ -46,6 +46,7 @@
     somehow manage to skip to /apply/fill-form
     - Implement document uploads
     - Verify form fields and give hints on the required form data
+    - Change subjects based on the grade the applicant is applying for: Grade8/9 vs Grade 10/11
 
 ## 13. Admin Dashboard - 21 Aug 2024 (09h52)
     - On Overview, count applications by school from the mock data

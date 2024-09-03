@@ -171,3 +171,32 @@ export async function applicationExist(userId: string){
     }
     return false
 }
+
+/**
+ * Get applications received by grade: ordered by average mark in descending order
+ */
+export async function getApplicationsByClass(class_grade: string){
+    const {rows} = await sql`SELECT learner_info.firstname, learner_info.lastname, learner_info.email, learner_info.status,
+        learner_info.class, grade_applying_for, marks.average_mark
+        FROM learner_info
+        JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade}
+        ORDER BY marks.average_mark DESC`
+    if(rows.length > 0){
+        return rows
+    }
+    return []
+}
+/**
+ * Get applications received by grade and admission status: ordered by average mark in descending order
+ */
+export async function getApplicationsByClassAndStatus(class_grade: string, status: string){
+    const {rows} = await sql`SELECT learner_info.firstname, learner_info.lastname, learner_info.email, learner_info.status,
+        learner_info.class, grade_applying_for, marks.average_mark
+        FROM learner_info
+        LEFT JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade} AND status = ${status}
+        ORDER BY marks.average_mark DESC`
+    if(rows.length > 0){
+        return rows
+    }
+    return []
+}

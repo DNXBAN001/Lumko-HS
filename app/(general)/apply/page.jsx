@@ -15,10 +15,8 @@ export default async function ApplyPage() {
                 </h1>
             )
     }
-    // console.log(user)
-    const isApllicationExist = await applicationExist(user.userId)
-    console.log("Application exists? ", isApllicationExist)
-    if(isApllicationExist){
+    const alreadyApplied = await applicationExist(user.userId)
+    if(alreadyApplied){
         redirect("/apply/my-status")
     }
     
