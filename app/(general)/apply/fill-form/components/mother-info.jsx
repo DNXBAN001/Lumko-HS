@@ -124,7 +124,7 @@ export default function MotherInfo() {
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="motherEmployer" required onChange={handleChange}
+                    <input type="text" name="employer" onChange={handleChange}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Name of Company/ Employer"
                     />
                 </div>
