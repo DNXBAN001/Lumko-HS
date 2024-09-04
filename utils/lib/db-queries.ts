@@ -176,8 +176,8 @@ export async function applicationExist(userId: string){
  * Get applications received by grade: ordered by average mark in descending order
  */
 export async function getApplicationsByClass(class_grade: string){
-    const {rows} = await sql`SELECT learner_info.firstname, learner_info.lastname, learner_info.email, learner_info.status,
-        learner_info.class, grade_applying_for, marks.average_mark
+    const {rows} = await sql`SELECT learner_info.userid, learner_info.firstname, learner_info.lastname, learner_info.email,
+            learner_info.status, learner_info.class, learner_info.grade_applying_for, learner_info.created_at, marks.average_mark
         FROM learner_info
         JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade}
         ORDER BY marks.average_mark DESC`
@@ -190,13 +190,48 @@ export async function getApplicationsByClass(class_grade: string){
  * Get applications received by grade and admission status: ordered by average mark in descending order
  */
 export async function getApplicationsByClassAndStatus(class_grade: string, status: string){
-    const {rows} = await sql`SELECT learner_info.firstname, learner_info.lastname, learner_info.email, learner_info.status,
-        learner_info.class, grade_applying_for, marks.average_mark
+    const {rows} = await sql`SELECT learner_info.userid, learner_info.firstname, learner_info.lastname, learner_info.email, 
+            learner_info.status, learner_info.class, learner_info.grade_applying_for, learner_info.created_at, marks.average_mark
         FROM learner_info
-        LEFT JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade} AND status = ${status}
+        JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade} AND status = ${status}
         ORDER BY marks.average_mark DESC`
     if(rows.length > 0){
         return rows
     }
     return []
+}
+/**
+ * Get applicant info by applicant id
+ */
+export async function getLearnerInfo(applicantId: string){
+    const { rows } = await sql`SELECT * FROM learner_info WHERE userid=${applicantId}` 
+    return rows
+}
+/**
+ * Get learner marks by applicant id
+ */
+export async function getLearnerMarks(applicantId: string){
+    const { rows } = await sql`SELECT * FROM marks WHERE userid=${applicantId}` 
+    return rows
+}
+/**
+ * Get learner medical info by applicant id
+ */
+export async function getMedicalInfo(applicantId: string){
+    const { rows } = await sql`SELECT * FROM medical_info WHERE userid=${applicantId}` 
+    return rows
+}
+/**
+ * Get mother info by applicant id
+ */
+export async function getMotherInfo(applicantId: string){
+    const { rows } = await sql`SELECT * FROM mother_info WHERE userid=${applicantId}` 
+    return rows
+}
+/**
+ * Get father info by applicant id
+ */
+export async function getFatherInfo(applicantId: string){
+    const { rows } = await sql`SELECT * FROM father_info WHERE userid=${applicantId}` 
+    return rows
 }

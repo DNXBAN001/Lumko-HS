@@ -11,7 +11,6 @@ export default function ViewBy() {
         status: ""
     })
     const [applications, setApplications] = React.useState([])
-    // const [filteredApplications, setFilteredApplications] = React.useState()
 
     React.useEffect(() => {
         async function fetchApplicationsByGrade(){
@@ -23,16 +22,15 @@ export default function ViewBy() {
 
     React.useEffect(() => {
         console.log(applications)
-    }, [filterBy])
+    }, [filterBy/*, applications*/])
 
-    // React.useEffect(() =>{
-    //     async function fetchApplicationsByGradeAndStatus(){
-    //         const res = await getApplicationsByClassAndStatus(filterBy.grade, filterBy.status)
-    //         setApplications(res)
-    //     }
-    //     fetchApplicationsByGradeAndStatus()
-    //     // filteredApplicationsContent()
-    // }, [filterBy.status])
+    React.useEffect(() =>{
+        async function fetchApplicationsByGradeAndStatus(){
+            const res = await getApplicationsByClassAndStatus(filterBy.grade, filterBy.status)
+            setApplications(res)
+        }
+        fetchApplicationsByGradeAndStatus()
+    }, [filterBy.status])
 
     function handleChange(event){
         const {name, value} = event.target
@@ -42,12 +40,12 @@ export default function ViewBy() {
         }))
     }
 
-    function handleAdmission(email, id){
+    function handleAdmission(applicantId, buttonTask){
         setApplications(prevState => (
             prevState.map((application) => {
-                if(application.email === email && id==="acceptButton"){
+                if(application.userid === applicantId && buttonTask==="acceptButton"){
                     application.status="admitted"
-                }else if(application.email === email && id==="rejectButton"){
+                }else if(application.userid === applicantId && buttonTask==="rejectButton"){
                     application.status="rejected"
                 }
                 return application
@@ -60,22 +58,23 @@ export default function ViewBy() {
     const filteredApplications = applications.length > 0 ? (applications?.map((application) => {
         index++
         return (
-                <tr key={application?.email} className="hover:bg-gray-100">
+                <tr key={application.userid} className="hover:bg-gray-100">
                     <td className="p-3">{index}</td>
-                    <td className="p-3">{application?.firstname}</td>
-                    <td className="p-3">{application?.lastname}</td>
-                    <td className="p-3">{application?.email}</td>
-                    <td className="p-3">{application?.average_mark}</td>
-                    <td className="p-3">{application?.status}</td>
-                    <td className="p-3">{application?.class}</td>
+                    <td className="p-3">{application.firstname}</td>
+                    <td className="p-3">{application.lastname}</td>
+                    <td className="p-3">{application.email}</td>
+                    <td className="p-3">{application.average_mark}</td>
+                    <td className="p-3">{application.status}</td>
+                    <td className="p-3">{application.class}</td>
+                    <td className="p-3">{JSON.stringify(application.created_at).substring(1, 11)}</td>
                     <td className="p-3">
-                        <Link href={`/admin/dashboard/view-applications/${application?.email}`} 
+                        <Link href={`/admin/dashboard/view-applications/${application?.userid}`} 
                         className="text-blue-700">View</Link>
                     </td>
-                    <td className="p-3 text-blue-700" onClick={() => handleAdmission(application?.email, "acceptButton")}>
+                    <td className="p-3 text-blue-700" onClick={() => handleAdmission(application?.userid, "acceptButton")}>
                         <Link href="#">{application?.status === "admitted" ? "":"Accept"}</Link>
                     </td>
-                    <td className="p-3 text-blue-700" onClick={() => handleAdmission(application?.email, "rejectButton")}>
+                    <td className="p-3 text-blue-700" onClick={() => handleAdmission(application?.userid, "rejectButton")}>
                         <Link href="#" >{application?.status === "rejected" ? "":"Reject"}</Link>
                     </td>
                 </tr>
@@ -143,6 +142,7 @@ export default function ViewBy() {
                             <th className="p-4">Average Mark (%)</th>
                             <th className="p-4">Status</th>
                             <th className="p-4">Class</th>
+                            <th className="p-4">Submitted</th>
                             <th className="p-4"></th>
                             <th className="p-4"></th>
                             <th className="p-4"></th>
@@ -153,8 +153,8 @@ export default function ViewBy() {
                     </tbody>
                 </table>
                 {applications.length === 0 && (<p className="p-3 w-full text-center hover:bg-gray-100">
-        No applications found
-    </p>)}
+                        No applications found
+                    </p>)}
             </div>
         </>
     )

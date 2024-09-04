@@ -1,9 +1,8 @@
 
 import Link from "next/link"
-import ApplicationInfoProvider from "./lib/application-context"
 import { getSession } from "@/utils/lib/session"
-import ViewBy from "./components/view-by"
-import ApplicationsTable from "./components/applications-table";
+import ViewBy from "./components/applications-view"
+import ApplicationsView from "./components/applications-view";
 
 export default async function ViewApplications() {
 
@@ -17,10 +16,7 @@ export default async function ViewApplications() {
     return (
         <div>
             <h1 className="text-2xl font-semibold">Applications Received</h1>
-            <ApplicationInfoProvider>
-                <ViewBy />
-                {/* <ApplicationsTable /> */}
-            </ApplicationInfoProvider>
+            <ApplicationsView />
         </div>
     )
 }

@@ -1,31 +1,41 @@
 export const subjects =[{
     id: "english",
-    name: "English"
+    name: "English",
+    dbName: "english"
 }, {
     id: "isixhosa",
-    name: "IsiXhosa"
+    name: "IsiXhosa",
+    dbName: "isixhosa"
 }, {
     id: "afrikaans",
-    name: "Afrikaans"
+    name: "Afrikaans",
+    dbName: "afrikaans"
 }, {
     id: "mathematics",
-    name: "Mathematics"
+    name: "Mathematics",
+    dbName: "mathematics"
 }, {
     id: "LO",
-    name: "Life Orientation"
+    name: "Life Orientation",
+    dbName: "life_orientation"
 }, {
     id: "ns",
-    name: "Natural Sciences"
+    name: "Natural Sciences",
+    dbName: "natural_sciences"
 }, {
     id: "creativeArts",
-    name: "Creative Arts"
+    name: "Creative Arts",
+    dbName: "creative_arts"
 }, {
     id: "ems",
-    name: "Economic Management Sciences"
+    name: "Economic Management Sciences",
+    dbName: "economic_management_sciences"
 }, {
     id: "ss",
-    name: "Social Sciences"
+    name: "Social Sciences",
+    dbName: "social_sciences"
 }, {
     id: "tech",
-    name: "Technology"
+    name: "Technology",
+    dbName: "technology"
 }]
