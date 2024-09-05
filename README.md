@@ -42,19 +42,14 @@
     - Need to implement Forgot Password functionality
 
 ## 12. Application Page - 13 Aug 2024 (04h05)
-    - Redirect user to /apply if the grade they are applying for is not currently being accepted say they 
-    somehow manage to skip to /apply/fill-form
     - Implement document uploads
     - Verify form fields and give hints on the required form data
-    - Change subjects based on the grade the applicant is applying for: Grade8/9 vs Grade 10/11
+    - Change subjects based on the grade the applicant is applying for: Grade8/9/10 vs Grade 11
 
 ## 13. Admin Dashboard - 21 Aug 2024 (09h52)
-    - On Overview, count applications by school from the mock data
-    - On View Applications: - Sort applications list by descending average mark (from highest to lowest)
-                            - Implement the accept and reject functionality, update the status and class fields
-                            - Ensure that when the admin wants to view application by email you check either the learner's or mother's
-                            email
-    - On /admin/dashboard/view-applications/email
+    - On Overview, show stats overview based on the information from the DB
+    - On View Applications: - Implement the accept and reject functionality, update the status and class fields
+    - On /admin/dashboard/view-applications/applicantID
         - Display applicant's full application info, including the uploaded documents
         - Can verify and update the application, accept or reject
     - On Settings: - Admission by class is only saving updates after the second click of the Save button: fix the state issue

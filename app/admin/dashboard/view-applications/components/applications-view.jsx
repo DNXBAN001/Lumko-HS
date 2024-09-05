@@ -2,27 +2,28 @@
 
 import React from 'react';
 import Link from 'next/link'
-import { getApplicationsByClass, getApplicationsByClassAndStatus } from '@/utils/lib/db-queries';
+import { getApplicationsByClass, getApplicationsByClassAndStatus, updateAdmissionByStatus } from '@/utils/lib/db-queries';
 
 export default function ViewBy() {
 
     const [filterBy, setFilterBy] = React.useState({
         grade: "grade8",
-        status: ""
+        status: "pending"
     })
     const [applications, setApplications] = React.useState([])
+    const [decision, setDecision] = React.useState({
+        admissionStatus: "",
+        allocatedClass: "",
+        applicationId: ""
+    })
 
     React.useEffect(() => {
-        async function fetchApplicationsByGrade(){
-            const res = await getApplicationsByClass(filterBy.grade)
-            setApplications(res)
+        console.log("Admission status changed to: ", decision.admissionStatus)
+        async function handleAdmission(){
+            await updateAdmissionByStatus(decision.applicationId, decision.admissionStatus)
         }
-        fetchApplicationsByGrade()
-    }, [filterBy.grade])
-
-    React.useEffect(() => {
-        console.log(applications)
-    }, [filterBy/*, applications*/])
+        handleAdmission()
+    }, [decision])
 
     React.useEffect(() =>{
         async function fetchApplicationsByGradeAndStatus(){
@@ -30,7 +31,7 @@ export default function ViewBy() {
             setApplications(res)
         }
         fetchApplicationsByGradeAndStatus()
-    }, [filterBy.status])
+    }, [filterBy])
 
     function handleChange(event){
         const {name, value} = event.target
@@ -45,8 +46,18 @@ export default function ViewBy() {
             prevState.map((application) => {
                 if(application.userid === applicantId && buttonTask==="acceptButton"){
                     application.status="admitted"
+                    setDecision(prevState => ({
+                        ...prevState,
+                        admissionStatus: "admitted",
+                        applicationId: application.userid
+                    }))
                 }else if(application.userid === applicantId && buttonTask==="rejectButton"){
                     application.status="rejected"
+                    setDecision(prevState => ({
+                        ...prevState,
+                        admissionStatus: "rejected",
+                        applicationId: application.userid
+                    }))
                 }
                 return application
             })

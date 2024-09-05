@@ -18,7 +18,7 @@ export default function ApplicationForm() {
   const router = useRouter()
 
   React.useEffect(() => {
-    console.log("Grade applying for: ", applicationInfo.learnerInfo)
+    // console.log("Grade applying for: ", applicationInfo.learnerInfo)
     console.log("Step: ", step)
   }, [step])
  

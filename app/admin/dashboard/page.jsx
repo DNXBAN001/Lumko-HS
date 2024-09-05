@@ -1,21 +1,56 @@
+"use client"
 
-import { elPrimarySchools } from "@/utils/lib/primary-schools-el";
-import { applications } from "@/utils/lib/placeholder-data";
+import React from "react"
+import { getApplicationsCountByGrade, getApplicationCountBySchool, getTotalApplicationsCount } from "@/utils/lib/db-queries"
 
 
 export default function AdminOverview() {
 
-    const totalApplications = applications.length
+    const [totalApplications, setTotalApplications] = React.useState(null)
+    const [applicationsCountByGrade, setApplicationsCountByGrade] = React.useState([])
+    const [applicationCountBySchools, setApplicationCountBySchool] = React.useState([])
 
+    React.useEffect(() => {
+        async function getTotalApplicationsByGrade(){
+            const res = await getApplicationsCountByGrade()
+            setApplicationsCountByGrade(res)
+        }
+        async function getApplicationsCountBySchool(){
+            const res = await getApplicationCountBySchool()
+            setApplicationCountBySchool(res)
+        }
+        async function getTotalApplications(){
+            const res = await getTotalApplicationsCount()
+            setTotalApplications(res[0].count)
+        }
+        getTotalApplicationsByGrade()
+        getApplicationsCountBySchool()
+        getTotalApplications()
+    }, [])
 
-    const applicationsRecords = applications.map(application => {
-        return(
-            <tr className="" key={application.learnerInfo.email}>
-                <td className="px-3 py-2">{application.learnerInfo.presentSchool}</td>
-                <td className="px-3 py-2 text-center">1</td>
-            </tr>
-        )
-    })
+    React.useEffect(() => {
+        console.log("Total applications: ", totalApplications)
+    }, [applicationsCountByGrade])
+
+    const applicationsRecords = applicationCountBySchools.length > 0 ? (applicationCountBySchools.map(ele => {
+            return(
+                <tr className="" key={ele.present_school}>
+                    <td className="px-3 py-2">{ele.present_school}</td>
+                    <td className="px-3 py-2 text-center">{ele.count}</td>
+                </tr>
+                )
+        })
+    ): (<tr><td></td></tr>)
+
+    const applicationsByGrade = applicationsCountByGrade.length > 0 ? (applicationsCountByGrade.map(ele => {
+        return (
+                <tr key={ele.grade_applying_for}>
+                    <td className="px-3 py-2">{ele.grade_applying_for.substring(0, 5)+" "+ele.grade_applying_for.substring(5)}</td>
+                    <td className="px-3 py-2 text-center">{ele.count}</td>
+                </tr>
+            )
+        })
+    ):(<tr><td></td></tr>)
 
     return (
         <div>
@@ -41,38 +76,7 @@ export default function AdminOverview() {
                                     </tr>
                                 </thead>
                                 <tbody className="">
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 8</td>
-                                        <td className="px-3 py-2 text-center">400</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 9</td>
-                                        <td className="px-3 py-2 text-center">80</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 10A</td>
-                                        <td className="px-3 py-2 text-center">6</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 10B</td>
-                                        <td className="px-3 py-2 text-center">10</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 10C</td>
-                                        <td className="px-3 py-2 text-center">17</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 11A</td>
-                                        <td className="px-3 py-2 text-center">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 11B</td>
-                                        <td className="px-3 py-2 text-center">9</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-3 py-2">Grade 11C</td>
-                                        <td className="px-3 py-2 text-center">13</td>
-                                    </tr>
+                                    {applicationsByGrade}
                                 </tbody>
                             </table>
                         </div>

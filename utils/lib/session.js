@@ -30,7 +30,7 @@ export async function decrypt(accessToken) {
  * @param User 
  */ 
 export async function createSession(user) {
-  const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 12)//session expires in 12hours
+  const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 3)//session expires in 3hours
   const accessToken = await encrypt(user, expiresAt)
  
   cookies().set('accessToken', accessToken, {

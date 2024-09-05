@@ -181,10 +181,8 @@ export async function getApplicationsByClass(class_grade: string){
         FROM learner_info
         JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade}
         ORDER BY marks.average_mark DESC`
-    if(rows.length > 0){
-        return rows
-    }
-    return []
+
+    return rows
 }
 /**
  * Get applications received by grade and admission status: ordered by average mark in descending order
@@ -195,10 +193,14 @@ export async function getApplicationsByClassAndStatus(class_grade: string, statu
         FROM learner_info
         JOIN marks ON learner_info.userId = marks.userId AND grade_applying_for = ${class_grade} AND status = ${status}
         ORDER BY marks.average_mark DESC`
-    if(rows.length > 0){
-        return rows
-    }
-    return []
+    
+    return rows
+}
+/**
+ * Update applicant admission status
+ */
+export async function updateAdmissionByStatus(applicantId: string, decision: string){
+    await sql`UPDATE learner_info SET status=${decision} WHERE userId=${applicantId}`
 }
 /**
  * Get applicant info by applicant id
@@ -233,5 +235,34 @@ export async function getMotherInfo(applicantId: string){
  */
 export async function getFatherInfo(applicantId: string){
     const { rows } = await sql`SELECT * FROM father_info WHERE userid=${applicantId}` 
+    return rows
+}
+
+/**
+ * Get total number of applications received
+ */
+export async function getTotalApplicationsCount(){
+    const {rows} = await sql`SELECT count(*) FROM learner_info`
+    return rows
+}
+
+/**
+ * Get total count of applications for each grade 
+ */
+export async function getApplicationsCountByGrade(){
+    const {rows} = await sql`SELECT grade_applying_for, COUNT(grade_applying_for) FROM learner_info
+            GROUP BY grade_applying_for`
+
+    return rows
+}
+
+/**
+ * Get application count by schools: Order by count in descending order (from school that has more applications to the least school)
+ */
+export async function getApplicationCountBySchool(){
+    const {rows} = await sql`SELECT present_school, COUNT(present_school) FROM learner_info
+            GROUP BY present_school
+            ORDER BY count DESC`
+
     return rows
 }
