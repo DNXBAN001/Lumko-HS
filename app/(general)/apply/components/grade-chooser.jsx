@@ -10,7 +10,7 @@ export default function GradeChooser() {
     const [admissionDates, setAdmissionDates] = React.useState()
     const [classAdmissions, setClassAdmissions] = React.useState([])
     const [classAdmissionInfo, setClassAdmissionInfo] = React.useState()
-    const [applicationNotAllowed, setApplicationNotAllowed] = React.useState(false)
+    const [applicationNotAllowed, setApplicationNotAllowed] = React.useState(true)
 
     const router = useRouter()
 
@@ -46,10 +46,10 @@ export default function GradeChooser() {
     }, [classAdmissions])
 
     React.useEffect(() => {
-        console.log(admissionDates)
-        console.log(classAdmissionInfo)
-        console.log(admissionDates?.is_applications_open==="no")
-        console.log(classAdmissionInfo?.[gradeApplyingFor].max_intake === 0)
+        // console.log(admissionDates)
+        // console.log(classAdmissionInfo)
+        // console.log(admissionDates?.is_applications_open==="no")
+        // console.log(classAdmissionInfo?.[gradeApplyingFor].max_intake === 0)
         if(admissionDates?.is_applications_open==="no" || classAdmissionInfo?.[gradeApplyingFor].max_intake === 0){
             setApplicationNotAllowed(true)
         }else{

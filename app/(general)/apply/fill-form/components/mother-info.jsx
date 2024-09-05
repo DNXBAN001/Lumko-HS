@@ -1,19 +1,22 @@
 "use client"
 
 import React from 'react'
+import { redirect } from 'next/navigation'
 import { useGlobalContext } from '@/utils/context'
 
 export default function MotherInfo() {
 
-    const { setApplicationInfo } = useGlobalContext()
+    const { applicationInfo, setApplicationInfo } = useGlobalContext()
 
-    const [formData, setFormData] = React.useState({
-        title: null, firstName: null, lastName: null, idNumber: null, maritalStatus: null,email: null, 
-        phone: null, occupation: null, employer: null, physicalAddress: null, postalAddress: null
-    })
+    const [formData, setFormData] = React.useState(applicationInfo.motherInfo)
+
+
+    //Redirect user back to /apply page to select the grade applying for if the value is null
+    if(!applicationInfo.learnerInfo.gradeApplyingFor){
+        redirect("/apply")
+    }
 
     React.useEffect(() => {
-        // console.log(formData)
         saveFormData()
     }, [formData])
 
@@ -43,6 +46,7 @@ export default function MotherInfo() {
                 <select 
                     id="title"
                     value={formData.title}
+                    defaultValue={applicationInfo.fatherInfo.title}
                     onChange={handleChange}
                     name="title"
                     className="bg-gray-100 w-3/5 md:w-1/5 px-3 p-2"
@@ -59,19 +63,19 @@ export default function MotherInfo() {
             </div>
             <div className="guardian-names lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="firstName" required onChange={handleChange}
+                    <input type="text" name="firstName" required onChange={handleChange} defaultValue={applicationInfo.motherInfo.firstName}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Mother/Guardian name"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="lastName" required onChange={handleChange}
+                    <input type="text" name="lastName" required onChange={handleChange} defaultValue={applicationInfo.motherInfo.lastName}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Mother/Guardian surname"
                     />
                 </div>
             </div>
             <div className="idNumber-relationship lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="idNumber" required onChange={handleChange}
+                    <input type="text" name="idNumber" required onChange={handleChange} defaultValue={applicationInfo.motherInfo.idNumber}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Mother/Guardian ID number"
                     />
                 </div>
@@ -80,24 +84,28 @@ export default function MotherInfo() {
                     <div className='ml-1 sm:flex mt-2 lg:m-0'>
                         <div className="pl-1 pt-1 md:p-0">
                             <input type="radio" name="maritalStatus" id="single" required onChange={handleChange}
+                                defaultChecked={applicationInfo.motherInfo.maritalStatus}
                                 className="sm:ml-2" value="single" checked={formData.maritalStatus === "single"}
                             />
                             <label htmlFor="single" className="ml-1">Single</label>
                         </div>
                         <div className="pl-1 pt-1 md:p-0">
                             <input type="radio" name="maritalStatus" id="married" required onChange={handleChange}
+                                defaultChecked={applicationInfo.motherInfo.maritalStatus}
                                 className="sm:ml-3" value="married" checked={formData.maritalStatus === "married"} 
                             />
                             <label htmlFor="married" className="ml-1">Married</label>
                         </div>
                         <div className="pl-1 pt-1 md:p-0">
                             <input type="radio" name="maritalStatus" id="widow" required onChange={handleChange}
+                                defaultChecked={applicationInfo.motherInfo.maritalStatus}
                                 className="sm:ml-3" value="widow" checked={formData.maritalStatus === "widow"} 
                             />
                             <label htmlFor="widow" className="ml-1">Widow</label>
                         </div>
                         <div className="pl-1 pt-1 md:p-0">
                             <input type="radio" name="maritalStatus" id="divorced" required onChange={handleChange}
+                                defaultChecked={applicationInfo.motherInfo.maritalStatus}
                                 className="sm:ml-3" value="divorced" checked={formData.maritalStatus === "divorced"} 
                             />
                             <label htmlFor="divorced" className="ml-1">Divorced</label>
@@ -107,36 +115,38 @@ export default function MotherInfo() {
             </div>
             <div className="email-phone lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-4 lg:m-0">
-                    <input type="email" name="email" onChange={handleChange}
+                    <input type="email" name="email" onChange={handleChange} defaultValue={applicationInfo.motherInfo.email}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Mother/Guardian email"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="phone" required onChange={handleChange}
+                    <input type="text" name="phone" required onChange={handleChange} defaultValue={applicationInfo.motherInfo.phone}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Mother/Guardian phone"
                     />
                 </div>
             </div>
             <div className="occupation-employer lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="occupation" onChange={handleChange}
+                    <input type="text" name="occupation" onChange={handleChange} defaultValue={applicationInfo.motherInfo.occupation}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Occupation"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="employer" onChange={handleChange}
+                    <input type="text" name="employer" onChange={handleChange} defaultValue={applicationInfo.motherInfo.employer}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Name of Company/ Employer"
                     />
                 </div>
             </div>
             <div className="address-achievements lg:mt-4 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <textarea name="physicalAddress" rows={5} required onChange={handleChange}
+                    <textarea name="physicalAddress" rows={5} required onChange={handleChange} 
+                        defaultValue={applicationInfo.motherInfo.physicalAddress}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Physical Address"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <textarea name="postalAddress" rows={5} onChange={handleChange}
+                        defaultValue={applicationInfo.motherInfo.postalAddress}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Postal Address"
                     />
                 </div>

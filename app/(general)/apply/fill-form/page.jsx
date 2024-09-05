@@ -12,15 +12,15 @@ import { useRouter } from 'next/navigation.js';
 
 export default function ApplicationForm() {
 
-  const { user, setUser, applicationInfo, isLoading, setIsLoading } = useGlobalContext()
+  const { user, setUser, applicationInfo, gradeApplyingFor, isLoading, setIsLoading } = useGlobalContext()
 
   const [step, setStep] = React.useState(1)
   const router = useRouter()
 
   React.useEffect(() => {
-    console.log(applicationInfo)
+    console.log("Grade applying for: ", applicationInfo.learnerInfo)
     console.log("Step: ", step)
-  }, [step, applicationInfo])
+  }, [step])
  
   function handleNext(){
     setStep(prevStep => prevStep + 1)
@@ -44,6 +44,8 @@ export default function ApplicationForm() {
       setIsLoading(false)
       if(res.success){
         router.push("/apply/my-status")
+      }else{
+        alert(res.message)
       }
     }catch(err){
       alert("Error: from handleSubmit", err)
@@ -72,14 +74,13 @@ export default function ApplicationForm() {
                     </button>
                 </div>)}
                 {step === 5 && ( <div className="mt-10 mb-12">
-                  <button type="submit" onClick={handleSubmit} /*disabled={isLoading}*/
+                  <button type="submit" onClick={handleSubmit} disabled={isLoading}
                     className="next-button rounded-md bg-red-900 text-white w-auto px-2 py-2 flex justify-around 
                     items-center active:text-sm">
                         {isLoading ? "Submitting...": "Submit"}
                   </button>
                   </div>)}
-        </div>
-        
+        </div>   
       </div>
     </div>
   )

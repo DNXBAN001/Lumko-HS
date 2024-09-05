@@ -1,5 +1,6 @@
 import { sql } from '@vercel/postgres'
 import { getSession } from '@/utils/lib/session'
+import Link from 'next/link'
 
 
 async function getApplicationStatus(userId){
@@ -14,10 +15,12 @@ async function getApplicationStatus(userId){
 export default async function MyStatus() {
 
     const {userId, firstName, lastName, email} = await getSession()
-    console.log(userId)
-    const applicationStatus = await getApplicationStatus(userId)
 
-    console.log(applicationStatus)
+    if(!userId){
+        return <p>Unauthorized to access this page. Try <Link href="/sign-in">login</Link></p>
+    }
+    
+    const applicationStatus = await getApplicationStatus(userId)
 
     return (
         <div className="mt-12 min-h-screen md:w-4/5 m-auto">

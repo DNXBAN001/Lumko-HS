@@ -1,17 +1,20 @@
 "use client"
 
 import React from 'react'
+import { redirect } from 'next/navigation'
 import { useGlobalContext } from '@/utils/context'
 
 export default function MedicalInfo() {
 
-    const { setApplicationInfo } = useGlobalContext()
+    const { applicationInfo, gradeApplyingFor,  setApplicationInfo } = useGlobalContext()
 
-    const [formData, setFormData] = React.useState({
-        medicalAidNumber: null, medicalAidName: null, medicalAidMainMember: null, nameOfDoctor: null, 
-        doctorContactNumber: null, medicalCondition: null, specialProblems: null,
-        receivingSocialGrant: null, dexterityOfLearner: null
-    })
+    const [formData, setFormData] = React.useState(applicationInfo.medicalInfo)
+
+
+    //Redirect user back to /apply page to select the grade applying for if the value is null
+    if(!applicationInfo.learnerInfo.gradeApplyingFor){
+        redirect("/apply")
+    }
 
     React.useEffect(() => {
         saveFormData()
@@ -40,11 +43,13 @@ export default function MedicalInfo() {
             <div className="mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="medicalAidNumber" onChange={handleChange}
+                        defaultValue={applicationInfo?.medicalInfo.medicalAidNumber}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Aid Number"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="medicalAidName" onChange={handleChange}
+                        defaultValue={applicationInfo?.medicalInfo.medicalAidName}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Aid Name"
                     />
                 </div>
@@ -52,11 +57,13 @@ export default function MedicalInfo() {
             <div className="lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="medicalAidMainMember" onChange={handleChange}
+                        defaultValue={applicationInfo?.medicalInfo.medicalAidMainMember}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Aid Main Member"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
-                    <input type="text" name="nameOfDoctor" onChange={handleChange}
+                    <input type="text" name="nameOfDoctor" onChange={handleChange} 
+                        defaultValue={applicationInfo?.medicalInfo.nameOfDoctor}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Doctor's Name"
                     />
                 </div>
@@ -64,11 +71,13 @@ export default function MedicalInfo() {
             <div className="lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-4 lg:m-0">
                     <input type="email" name="doctorContactNumber" onChange={handleChange}
+                        defaultValue={applicationInfo?.medicalInfo.doctorContactNumber}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Doctor's Contact Number/Tel"
                     />
                 </div>
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="medicalCondition" onChange={handleChange}
+                        defaultValue={applicationInfo?.medicalInfo.medicalCondition}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Medical Condition"
                     />
                 </div>
@@ -76,6 +85,7 @@ export default function MedicalInfo() {
             <div className="lg:mt-5 lg:flex">
                 <div className="input-wrapper w-full mt-3 lg:m-0">
                     <input type="text" name="specialProblems" onChange={handleChange}
+                        defaultValue={applicationInfo?.medicalInfo.specialProblems}
                         className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Special Problems Requiring Counseling"
                     />
                 </div>
@@ -84,12 +94,14 @@ export default function MedicalInfo() {
                     <div className='ml-1 sm:flex mt-2 lg:m-0'>
                         <div className="pl-1 pt-1 md:p-0">
                             <input type="radio" name="receivingSocialGrant" id="yes" required onChange={handleChange}
+                                defaultChecked={applicationInfo?.medicalInfo.receivingSocialGrant}
                                 className="sm:ml-2" value="yes" checked={formData.receivingSocialGrant === "yes"}
                             />
                             <label htmlFor="yes" className="ml-1">Yes</label>
                         </div>
                         <div className="pl-1 pt-1 md:p-0">
                             <input type="radio" name="receivingSocialGrant" id="no" required onChange={handleChange}
+                                defaultChecked={applicationInfo?.medicalInfo.receivingSocialGrant}
                                 className="sm:ml-2" value="no" checked={formData.receivingSocialGrant === "no"}
                             />
                             <label htmlFor="no" className="ml-1">No</label>
@@ -102,18 +114,21 @@ export default function MedicalInfo() {
                 <div className='ml-1 sm:flex mt-2 lg:m-0'>
                     <div className="pl-1 pt-1 md:p-0">
                         <input type="radio" name="dexterityOfLearner" id="left-handed" required onChange={handleChange}
+                            defaultChecked={applicationInfo?.medicalInfo.dexterityOfLearner}
                             className="sm:ml-2" value="left-handed" checked={formData.dexterityOfLearner === "left-handed"}
                         />
                         <label htmlFor="left-handed" className="ml-1">Left-Handed</label>
                     </div>
                     <div className="pl-1 pt-1 md:p-0">
                         <input type="radio" name="dexterityOfLearner" id="right-handed" required onChange={handleChange}
+                            defaultChecked={applicationInfo?.medicalInfo.dexterityOfLearner}
                             className="sm:ml-2" value="right-handed" checked={formData.dexterityOfLearner === "right-handed"}
                         />
                         <label htmlFor="right-handed" className="ml-1">Right-Handed</label>
                     </div>
                     <div className="pl-1 pt-1 md:p-0">
                         <input type="radio" name="dexterityOfLearner" id="ambidextrous" required onChange={handleChange}
+                            defaultChecked={applicationInfo?.medicalInfo.dexterityOfLearner}
                             className="sm:ml-2" value="ambidextrous" checked={formData.dexterityOfLearner === "ambidextrous"}
                         />
                         <label htmlFor="ambidextrous" className="ml-1">Ambidextrous</label>

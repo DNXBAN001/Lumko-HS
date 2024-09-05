@@ -69,7 +69,9 @@ export async function POST(req){
         console.log("Test 6")
     }catch(err){
         console.log("Server error occured...")
-        return NextResponse.json({success: false, message: "Server error occured..."})
+        return NextResponse.json({
+            success: false, 
+            message: "Error: Make sure you are not leaving any required information blank..."})
     }
 
     return NextResponse.json({success: true, message: "Application was submitted successfully..."})
