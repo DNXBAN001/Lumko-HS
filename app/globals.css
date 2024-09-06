@@ -80,7 +80,6 @@ h1, h3{
  }
 .filter-wrapper{
   border: 1px solid #000000;
-  border-radius: 10px;
 }
 /***************Auth Pages***********************/
 .auth-container{
@@ -210,8 +209,6 @@ td{
     width: 99%;
     flex-direction: column;
     padding: 5px;
-    /* padding-left: 5px;
-    padding-right: 5px; */
   }
   .welcome-message, .value-wrapper{
     width: 100%;

@@ -22,6 +22,7 @@
     - Implement the filter functionality to filter images by year and category
 
 ## 6. News Page
+    - Blank, Loading...
 
 ## 7. Staff Page - 09 Aug 2024 (18h20)
     - Get staff images, once I have the images then I can create json placeholder data 
@@ -47,11 +48,10 @@
     - Change subjects based on the grade the applicant is applying for: Grade8/9/10 vs Grade 11
 
 ## 13. Admin Dashboard - 21 Aug 2024 (09h52)
-    - On Overview, show stats overview based on the information from the DB
-    - On View Applications: - Implement the accept and reject functionality, update the status and class fields
+    - On View Applications: - Need to implement the class allocation functionality
     - On /admin/dashboard/view-applications/applicantID
         - Display applicant's full application info, including the uploaded documents
-        - Can verify and update the application, accept or reject
+        - Need to verify and update the application, accept or reject
     - On Settings: - Admission by class is only saving updates after the second click of the Save button: fix the state issue
 
 ## 14. Add the Past Papers page
