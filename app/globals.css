@@ -14,19 +14,21 @@ body{
   /* border-bottom: 2px solid #b22222; */
   z-index: 10;
 }
-.navbar-container p:hover{
-  /* color: rgb(167, 10, 10) */
-  color: #b22222;
-}
 .link:focus{
   color: #b22222;
 }
 .link:active {
   color: #34D399;
 }
+ .more-button:hover{
 
-.menu-items{
-  padding: 8px;
+ }
+.dropdown-menu{
+  position: absolute;
+  right: 0;
+  top: 70%;
+  min-width: 170px;
+  /* display: none; */
 }
 .menu-icon-wrapper{
   display: none;
@@ -201,8 +203,14 @@ td{
   .navbar p{
     display: none;
   }
+  .dropdown .more-button{
+    display: none;
+  }
+  .dropdown-menu{
+    position:static
+  }
   .menu-icon-wrapper, .hamburger-menu{
-    display: inline;
+    display: block;
   }
   /**********************/
   .principal-welcome-wrapper{

@@ -2,8 +2,6 @@
 
 ## 1. Navbar - 06 Aug 2024 (02h26)
     - Choose nice font that matches well with the design
-    - When screen size is small, toggled menu link-items must disappear once the user click on one of the link-items
-    - Other than these i think Navbar is fine
 
 ## 2. Home Page - 07 Aug 2024 (03h53)
     - What We Offer Section: 
@@ -18,8 +16,7 @@
     - Add the information about not accepting grade 9 to 11 applications (specifically for Lumko HS)
 
 ## 5. Gallery Page - 09 Aug (23h18)
-    - Download the gallery images , once I have the images then I can create json placeholder data
-    - Implement the filter functionality to filter images by year and category
+    - Add hover effect and style description text
 
 ## 6. News Page
     - Blank, Loading...

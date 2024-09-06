@@ -11,6 +11,7 @@ export default function Navbar() {
 
     const [toggleMenu, setToggleMenu] = React.useState(false)
     const pathname = usePathname()
+    const [moreDropdown, setMoreDropdown] = React.useState(false)
 
     React.useEffect(()=> {
         console.log(toggleMenu)
@@ -18,26 +19,46 @@ export default function Navbar() {
 
     const LeftMenuLinks = (
         <>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">HOME</Link></p>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/about' ? 'active' : ''}`} href="/about">ABOUT</Link></p>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/admissions' ? 'active' : ''}`} href="/admissions">ADMISSIONS</Link></p>
-            <p className="menu-items">
-                <Link  className={`link ${pathname === '/gallery' ? 'active' : ''}`} href="/gallery">GALLERY</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link className={`link hover:text-red-700 ${pathname === '/' ? 'active' : ''} `} href="/">HOME</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link className={`link hover:text-red-700 ${pathname === '/about' ? 'active' : ''} `} 
+                href="/about">ABOUT</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link className={`link hover:text-red-700 ${pathname === '/admissions' ? 'active' : ''}`} 
+                href="/admissions">ADMISSIONS</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link  className={`link hover:text-red-700 ${pathname === '/gallery' ? 'active' : ''} `} 
+                href="/gallery">GALLERY</Link></p>
         </>
     )
     const RightMenuLinks = (
         <>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/news' ? 'active' : ''}`} href="/news">NEWS</Link></p>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/staff' ? 'active' : ''}`} href="/staff">STAFF</Link></p>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/contact' ? 'active' : ''}`} href="/contact">CONTACT US</Link></p>
-            <p className="menu-items">
-                <Link className={`link ${pathname === '/sign-in' ? 'active' : ''}`} href="/sign-in">SIGN IN</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link className={`link hover:text-red-700 ${pathname === '/news' ? 'active' : ''} `} 
+                href="/news">NEWS</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link className={`link hover:text-red-700 ${pathname === '/staff' ? 'active' : ''}`} 
+                href="/staff">STAFF</Link></p>
+            <p className="menu-link w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                <Link className={`link hover:text-red-700 ${pathname === '/contact' ? 'active' : ''}`} 
+                href="/contact">CONTACT US</Link></p>
+            <div className="dropdown w-full md:w-auto">
+                <button className="more-button w-full md:w-auto text-center lg:text-left py-2
+                 hover:text-red-700" onClick={() => setMoreDropdown(prevState => !prevState)}>MORE</button>
+                <div className={`dropdown-menu bg-blue-950 ${moreDropdown ? 'lg:block': 'lg:hidden'}`}>
+                    <p className="more-links w-full md:w-auto text-center py-2" onClick={() => setToggleMenu(prevState => !prevState)}>
+                        <Link className={`link hover:text-red-700 ${pathname === '/past-papers' ? 'active' : ''}`} 
+                        href="/past-papers">PAST PAPERS</Link>
+                    </p>
+                    <p className="more-links w-full md:w-auto text-center pt-2 pb-3" onClick={() => setToggleMenu(prevState => !prevState)}>
+                        <Link className={`link hover:text-red-700 ${pathname === '/sign-in' ? 'active' : ''} `} 
+                        href="/sign-in">SIGN IN</Link>
+                    </p>
+                </div>
+                
+            </div>
+            
         </>
     )
 
