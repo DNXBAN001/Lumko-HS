@@ -6,14 +6,21 @@ import { useGlobalContext } from '@/utils/context'
 
 export default function FatherInfo() {
 
-    const { applicationInfo, gradeApplyingFor, setApplicationInfo } = useGlobalContext()
+    const { applicationInfo, setApplicationInfo, setApplicationStep } = useGlobalContext()
 
-    const [formData, setFormData] = React.useState(applicationInfo.fatherInfo)
+    const [formData, setFormData] = React.useState({
+        title: null, firstName: null, lastName: null, idNumber: null, maritalStatus: null,
+        email: null, phone: null, occupation: null, employer: null
+    })
 
 
-    //Redirect user back to /apply page to select the grade applying for if the value is null
-    if(!applicationInfo.learnerInfo.gradeApplyingFor){
-        redirect("/apply")
+    // Redirect user back to /apply page to select the grade applying for if the value is null
+    // if(!applicationInfo.learnerInfo.gradeApplyingFor){
+    //     redirect("/apply")
+    // }
+    if(!applicationInfo.motherInfo){
+        //another way of redirecting the applicant back to Step 1 if they left any of the required fields
+        setApplicationStep(3)
     }
 
     React.useEffect(() => {

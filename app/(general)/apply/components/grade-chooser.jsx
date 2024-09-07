@@ -70,7 +70,7 @@ export default function GradeChooser() {
         if(applicationNotAllowed){
             alert("Sorry, you are not allowed to proceed with the application!")
         }else{
-            console.log("Next button clicked, grade is: ",gradeApplyingFor)
+            console.log("Next button clicked, grade selected: ",gradeApplyingFor)
             router.push("/apply/fill-form")
         }
     }

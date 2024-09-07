@@ -20,9 +20,6 @@ body{
 .link:active {
   color: #34D399;
 }
- .more-button:hover{
-
- }
 .dropdown-menu{
   position: absolute;
   right: 0;

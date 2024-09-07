@@ -12,24 +12,24 @@ import { useRouter } from 'next/navigation.js';
 
 export default function ApplicationForm() {
 
-  const { user, setUser, applicationInfo, gradeApplyingFor, isLoading, setIsLoading } = useGlobalContext()
+  const { user, applicationInfo, applicationStep, setApplicationStep, isLoading, setIsLoading } = useGlobalContext()
 
-  const [step, setStep] = React.useState(1)
+  // const [applicationStep, setApplicationStep] = React.useState(1)
   const router = useRouter()
 
   React.useEffect(() => {
     // console.log("Grade applying for: ", applicationInfo.learnerInfo)
-    console.log("Step: ", step)
-  }, [step])
+    console.log("Step: ", applicationStep)
+  }, [applicationStep])
  
   function handleNext(){
-    setStep(prevStep => prevStep + 1)
-    if(step > 5){
-      setStep(5)
+    setApplicationStep(prevStep => prevStep + 1)
+    if(applicationStep > 5){
+      setApplicationStep(5)
     }
   }
   function handlePrevious(){
-    setStep(prevStep => prevStep - 1)
+    setApplicationStep(prevStep => prevStep - 1)
   }
 
   async function handleSubmit(event){
@@ -55,25 +55,25 @@ export default function ApplicationForm() {
     <div className='main-body min-h-screen'>
       <div className="w-full px-2 sm:w-4/5 m-auto">
         <div className="mt-12"><h1 className="text-2xl italic">You are signed in as: {user?.firstName}</h1></div>
-        { step === 1 && <ApplicantInfo /> }
-        { step === 2 && <MedicalInfo />}
-        { step === 3 && <MotherInfo /> }
-        { step === 4 && <FatherInfo /> }
-        { step === 5 && <DocumentsUpload /> }
-        <div className={step === 1 ? "": 'flex justify-between md:justify-around'}>
-                {step > 1 &&<div className="mt-10 mb-12" onClick={handlePrevious}>
+        { applicationStep === 1 && <ApplicantInfo /> }
+        { applicationStep === 2 && <MedicalInfo />}
+        { applicationStep === 3 && <MotherInfo /> }
+        { applicationStep === 4 && <FatherInfo /> }
+        { applicationStep === 5 && <DocumentsUpload /> }
+        <div className={applicationStep === 1 ? "": 'flex justify-between md:justify-around'}>
+                {applicationStep > 1 &&<div className="mt-10 mb-12" onClick={handlePrevious}>
                     <button className="next-button rounded-md bg-red-900 text-white w-28 px-2 py-2 flex justify-around 
                     items-center active:text-sm">
                         <BsArrowLeft className=""/><div>Previous</div> 
                     </button>
                 </div>}
-                {step < 5 && (<div className="mt-10 mb-12" onClick={handleNext}>
+                {applicationStep < 5 && (<div className="mt-10 mb-12" onClick={handleNext}>
                     <button className="next-button rounded-md bg-red-900 text-white w-28 px-2 py-2 flex justify-around 
                     items-center active:text-sm">
                         <div>Next</div> <BsArrowRight className=""/>
                     </button>
                 </div>)}
-                {step === 5 && ( <div className="mt-10 mb-12">
+                {applicationStep === 5 && ( <div className="mt-10 mb-12">
                   <button type="submit" onClick={handleSubmit} disabled={isLoading}
                     className="next-button rounded-md bg-red-900 text-white w-auto px-2 py-2 flex justify-around 
                     items-center active:text-sm">

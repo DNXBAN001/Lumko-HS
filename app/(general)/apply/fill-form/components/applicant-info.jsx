@@ -15,7 +15,10 @@ export default function ApplicantInfo() {
     homeLanguage: "", religion: "", physicalAddress: "", otherAchievements: null, 
     gradeApplyingFor: gradeApplyingFor, class: null
   })
-  const [marks, setMarks] = React.useState(applicationInfo.marks)
+  const [marks, setMarks] = React.useState({
+    english: "", afrikaans: null, isixhosa: null, mathematics: "", LO: "", ns: "", 
+    creativeArts: "", ems: "", ss: "", tech: "", averageMark: 0
+  })
 
   //Redirect user back to /apply page to select the grade applying for if the value is null
   if(!gradeApplyingFor){
@@ -75,14 +78,15 @@ export default function ApplicantInfo() {
         <h3 className="text-black font-semibold">Applicant Information</h3>
         <div className="learner-names md:mt-5 md:flex ">
           <div className="input-wrapper w-full mt-3 md:m-0">
-            <input type="text" name="firstName" required onChange={handleLearnerInfo} defaultValue={applicationInfo?.learnerInfo.firstName}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Learner name"
+            <input type="text" name="firstName" required onChange={handleLearnerInfo} 
+              defaultValue={applicationInfo?.learnerInfo.firstName}
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Learner name (required)"
             />
           </div>
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="lastName" required onChange={handleLearnerInfo}
               defaultValue={applicationInfo?.learnerInfo.lastName}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Learner surname"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Learner surname (required)"
             />
           </div>
         </div>
@@ -90,13 +94,13 @@ export default function ApplicantInfo() {
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="idNumber" required onChange={handleLearnerInfo}
             defaultValue={applicationInfo?.learnerInfo.idNumber}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="ID Number"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="ID Number (required)"
             />
           </div>
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="dateOfBirth" required onChange={handleLearnerInfo}
               defaultValue={applicationInfo?.learnerInfo.dateOfBirth}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="dd/mm/yyyy"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="dd/mm/yyyy (required)"
             />
           </div>
         </div>
@@ -108,7 +112,7 @@ export default function ApplicantInfo() {
           </div>
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="phone" required onChange={handleLearnerInfo} defaultValue={applicationInfo?.learnerInfo.phone}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Cell number"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Cell number (required)"
             />
           </div>
         </div>
@@ -116,7 +120,7 @@ export default function ApplicantInfo() {
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="presentSchool" required onChange={handleLearnerInfo}
               defaultValue={applicationInfo?.learnerInfo.presentSchool}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Present school"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Present school (required)"
             />
           </div>
           <div className="input-wrapper w-full mt-3 md:m-0">
@@ -136,13 +140,13 @@ export default function ApplicantInfo() {
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="homeLanguage" required onChange={handleLearnerInfo} 
               defaultValue={applicationInfo?.learnerInfo.homeLanguage}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Home language"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Home language (required)"
             />
           </div>
           <div className="input-wrapper w-full mt-3 md:m-0">
             <input type="text" name="religion" required onChange={handleLearnerInfo}
               defaultValue={applicationInfo?.learnerInfo.religion}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Religion"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Religion (required)"
             />
           </div>
         </div>
@@ -150,7 +154,7 @@ export default function ApplicantInfo() {
           <div className="input-wrapper w-full mt-3 md:m-0">
             <textarea name="physicalAddress" rows={5} required onChange={handleLearnerInfo}
               defaultValue={applicationInfo?.learnerInfo.physicalAddress}
-              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Physical Address"
+              className="bg-gray-100 w-full sm:w-4/5 px-3 p-2" placeholder="Physical Address (required)"
             />
           </div>
           <div className="input-wrapper w-full mt-3 md:m-0">

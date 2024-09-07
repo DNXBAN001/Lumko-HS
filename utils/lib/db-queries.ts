@@ -257,7 +257,8 @@ export async function getApplicationsCountByGrade(){
 }
 
 /**
- * Get application count by schools: Order by count in descending order (from school that has more applications to the least school)
+ * Get application count by schools: Order by count in descending order 
+ * (from school that has more applications to the least school)
  */
 export async function getApplicationCountBySchool(){
     const {rows} = await sql`SELECT present_school, COUNT(present_school) FROM learner_info

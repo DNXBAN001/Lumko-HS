@@ -41,6 +41,7 @@ export default function SignupForm() {
             setResMsg(res.message)
             setIsLoading(false)
             if(res.success){
+                setUser(res.user)
                 if(res.user.role === "admin"){
                     router.push("/admin/dashboard")
                 }else if(res.user.role === "applicant"){
