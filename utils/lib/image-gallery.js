@@ -180,5 +180,41 @@ export const imageGallery = [{
     description: "Culture",
     category: "other",
     year: "2022",
+}, {
+    id:"31",
+    name: "prom01-2015.jpg",
+    description: "Prom",
+    category: "prom",
+    year: "2015",
+}, {
+    id:"32",
+    name: "prom02-2015.jpg",
+    description: "Prom",
+    category: "prom",
+    year: "2015",
+}, {
+    id:"33",
+    name: "prom03-2015.jpg",
+    description: "Prom",
+    category: "prom",
+    year: "2015",
+}, {
+    id:"34",
+    name: "prom04-2015.jpg",
+    description: "Prom",
+    category: "prom",
+    year: "2015",
+}, {
+    id:"35",
+    name: "prom05-2015.jpg",
+    description: "Prom",
+    category: "prom",
+    year: "2015",
+}, {
+    id:"36",
+    name: "prom06-2015.jpg",
+    description: "Prom",
+    category: "prom",
+    year: "2015",
 },
 ]

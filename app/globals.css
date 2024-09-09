@@ -131,6 +131,9 @@ h1, h3{
 .subject-mark{
   border: 1px solid gray
 }
+.upload-button{
+  background: #e7e7e7;
+}
 /*************Admin Dashboard**************************/
 .admin-header-container{
   border-bottom: 1px solid gray;

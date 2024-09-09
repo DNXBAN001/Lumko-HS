@@ -3,8 +3,8 @@
 export default function ValuesSection() {
 
     return (
-        <section className="values-section mt-5">
-            <div className="mt-12">
+        <section className="values-section ">
+            <div className="mt-10">
                 <h1 className="text-3xl text-center">Why Lumko?</h1>
             </div>
             <div className="values-wrapper flex flex-wrap justify-between  w-4/5 m-auto mt-12 p-6">

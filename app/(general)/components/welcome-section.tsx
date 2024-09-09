@@ -16,7 +16,7 @@ export default function WelcomeSection() {
               className="principal-image"
             />
           </div>
-          <div className="welcome-message w-3/5 mt-3 mb-3">
+          <div className="welcome-message w-3/5 mt-3">
             <p>Lumko High School is a family made up of teachers and learners who 
               enjoy the challenges and rewards of a quality, well-rounded education</p><br/>
             <p>We pride ourselves on what we can offer our learners. 

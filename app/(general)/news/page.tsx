@@ -4,7 +4,7 @@ export default function News() {
     
     return (
         <div className="main-body h-screen">
-            News Page - Coming soon
+            <p className="text-center">News Page - Coming soon</p>
         </div>
     )
 }

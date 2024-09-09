@@ -10,8 +10,8 @@ export default function Contact() {
             <div className="contact-container w-4/5 m-auto mt-12 pb-16">
                 <h1 className="text-3xl font-medium text-center">Contact us</h1>
                 <div className="contact mt-12">
-                    <p className="text-center mt-12">To contact us, you can either visit the school, call or send a 
-                        message to the following contact details
+                    <p className="text-center mt-12">To contact us, you can either visit the school, call or send us an email 
+                        on the email address provided below.
                     </p>
                     <div className="mt-12">
                         <div className="mt-3">

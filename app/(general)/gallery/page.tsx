@@ -60,11 +60,19 @@ export default function Gallery() {
                         ${filterBy.year === "2022" ? 'bg-red-900 text-white': ''}`}>
                         <button onClick={() => handleFilterByYear("2022")}>2022</button>
                     </div>
+                    <div className={`filter-wrapper px-3 py-1 ml-3 rounded-lg
+                        ${filterBy.year === "2015" ? 'bg-red-900 text-white': ''}`}>
+                        <button onClick={() => handleFilterByYear("2015")}>2015</button>
+                    </div>
                 </div>
                 <div className="gallery-category-filters flex flex-wrap mt-3">
                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 rounded-lg
                         ${filterBy.category === "all" ? 'bg-red-900 text-white': ''}`}>
                             <button onClick={() => handleFilterByCategory("all")}>All</button>
+                    </div>
+                    <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
+                        ${filterBy.category === "class-photo" ? 'bg-red-900 text-white': ''}`}>
+                            <button onClick={() => handleFilterByCategory("class-photo")}>Class</button>
                     </div>
                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
                         ${filterBy.category === "sport" ? 'bg-red-900 text-white': ''}`}>
@@ -77,6 +85,10 @@ export default function Gallery() {
                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
                         ${filterBy.category === "staff" ? 'bg-red-900 text-white': ''}`}>
                             <button onClick={() => handleFilterByCategory("staff")}>Staff</button>
+                    </div>
+                    <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
+                        ${filterBy.category === "prom" ? 'bg-red-900 text-white': ''}`}>
+                            <button onClick={() => handleFilterByCategory("prom")}>Prom</button>
                     </div>
                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
                         ${filterBy.category === "other" ? 'bg-red-900 text-white': ''}`}>

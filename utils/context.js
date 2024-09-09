@@ -12,6 +12,7 @@ export function ContextProvider({ children }){
     const [applicationInfo, setApplicationInfo] = React.useState({
         learnerInfo: "", marks: "", medicalInfo: "", motherInfo: "", fatherInfo: "", documents: "" 
     })
+    const [supportingDocuments, setSupportingDocuments] = React.useState()
     const [gradeApplyingFor, setGradeApplyingFor] = React.useState("")
     const [applicationStep, setApplicationStep] = React.useState(1)
 
@@ -27,7 +28,8 @@ export function ContextProvider({ children }){
                 isLoading, setIsLoading, 
                 gradeApplyingFor, setGradeApplyingFor,
                 applicationStep, setApplicationStep,
-                applicationInfo, setApplicationInfo
+                applicationInfo, setApplicationInfo,
+                supportingDocuments, setSupportingDocuments
             }
         }>
             {children}
