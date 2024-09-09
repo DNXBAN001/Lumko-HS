@@ -79,12 +79,12 @@ export default function Gallery() {
                             <button onClick={() => handleFilterByCategory("sport")}>Sports</button>
                     </div>
                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
-                        ${filterBy.category === "heritage" ? 'bg-red-900 text-white': ''}`}>
-                        <button onClick={() => handleFilterByCategory("heritage")}>Heritage</button>
-                    </div>
-                    <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
                         ${filterBy.category === "staff" ? 'bg-red-900 text-white': ''}`}>
                             <button onClick={() => handleFilterByCategory("staff")}>Staff</button>
+                    </div>
+                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
+                        ${filterBy.category === "heritage" ? 'bg-red-900 text-white': ''}`}>
+                        <button onClick={() => handleFilterByCategory("heritage")}>Heritage</button>
                     </div>
                     <div className={`filter-wrapper px-3 py-1 mt-1 sm:mt-0 ml-3 rounded-lg
                         ${filterBy.category === "prom" ? 'bg-red-900 text-white': ''}`}>
