@@ -12,7 +12,7 @@ export default function LoginForm() {
         email: "",
         password: ""
     })
-    const { user, setUser, isLoading, setIsLoading } = useGlobalContext()
+    const { user, setUser, isLoading, setIsLoading, setIsLoggedIn } = useGlobalContext()
 
     const [resMsg, setResMsg] = React.useState("")
     const router = useRouter()
@@ -35,6 +35,7 @@ export default function LoginForm() {
             if(res.success){
                 setResMsg(res.message)
                 setUser(res.user)//set global user for client components
+                setIsLoggedIn(true)
                 if(res.user.role === "admin"){
                     console.log("Going to admin dashboard...")
                     router.push("/admin/dashboard")

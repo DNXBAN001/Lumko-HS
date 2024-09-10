@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 export default function SignupForm() {
 
-    const { setUser, isLoading, setIsLoading } = useGlobalContext();
+    const { setUser, isLoading, setIsLoading, setIsLoggedIn } = useGlobalContext();
     const [resMsg, setResMsg] = React.useState("")
     const router = useRouter()
     const [formData, setFormData] = React.useState({
@@ -42,6 +42,7 @@ export default function SignupForm() {
             setIsLoading(false)
             if(res.success){
                 setUser(res.user)
+                setIsLoggedIn(true)
                 if(res.user.role === "admin"){
                     router.push("/admin/dashboard")
                 }else if(res.user.role === "applicant"){

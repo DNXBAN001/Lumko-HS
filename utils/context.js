@@ -15,6 +15,7 @@ export function ContextProvider({ children }){
     const [supportingDocuments, setSupportingDocuments] = React.useState()
     const [gradeApplyingFor, setGradeApplyingFor] = React.useState("")
     const [applicationStep, setApplicationStep] = React.useState(1)
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false)
 
     React.useEffect(() => {
         console.log("Global user was updated...",user)
@@ -26,6 +27,7 @@ export function ContextProvider({ children }){
             value={{
                 user, setUser,
                 isLoading, setIsLoading, 
+                isLoggedIn, setIsLoggedIn,
                 gradeApplyingFor, setGradeApplyingFor,
                 applicationStep, setApplicationStep,
                 applicationInfo, setApplicationInfo,

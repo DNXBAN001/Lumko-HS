@@ -7,6 +7,8 @@ import Link from "next/link";
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 import { Roboto_Serif } from "next/font/google";
+import { useGlobalContext } from "@/utils/context";
+import { useRouter } from "next/navigation";
 
 const roboto_serif = Roboto_Serif({ 
     subsets: ["latin"],
@@ -18,11 +20,32 @@ export default function Navbar() {
     const [toggleMenu, setToggleMenu] = React.useState(false)
     const pathname = usePathname()
     const [moreDropdown, setMoreDropdown] = React.useState(false)
+    const { isLoggedIn, setIsLoggedIn } = useGlobalContext()
+    const router = useRouter()
 
     React.useEffect(()=> {
         console.log(toggleMenu)
     }, [toggleMenu])
 
+    
+    async function handleLogout(event){
+        event.preventDefault()
+        try{
+            const res = await fetch("/api/logout", {
+                method: "GET",
+            }).then(result => result.json())
+            if(res.success){
+                console.log(res.message)
+                setIsLoggedIn(false)
+                router.push("/sign-in")
+            }else{
+                alert(res.message)
+            }
+        }catch(err){
+            alert("Error while trying to logout!")
+        }
+    }
+    
     const LeftMenuLinks = (
         <>
             <p className="menu-link w-full md:w-auto text-center font-semibold py-2" 
@@ -66,21 +89,23 @@ export default function Navbar() {
                         <Link className={`link hover:text-red-700 ${pathname === '/past-papers' ? 'active' : ''}`} 
                         href="/past-papers">PAST PAPERS</Link>
                     </p>
-                    <p className="more-links w-full md:w-auto text-center font-semibold pt-2 pb-3" onClick={() => {
+                    {isLoggedIn ? (<p className="cursor-pointer w-full md:w-auto text-center font-semibold pt-2 pb-3" 
+                    onClick={handleLogout}>LOGOUT</p>): 
+                    (<p className="more-links w-full md:w-auto text-center font-semibold pt-2 pb-3" onClick={() => {
                         setToggleMenu(prevState => !prevState)}
                         }>
                         <Link className={`link hover:text-red-700 ${pathname === '/sign-in' ? 'active' : ''} `} 
                         href="/sign-in">SIGN IN</Link>
-                    </p>
+                    </p>)}
                 </div>
                 
             </div>
             
         </>
     )
-
+//${roboto_serif.className} font-serif
     return (
-        <nav className={`navbar-container font-serif bg-blue-950 p-5 sticky w-full top-0 ${roboto_serif.className}`}>
+        <nav className={`navbar-container font-serif text-sm bg-blue-950 p-5 sticky w-full top-0 `}>
             <div className="navbar flex justify-around items-center">
                 {LeftMenuLinks}
                 <div>
