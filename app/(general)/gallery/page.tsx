@@ -23,10 +23,6 @@ export default function Gallery() {
     }, [filterBy])
 
     const imageList = galleryImages.map(imageItem => (
-        // imageItem.category === "prom" ? (<div key={imageItem.id} className="mt-6">
-        //         <Image src={`/gallery/${imageItem.name}`} width={350} height={250} unoptimized className="sm:w-96" alt="img" />
-        //         <p>{imageItem.description+" - "+imageItem.year}</p>
-        //     </div>):
         <div key={imageItem.id} className="mt-6">
             <Image src={`/gallery/${imageItem.name}`} width={350} height={250} className="sm:w-auto" alt="img" />
             <p>{imageItem.description+" - "+imageItem.year}</p>

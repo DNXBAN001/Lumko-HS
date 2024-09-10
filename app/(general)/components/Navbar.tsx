@@ -80,7 +80,7 @@ export default function Navbar() {
     )
 
     return (
-        <nav className={`navbar-container font-serif  bg-blue-950 p-5 sticky w-full top-0 ${roboto_serif.className}`}>
+        <nav className={`navbar-container font-serif bg-blue-950 p-5 sticky w-full top-0 ${roboto_serif.className}`}>
             <div className="navbar flex justify-around items-center">
                 {LeftMenuLinks}
                 <div>

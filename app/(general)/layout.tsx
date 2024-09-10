@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Lumko High School",
-  description: "General Page",
+  description: "Lumko High School ",
 };
 
 export default function Layout({
