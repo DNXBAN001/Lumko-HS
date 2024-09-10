@@ -110,7 +110,7 @@ export default function SignupForm() {
                 />
                 <p className="ml-3">
                     I have read and agree to Lumko High School Privacy Policy.
-                    <Link href="#" className="text-blue-600"> Read more</Link>
+                    <Link href="/sign-up/privacy-policy" className="text-blue-600"> Read more</Link>
                 </p>
             </div>
             <div className="signup-button-wrapper mt-4 text-center w-full " >

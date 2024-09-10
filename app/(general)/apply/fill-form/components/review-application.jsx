@@ -14,7 +14,7 @@ export default function ReviewApplication() {
         <div>
             <p className="mt-12 font-semibold">Submit Application</p>
             <p className="mt-12 w-5/6 md:w-3/5 italic">If you are confident that all the information you have 
-                provided is correct and all the necessary documents are uploaded succefully then click on 
+                provided is correct and all the necessary documents are uploaded successfully then click on 
                 Submit to complete your application
             </p>
         </div>
