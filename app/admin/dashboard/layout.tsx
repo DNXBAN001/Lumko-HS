@@ -2,11 +2,10 @@
 import type { Metadata } from "next";
 import AdminHeader from "./components/admin-header"
 import LeftSidebar from "./components/left-sidebar"
-import { useRouter } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Lumko High School",
-  description: "General Page",
+  description: "Lumko High School Administration",
 };
 
 export default function Layout({

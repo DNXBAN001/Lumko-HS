@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link'
-import { getApplicationsByClass, getApplicationsByClassAndStatus, updateAdmissionByStatus } from '@/utils/lib/db-queries';
+import { getApplicationsByClass, getApplicationsByClassAndStatus, updateAdmissionStatus } from '@/utils/lib/db-queries';
+import SelectClass from "./select-class"
 
-export default function ViewBy() {
+export default function ViewApplications() {
 
     const [filterBy, setFilterBy] = React.useState({
         grade: "grade8",
@@ -20,10 +21,10 @@ export default function ViewBy() {
     React.useEffect(() => {
         console.log("Admission status changed to: ", decision.admissionStatus)
         async function handleAdmission(){
-            await updateAdmissionByStatus(decision.applicationId, decision.admissionStatus)
+            await updateAdmissionStatus(decision.applicationId, decision.admissionStatus)
         }
         handleAdmission()
-    }, [decision])
+    }, [decision.admissionStatus])
 
     React.useEffect(() =>{
         async function fetchApplicationsByGradeAndStatus(){
@@ -76,7 +77,9 @@ export default function ViewBy() {
                     <td className="p-3">{application.email}</td>
                     <td className="p-3">{application.average_mark}</td>
                     <td className="p-3">{application.status}</td>
-                    <td className="p-3">{application.class}</td>
+                    <td className="p-3">{<SelectClass applicantId={application.userid} grade={filterBy.grade} 
+                        allocatedClass={application.class}/>}
+                    </td>
                     <td className="p-3">{JSON.stringify(application.created_at).substring(1, 11)}</td>
                     <td className="p-3">
                         <Link href={`/admin/dashboard/view-applications/${application?.userid}`} 

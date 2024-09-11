@@ -199,8 +199,14 @@ export async function getApplicationsByClassAndStatus(class_grade: string, statu
 /**
  * Update applicant admission status
  */
-export async function updateAdmissionByStatus(applicantId: string, decision: string){
+export async function updateAdmissionStatus(applicantId: string, decision: string){
     await sql`UPDATE learner_info SET status=${decision} WHERE userId=${applicantId}`
+}
+/**
+ * Update class allocated to the applicant
+ */
+export async function updateClassAllocatedToApplicant(applicantId: string, allocatedClass: string){
+    await sql`UPDATE learner_info SET class=${allocatedClass} WHERE userId=${applicantId}`
 }
 /**
  * Get applicant info by applicant id

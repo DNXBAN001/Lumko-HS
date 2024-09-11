@@ -79,6 +79,10 @@ h1, h3{
 .filter-wrapper{
   border: 1px solid #000000;
 }
+.filter-wrapper:hover{
+  background:#7f1d1d;
+  color: #ffffff;
+}
 /***************Auth Pages***********************/
 .auth-container{
   min-height: 100vh;

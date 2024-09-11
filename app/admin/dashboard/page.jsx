@@ -32,7 +32,7 @@ export default function AdminOverview() {
         console.log("Total applications: ", totalApplications)
     }, [applicationsCountByGrade])
 
-    const applicationsRecords = applicationCountBySchools.length > 0 ? (applicationCountBySchools.map(ele => {
+    const applicationsBySchools = applicationCountBySchools.length > 0 ? (applicationCountBySchools.map(ele => {
             return(
                 <tr className="" key={ele.present_school}>
                     <td className="px-3 py-2">{ele.present_school}</td>
@@ -95,7 +95,7 @@ export default function AdminOverview() {
                                 </tr>
                             </thead>
                             <tbody className="">
-                               {applicationsRecords}
+                               {applicationsBySchools}
                             </tbody>
                         </table>
                     </div>
