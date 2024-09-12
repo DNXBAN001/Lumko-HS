@@ -173,6 +173,15 @@ th{
 td{
   border: 1px solid #000000;
 }
+/****************************/
+/* .exams-container{
+  border: 1px solid red;
+} */
+.search-exams{
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-indent: 12px;
+}
 
 
 
