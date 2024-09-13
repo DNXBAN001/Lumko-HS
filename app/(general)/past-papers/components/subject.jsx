@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { RiArrowRightSLine, RiArrowDownSLine } from "react-icons/ri";
-import { papers } from "@/utils/lib/papers"
+import Link from 'next/link';
 
 export default function Subject(props) {
 
@@ -37,12 +37,20 @@ export default function Subject(props) {
                     {toggleYear ? (
                         <div className="mt-3 ml-8">
                             <div className="flex">
-                                <p className='text-blue-600'>Paper 1</p>
-                                <p className="ml-20 text-blue-600">Memorandum</p>
+                                <p className='text-blue-600'>
+                                    <Link href={`/past-papers/${props.p1Id}`}>Paper 1</Link>
+                                </p>
+                                <p className="ml-20 text-blue-600">
+                                    <Link href={`/past-papers/${props.p1MemoId}`}>Memorandum</Link>
+                                </p>
                             </div>
                             <div className="flex mt-3">
-                                <p className='text-blue-600'>Paper 2</p>
-                                <p className="ml-20 text-blue-600">Memorandum</p>
+                                <p className='text-blue-600'>
+                                    <Link href={`/past-papers/${props.p2Id}`}>Paper 2</Link>
+                                </p>
+                                <p className="ml-20 text-blue-600">
+                                    <Link href={`/past-papers/${props.p2MemoId}`}>Memorandum</Link>
+                                </p>
                             </div>
                         </div>):<p></p>
                     }
