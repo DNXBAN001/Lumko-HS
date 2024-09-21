@@ -104,9 +104,9 @@ export default function SignupForm() {
                     />
                 </div>
             </div>
-            <div className="privacy-policy-wrapper flex mt-8 ">
+            <div className="privacy-policy-wrapper flex mt-8 md:w-11/12 md:m-auto md:mt-8 ">
                 <input type="checkbox" name="privacy-policy" required
-                    className="checkbox-privacy-policy ml-1" onChange={handleChange}
+                    className="checkbox-privacy-policy" onChange={handleChange}
                 />
                 <p className="ml-3">
                     I have read and agree to Lumko High School Privacy Policy.
