@@ -96,6 +96,11 @@ h1, h3{
   border: 1px solid grey;
   border-radius: 20px;
 }
+.signup-wrapper{
+  width: 80%;
+  background: #ffffff;
+  border-radius: 20px;
+}
 .login-button:active{
   padding: 3.5px 15px;
 }
@@ -198,7 +203,11 @@ td{
     height: 100vh;
   }
 }
-
+@media (min-width: 1150px){
+  .signup-wrapper{
+    width: 662px;
+  }
+}
 @media (max-width: 900px){
   .navbar{
     justify-content: space-between;
@@ -288,7 +297,7 @@ td{
 }
 
 @media (max-width: 480px){
-  .auth-container .form-wrapper{
+  .auth-container .form-wrapper, .signup-wrapper{
     width: 98%;
     padding-left: 10px;
     padding-right: 10px

@@ -9,7 +9,7 @@ export default function Signup() {
         <div className="main-body">
             <div className="auth-container signup-container pb-12">
                 <div className="empty-div w-2/5 m-auto pt-12"><p>.</p></div>
-                <div className="form-wrapper m-auto px-10 py-12">
+                <div className=" signup-wrapper m-auto px-10 py-12">
                     <div className="text-center text-xl"><h3>Are you new here?</h3></div>
                     <div className="text-center mt-6"><p>Let us help you sign up. This will be quick.</p></div>
                     <SignupForm />
