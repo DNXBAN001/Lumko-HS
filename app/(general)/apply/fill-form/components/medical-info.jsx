@@ -19,10 +19,10 @@ export default function MedicalInfo() {
     // if(!applicationInfo.learnerInfo.gradeApplyingFor){
     //     redirect("/apply")
     // }
-    if(!applicationInfo.marks){
-        //another way of redirecting the applicant back to Step 1 if they left any of the required fields
-        setApplicationStep(1)
-    }
+    // if(!applicationInfo.marks){
+    //     //another way of redirecting the applicant back to Step 1 if they left any of the required fields
+    //     setApplicationStep(1)
+    // }
 
     React.useEffect(() => {
         saveFormData()

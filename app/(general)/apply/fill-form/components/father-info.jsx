@@ -18,10 +18,10 @@ export default function FatherInfo() {
     // if(!applicationInfo.learnerInfo.gradeApplyingFor){
     //     redirect("/apply")
     // }
-    if(!applicationInfo.motherInfo){
-        //another way of redirecting the applicant back to Step 1 if they left any of the required fields
-        setApplicationStep(3)
-    }
+    // if(!applicationInfo.motherInfo){
+    //     //another way of redirecting the applicant back to Step 1 if they left any of the required fields
+    //     setApplicationStep(3)
+    // }
 
     React.useEffect(() => {
         // console.log(formData)

@@ -1,5 +1,4 @@
 import Subject from "./components/subject"
-import { papers } from "@/utils/lib/papers"
 
 export default function PastPapers() {
 

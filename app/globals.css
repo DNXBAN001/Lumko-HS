@@ -91,7 +91,7 @@ h1, h3{
   opacity: 0.75;
 }
 .auth-container .form-wrapper{
-  width: 35%;
+  width: 533px;/*35%;*/
   background: #ffffff;
   border: 1px solid grey;
   border-radius: 20px;
@@ -174,9 +174,6 @@ td{
   border: 1px solid #000000;
 }
 /****************************/
-/* .exams-container{
-  border: 1px solid red;
-} */
 .search-exams{
   border: 1px solid gray;
   border-radius: 5px;
@@ -195,7 +192,7 @@ td{
     height: 100%;
   }
   .auth-container .form-wrapper{
-    width: 50%;
+    width: 662px;
   }
   .forgot-password-container{
     height: 100vh;
@@ -258,9 +255,6 @@ td{
   }
 }
 @media (max-width: 810px){
-  .auth-container .form-wrapper{
-    width: 60%;
-  }
   .row-arranged{
     flex-direction: column;
   }
