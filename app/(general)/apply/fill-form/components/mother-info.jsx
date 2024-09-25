@@ -18,10 +18,10 @@ export default function MotherInfo() {
     // if(!applicationInfo.learnerInfo.gradeApplyingFor){
     //     redirect("/apply")
     // }
-    // if(!applicationInfo.medicalInfo){
-    //     //another way of redirecting the applicant back to Step 1 if they left any of the required fields
-    //     setApplicationStep(2)
-    // }
+    if(!applicationInfo.medicalInfo){
+        //another way of redirecting the applicant back to Step 1 if they left any of the required fields
+        setApplicationStep(2)
+    }
 
     React.useEffect(() => {
         saveFormData()
@@ -37,7 +37,7 @@ export default function MotherInfo() {
     }
     function saveFormData(){
         if(formData.title&&formData.firstName&&formData.lastName&&formData.idNumber&&formData.maritalStatus
-            &&formData.phone&&formData.physicalAddress){
+            &&formData.phone&&formData.occupation&&formData.employer&&formData.physicalAddress){
                 setApplicationInfo(prevState => ({
                     ...prevState,
                     motherInfo: formData

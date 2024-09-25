@@ -21,9 +21,9 @@ export default function ApplicantInfo() {
   })
 
   //Redirect user back to /apply page to select the grade applying for if the value is null
-  // if(!gradeApplyingFor){
-  //   redirect("/apply")
-  // }
+  if(!gradeApplyingFor){
+    redirect("/apply")
+  }
 
   React.useEffect(() => {
     saveLearnerInfo()

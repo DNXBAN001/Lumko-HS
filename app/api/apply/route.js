@@ -1,6 +1,7 @@
 import { sql } from "@vercel/postgres"
 import {getSession} from "@/utils/lib/session"
 import { NextResponse } from "next/server"
+import { saveBlobsToDB, saveFatherInfo, saveMarksInfo, saveMedicalInfo, saveMotherInfo } from "@/utils/lib/db-queries"
 
 export async function POST(req){
 
@@ -31,42 +32,17 @@ export async function POST(req){
 
     try{
         console.log("Test 1")
-        await sql`INSERT INTO learner_info (firstName, lastName, id_number, dob, email, phone, present_school, 
-        previous_schools, year_of_previous_schools, home_language, religion, physical_address, other_achievements,
-        grade_applying_for, userId) 
-        VALUES (${formData.learnerInfo.firstName}, ${formData.learnerInfo.lastName}, ${formData.learnerInfo.idNumber},
-        ${formData.learnerInfo.dateOfBirth}, ${formData.learnerInfo.email}, ${formData.learnerInfo.phone},
-        ${formData.learnerInfo.presentSchool}, ${formData.learnerInfo.previousSchools}, ${formData.learnerInfo.yearOfPreviousSchools},
-        ${formData.learnerInfo.homeLanguage}, ${formData.learnerInfo.religion}, ${formData.learnerInfo.physicalAddress},
-        ${formData.learnerInfo.otherAchievements}, ${formData.learnerInfo.gradeApplyingFor}, ${userId});`
+        await saveLearnerInfo(formData, userId)
         console.log("Test 2")
-        await sql`INSERT INTO marks (english, isixhosa, afrikaans, mathematics, life_orientation, natural_sciences, creative_arts, 
-        economic_management_sciences, social_sciences, technology, average_mark, userId)
-        VALUES (${formData.marks.english}, ${formData.marks.isixhosa}, ${formData.marks.afrikaans}, ${formData.marks.mathematics},
-        ${formData.marks.LO}, ${formData.marks.ns}, ${formData.marks.creativeArts}, ${formData.marks.ems}, ${formData.marks.ss},
-        ${formData.marks.tech}, ${averageMark}, ${userId})`
+        await saveMarksInfo(formData, averageMark, userId)
         console.log("Test 3")
-        await sql`INSERT INTO medical_info (medical_aid_number, medical_aid_name, main_member, doctor_name, doctor_phone,
-        medical_condition, special_problems, receiving_social_grant, dexterity_of_learner, userId)
-        VALUES (${formData.medicalInfo.medicalAidNumber}, ${formData.medicalInfo.medicalAidName}, 
-        ${formData.medicalInfo.medicalAidMainMember}, ${formData.medicalInfo.nameOfDoctor},${formData.medicalInfo.doctorContactNumber},
-        ${formData.medicalInfo.medicalCondition}, ${formData.medicalInfo.specialProblems}, ${formData.medicalInfo.receivingSocialGrant}, 
-        ${formData.medicalInfo.dexterityOfLearner}, ${userId})`
+        await saveMedicalInfo(formData, userId)
         console.log("Test 4")
-        await sql`INSERT INTO mother_info (title, firstName, lastName, id_number, marital_status, email, phone, occupation, employer,
-        physical_address, postal_address, userId)
-        VALUES (${formData.motherInfo.title}, ${formData.motherInfo.firstName}, ${formData.motherInfo.lastName}, ${formData.motherInfo.idNumber}, 
-        ${formData.motherInfo.maritalStatus}, ${formData.motherInfo.email}, ${formData.motherInfo.phone}, 
-        ${formData.motherInfo.occupation}, ${formData.motherInfo.employer}, ${formData.motherInfo.physicalAddress},
-        ${formData.motherInfo.postalAddress}, ${userId})`
+        await saveMotherInfo(formData, userId)
         console.log("Test 5")
-        await sql`INSERT INTO father_info (firstName, lastName, id_number, marital_status, email, phone, occupation, employer,
-        physical_address, postal_address, userId)
-        VALUES (${formData.fatherInfo.firstName}, ${formData.fatherInfo.lastName}, ${formData.fatherInfo.idNumber}, 
-        ${formData.fatherInfo.maritalStatus}, ${formData.fatherInfo.email}, ${formData.fatherInfo.phone}, 
-        ${formData.fatherInfo.occupation}, ${formData.fatherInfo.employer}, ${formData.fatherInfo.physicalAddress},
-        ${formData.fatherInfo.postalAddress}, ${userId})`
+        await saveFatherInfo(formData, userId)
         console.log("Test 6")
+        await saveBlobsToDB(formData.documents, userId)
     }catch(err){
         console.log("Server error occured...")
         return NextResponse.json({

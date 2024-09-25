@@ -19,6 +19,7 @@ export default function ApplicationForm() {
 
   React.useEffect(() => {
     console.log("Step: ", applicationStep)
+    console.log(applicationInfo)
   }, [applicationStep])
  
   function handleNext(){
@@ -34,6 +35,9 @@ export default function ApplicationForm() {
   async function handleSubmit(event){
     event.preventDefault()
     setIsLoading(true)
+    if(!applicationInfo.documents){
+      alert("Ensure that you attach all the required documents")
+    }
     try{
       const res = await fetch("/api/apply", {
         method: "POST",
@@ -47,7 +51,7 @@ export default function ApplicationForm() {
         alert(res.message)
       }
     }catch(err){
-      alert("Error: from handleSubmit", err)
+      alert("Unexpected error: ", err)
     }
   }
   return (

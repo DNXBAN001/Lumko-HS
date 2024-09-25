@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 async function getApplicationStatus(userId){
     "use server"
-    const { rows } = await sql`SELECT status FROM learner_info WHERE userId=${userId}`
+    const { rows } = await sql`SELECT status, class FROM learner_info WHERE userId=${userId}`
     if(rows.length >0){
-        return rows[0].status
+        return rows[0]
     }
     return "No status"
 }
@@ -32,15 +32,15 @@ export default async function MyStatus() {
                             <th className="px-3 py-2">Full Name</th>
                             <th className="px-3 py-2">Email</th>
                             <th className="px-3 py-2">Admission Status</th>
-                            <th className="px-3 py-2 hidden sm:block">Reason</th>
+                            <th className="px-3 py-2 hidden sm:block">Class_Grade</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="text-center">
                             <td className="px-3 py-2">{firstName+" "+lastName}</td>
                             <td className="px-3 py-2">{email}</td>
-                            <td className="px-3 py-2">{applicationStatus}</td>
-                            <td className="px-3 py-2 hidden sm:block">...</td>
+                            <td className="px-3 py-2">{applicationStatus.status}</td>
+                            <td className="px-3 py-2 hidden sm:block">{applicationStatus.class}</td>
                         </tr>
                     </tbody>
                 </table>

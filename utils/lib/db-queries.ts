@@ -1,8 +1,11 @@
 "use server"
 import { sql } from "@vercel/postgres"
 
+/**
+ * Creat learner info table
+ */
 export async function createLearnerInfoTable(){
-    await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`
+    // await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`
     await sql`CREATE TABLE IF NOT EXISTS learnerInfo (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         firstName varchar(255) NOT NULL,
@@ -25,7 +28,9 @@ export async function createLearnerInfoTable(){
         created_at timestamp DEFAULT now() NOT NULL
     );`
 }
-
+/**
+ * Create marks info table
+ */
 export async function createMarksTable(){
     await sql`CREATE TABLE IF NOT EXISTS marks (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -44,7 +49,9 @@ export async function createMarksTable(){
         created_at timestamp DEFAULT now() NOT NULL
     );`
 }
-
+/**
+ * Create medical info table
+ */
 export async function createMedicalInfoTable(){
     await sql`CREATE TABLE IF NOT EXISTS medical_info (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -61,7 +68,9 @@ export async function createMedicalInfoTable(){
         created_at timestamp DEFAULT now() NOT NULL
     );`
 }
-
+/**
+ * Create mother info table
+ */
 export async function createMotherInfoTable(){
     await sql`CREATE TABLE IF NOT EXISTS mother_info (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -80,6 +89,9 @@ export async function createMotherInfoTable(){
         created_at timestamp DEFAULT now() NOT NULL
     );`
 }
+/**
+ * Create father info table
+ */
 export async function createFatherInfoTable(){
     await sql`CREATE TABLE IF NOT EXISTS father_info (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -98,6 +110,20 @@ export async function createFatherInfoTable(){
         created_at timestamp DEFAULT now() NOT NULL
     );`
 }
+/**
+ * Create supporting documents table
+ */
+export async function createSupportingDocumentsTable(){
+    await sql`CREATE TABLE IF NOT EXISTS supporting_documents (
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        learner_birth_certificate varchar(255) NOT NULL, 
+        mother_id varchar(255) NOT NULL, 
+        latest_report varchar(255) NOT NULL, 
+        proof_of_residence varchar(255) NOT NULL, 
+        learner_face_photo varchar(255) NOT NULL, 
+        userId varchar(255) NOT NULL,
+        created_at timestamp DEFAULT now() NOT NULL);`
+}
 
 /**
  * Table containing the opening and closing date for applications
@@ -111,21 +137,32 @@ export async function createAdmissionDatesTable(){
         created_at timestamp DEFAULT now() NOT NULL
         )`
 }
+
+/**
+ * Insert admission dates and whether or not applications are currently open
+ */
 export async function insertIntoAdmissionDates(){
     await sql`INSERT INTO admission_dates ( is_applications_open, opening_date, closing_date ) 
         VALUES ( 'no', '01/03/2024', '01/06/2024')`
 }
+/**
+ * 
+ * @returns is_applications_open, opening_date, and closing_date
+ */
 export async function getAdmissionDates(){
     const {rows} = await sql`SELECT is_applications_open, opening_date, closing_date FROM admission_dates`
     return (rows.length > 0 ? rows[0]: "")
 }
+/**
+ * 
+ * @param formData - is_applications_open, opening_date, and closing_date
+ */
 export async function updateAdmissionDates(formData: any){
-    const response = await sql`UPDATE admission_dates
+    await sql`UPDATE admission_dates
         SET is_applications_open=${formData?.is_applications_open}, opening_date=${formData?.opening_date},
             closing_date=${formData?.closing_date}
-        WHERE id='eef3d510-b679-4a71-994b-c5d4c9178451'
+        WHERE id='eef3d510-b679-4a71-994b-c5d4c9178451'  
     `
-    return response.rows
 }
 
 /**
@@ -143,10 +180,14 @@ export async function createAdmissionByClassTable(){
 export async function insertIntoAdmissionByClass(){
     await sql`INSERT INTO admission_by_class ( class_grade, max_intake, total_classes
             ) VALUES ( 'grade8', 250, 5), ( 'grade9', 50, 5), ( 'grade10A', 10, null), ( 'grade10B', 10, null),
-             ( 'grade10C', 10, null), ( 'grade10D', 10, null), ( 'grade11A', 5, null), ( 'grade11B', 5, null), ( 'grade11C', 5, null), 
-              ( 'grade11D', 5, null)
+            ( 'grade10C', 10, null), ( 'grade10D', 10, null), ( 'grade11A', 5, null), ( 'grade11B', 5, null), 
+            ( 'grade11C', 5, null), ( 'grade11D', 5, null)
              `
 }
+/**
+ * 
+ * @returns class_grade, max_intake, total_classes
+ */
 export async function getAdmissionByClass(){
     const { rows } = await sql`SELECT class_grade, max_intake, total_classes FROM admission_by_class`
     return (rows.length > 0 ? rows: "")
@@ -272,4 +313,70 @@ export async function getApplicationCountBySchool(){
             ORDER BY count DESC`
 
     return rows
+}
+/**
+ * Save learner info
+ */
+export async function saveLearnerInfo(formData: any, userId: string){
+    await sql`INSERT INTO learner_info (firstName, lastName, id_number, dob, email, phone, present_school, 
+    previous_schools, year_of_previous_schools, home_language, religion, physical_address, other_achievements,
+    grade_applying_for, userId) 
+    VALUES (${formData.learnerInfo.firstName}, ${formData.learnerInfo.lastName}, ${formData.learnerInfo.idNumber},
+    ${formData.learnerInfo.dateOfBirth}, ${formData.learnerInfo.email}, ${formData.learnerInfo.phone},
+    ${formData.learnerInfo.presentSchool}, ${formData.learnerInfo.previousSchools}, ${formData.learnerInfo.yearOfPreviousSchools},
+    ${formData.learnerInfo.homeLanguage}, ${formData.learnerInfo.religion}, ${formData.learnerInfo.physicalAddress},
+    ${formData.learnerInfo.otherAchievements}, ${formData.learnerInfo.gradeApplyingFor}, ${userId});`
+}
+/**
+ * Save marks info
+ */
+export async function saveMarksInfo(formData: any, averageMark: string,userId: string){
+    await sql`INSERT INTO marks (english, isixhosa, afrikaans, mathematics, life_orientation, natural_sciences, creative_arts, 
+    economic_management_sciences, social_sciences, technology, average_mark, userId)
+    VALUES (${formData.marks.english}, ${formData.marks.isixhosa}, ${formData.marks.afrikaans}, ${formData.marks.mathematics},
+    ${formData.marks.LO}, ${formData.marks.ns}, ${formData.marks.creativeArts}, ${formData.marks.ems}, ${formData.marks.ss},
+    ${formData.marks.tech}, ${averageMark}, ${userId})`
+}
+/**
+ * Save medical info
+ */
+export async function saveMedicalInfo(formData: any, userId: string){
+    await sql`INSERT INTO medical_info (medical_aid_number, medical_aid_name, main_member, doctor_name, doctor_phone,
+    medical_condition, special_problems, receiving_social_grant, dexterity_of_learner, userId)
+    VALUES (${formData.medicalInfo.medicalAidNumber}, ${formData.medicalInfo.medicalAidName}, 
+    ${formData.medicalInfo.medicalAidMainMember}, ${formData.medicalInfo.nameOfDoctor},${formData.medicalInfo.doctorContactNumber},
+    ${formData.medicalInfo.medicalCondition}, ${formData.medicalInfo.specialProblems}, ${formData.medicalInfo.receivingSocialGrant}, 
+    ${formData.medicalInfo.dexterityOfLearner}, ${userId})`
+}
+/**
+ * Save mother info
+ */
+export async function saveMotherInfo(formData: any, userId: string){
+    await sql`INSERT INTO mother_info (title, firstName, lastName, id_number, marital_status, email, phone, occupation, employer,
+    physical_address, postal_address, userId)
+    VALUES (${formData.motherInfo.title}, ${formData.motherInfo.firstName}, ${formData.motherInfo.lastName}, 
+    ${formData.motherInfo.idNumber}, ${formData.motherInfo.maritalStatus}, ${formData.motherInfo.email}, 
+    ${formData.motherInfo.phone}, ${formData.motherInfo.occupation}, ${formData.motherInfo.employer}, 
+    ${formData.motherInfo.physicalAddress}, ${formData.motherInfo.postalAddress}, ${userId})`
+}
+
+/**
+ * Save father info
+ */
+export async function saveFatherInfo(formData: any, userId: string){
+    await sql`INSERT INTO father_info (firstName, lastName, id_number, marital_status, email, phone, occupation, employer,
+    physical_address, postal_address, userId)
+    VALUES (${formData.fatherInfo.firstName}, ${formData.fatherInfo.lastName}, ${formData.fatherInfo.idNumber}, 
+    ${formData.fatherInfo.maritalStatus}, ${formData.fatherInfo.email}, ${formData.fatherInfo.phone}, 
+    ${formData.fatherInfo.occupation}, ${formData.fatherInfo.employer}, ${formData.fatherInfo.physicalAddress},
+    ${formData.fatherInfo.postalAddress}, ${userId})`
+}
+/**
+ * Save blob URLs to the database
+ */
+export async function saveBlobsToDB(documents: any, userId: string){
+    await sql`INSERT INTO supporting_documents (learner_birth_certificate, 
+        mother_id, latest_report, proof_of_residence, learner_face_photo, userId)
+        VALUES (${documents.learner_birth_certificate}, ${documents.mother_id},
+        ${documents.latest_report}, ${documents.proof_of_residence}, ${documents.learner_face_photo}, ${userId})`
 }

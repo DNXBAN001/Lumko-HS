@@ -24,6 +24,21 @@ export default function ViewApplication() {
             <MedicalInfo applicantID={applicantId} />
             <MotherInfo applicantID={applicantId}/>
             <FatherInfo applicantID={applicantId}/>
+            <div className="mt-12 w-full">
+                <iframe src={supportingDocuments?.motherId} className="w-full h-80 lg:h-screen" ></iframe>
+            </div>
+            <div className="mt-12 w-full">
+                <iframe src={supportingDocuments?.motherId} className="w-full h-80 lg:h-screen" ></iframe>
+            </div>
+            <div className="mt-12 w-full">
+                <iframe src={supportingDocuments?.motherId} className="w-full h-80 lg:h-screen" ></iframe>
+            </div>
+            <div className="mt-12 w-full">
+                <iframe src={supportingDocuments?.motherId} className="w-full h-80 lg:h-screen" ></iframe>
+            </div>
+            <div className="mt-12 w-full">
+                <img src={supportingDocuments?.motherId} className="w-3/5 h-80 lg:h-screen" />
+            </div>
         </div>
     )
 }
