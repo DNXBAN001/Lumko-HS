@@ -51,6 +51,8 @@
 
 ## 15 View Application Status
     - Full name, Email, Admission Status, Class
+    - Try to display admission status in a different format rather than in a table to ensure 
+        better view even in mobile devices
 
 
 

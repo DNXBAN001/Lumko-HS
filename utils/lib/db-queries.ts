@@ -284,6 +284,14 @@ export async function getFatherInfo(applicantId: string){
     const { rows } = await sql`SELECT * FROM father_info WHERE userid=${applicantId}` 
     return rows
 }
+/**
+ * Get applicant supporting docs URLs
+ */
+export async function getSupportingDocs(applicantId: string){
+    const { rows } = await sql`SELECT learner_birth_certificate, mother_id, latest_report, proof_of_residence,
+        learner_face_photo FROM supporting_documents WHERE userid=${applicantId}` 
+    return rows
+}
 
 /**
  * Get total number of applications received
@@ -374,9 +382,11 @@ export async function saveFatherInfo(formData: any, userId: string){
 /**
  * Save blob URLs to the database
  */
-export async function saveBlobsToDB(documents: any, userId: string){
+export async function saveBlobsToDB(formData: any, userId: string){
     await sql`INSERT INTO supporting_documents (learner_birth_certificate, 
         mother_id, latest_report, proof_of_residence, learner_face_photo, userId)
-        VALUES (${documents.learner_birth_certificate}, ${documents.mother_id},
-        ${documents.latest_report}, ${documents.proof_of_residence}, ${documents.learner_face_photo}, ${userId})`
+        VALUES (${formData.documents.learner_birth_certificate}, ${formData.documents.mother_id},
+        ${formData.documents.latest_report}, ${formData.documents.proof_of_residence}, 
+        ${formData.documents.learner_face_photo}, ${userId})`
 }
+

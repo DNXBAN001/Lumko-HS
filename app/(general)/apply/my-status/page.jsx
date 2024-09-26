@@ -39,8 +39,8 @@ export default async function MyStatus() {
                         <tr className="text-center">
                             <td className="px-3 py-2">{firstName+" "+lastName}</td>
                             <td className="px-3 py-2">{email}</td>
-                            <td className="px-3 py-2">{applicationStatus.status}</td>
-                            <td className="px-3 py-2 hidden sm:block">{applicationStatus.class}</td>
+                            <td className="px-3 py-2">{applicationStatus?.status}</td>
+                            <td className="px-3 py-2">{applicationStatus.class ? applicationStatus.class: "..."}</td>
                         </tr>
                     </tbody>
                 </table>

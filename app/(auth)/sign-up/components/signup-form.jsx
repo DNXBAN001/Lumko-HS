@@ -27,7 +27,6 @@ export default function SignupForm() {
                 [name]: type === "checkbox" ? checked: value
             }
         ))
-
     }
 
     async function handleSubmit(event){

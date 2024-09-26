@@ -1,7 +1,8 @@
 import { sql } from "@vercel/postgres"
 import {getSession} from "@/utils/lib/session"
 import { NextResponse } from "next/server"
-import { saveBlobsToDB, saveFatherInfo, saveMarksInfo, saveMedicalInfo, saveMotherInfo } from "@/utils/lib/db-queries"
+import { saveLearnerInfo, saveMarksInfo, saveMedicalInfo, saveMotherInfo, 
+    saveFatherInfo, saveBlobsToDB } from "@/utils/lib/db-queries"
 
 export async function POST(req){
 
@@ -9,7 +10,7 @@ export async function POST(req){
 
     //Get userId from getSession() to pass it along with the inserted data as a foreign key
     const { userId } = await getSession()
-    // const userId = "b8edeb11-89f6-429c-9cb7-a81d9870a77f"
+    
     if(!userId){
         return NextResponse.json({success: false, message: "User session has expired..."})
     }
@@ -20,11 +21,11 @@ export async function POST(req){
     function getAverage(marks){
         let result = 0
         if(!marks.afrikaans){
-        result = (marks.english+marks.isixhosa+marks.mathematics+marks.LO+
-            marks.ns+marks.creativeArts+marks.ems+marks.ss+marks.tech)/9
+            result = (marks.english+marks.isixhosa+marks.mathematics+marks.LO+
+                marks.ns+marks.creativeArts+marks.ems+marks.ss+marks.tech)/9
         }else if(!marks.isixhosa){
-        result = (marks.english+marks.isixhosa+marks.mathematics+marks.LO+
-            marks.ns+marks.creativeArts+marks.ems+marks.ss+marks.tech)/9
+            result = (marks.english+marks.isixhosa+marks.mathematics+marks.LO+
+                marks.ns+marks.creativeArts+marks.ems+marks.ss+marks.tech)/9
         }
         return result
     }
@@ -42,7 +43,8 @@ export async function POST(req){
         console.log("Test 5")
         await saveFatherInfo(formData, userId)
         console.log("Test 6")
-        await saveBlobsToDB(formData.documents, userId)
+        await saveBlobsToDB(formData, userId)
+        console.log("Test 7")
     }catch(err){
         console.log("Server error occured...")
         return NextResponse.json({

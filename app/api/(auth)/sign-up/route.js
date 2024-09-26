@@ -46,7 +46,7 @@ export async function POST(req) {
             console.log("User role was set to: ", user.role)
         }
         //Check if the email is not already in use
-        const userExist = result.rows.filter(rec => rec.email === email)
+        const userExist = result.rows.filter(rec => rec.email === email.toLowerCase())
         // console.log(userExist)//when the user already exist, this will display the user obj
         if(userExist.length > 0){
             console.log("Email is already in use")
@@ -58,16 +58,16 @@ export async function POST(req) {
         //Insert user info to the DB
         await sql`
             INSERT INTO users (firstName, lastName, email, phone, role, password) 
-            VALUES (${firstName}, ${lastName}, ${email}, 
+            VALUES (${firstName}, ${lastName}, ${email.toLowerCase()}, 
             ${phone}, ${user.role}, ${hashedPassword});`
         console.log("Account was created successfully")
         //Get user id from DB since the user is registering for the first time
-        const { rows } = await sql`SELECT id FROM users WHERE email=${email}`
+        const { rows } = await sql`SELECT id FROM users WHERE email=${email.toLowerCase()}`
         console.log("User with the email: ",rows)
         user.userId = rows[0].id
         user.firstName = firstName
         user.lastName = lastName
-        user.email = email
+        user.email = email.toLowerCase()
         await createSession(user)
         console.log("test 1")
     }catch(err){

@@ -31,7 +31,8 @@ export async function POST(req){
 
     try{
         //Find the user by email
-        const result = await sql`SELECT id, firstName, lastName, email, password, role FROM users WHERE email = ${formData.email}`
+        const result = await sql`SELECT id, firstName, lastName, email, password, role FROM users
+             WHERE email = ${formData.email.toLowerCase()}`
         //if user is not found return a message "User does not exist"
         if(result.rows.length === 0){
             console.log("Invalid email")
